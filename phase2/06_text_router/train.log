@@ -1,0 +1,52 @@
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+Loading weights:   0%|          | 0/103 [00:00<?, ?it/s]Loading weights: 100%|██████████| 103/103 [00:00<00:00, 2297.98it/s]
+bgebase nfcorpus 4953 708s
+Loading weights:   0%|          | 0/103 [00:00<?, ?it/s]Loading weights: 100%|██████████| 103/103 [00:00<00:00, 1682.31it/s]
+bgebase scifact 4976 730s
+Loading weights:   0%|          | 0/103 [00:00<?, ?it/s]Loading weights: 100%|██████████| 103/103 [00:00<00:00, 2232.32it/s]
+bgebase fiqa 4628 618s
+Loading weights:   0%|          | 0/103 [00:00<?, ?it/s]Loading weights: 100%|██████████| 103/103 [00:00<00:00, 1900.97it/s]
+bgebase scidocs 4276 550s
+Loading weights:   0%|          | 0/103 [00:00<?, ?it/s]Loading weights: 100%|██████████| 103/103 [00:00<00:00, 1854.76it/s]
+bgebase arguana 3870 136s
+Loading weights:   0%|          | 0/103 [00:00<?, ?it/s]Loading weights: 100%|██████████| 103/103 [00:00<00:00, 1971.51it/s]
+Loading weights:   0%|          | 0/103 [00:00<?, ?it/s]Loading weights:   7%|▋         | 7/103 [00:00<00:04, 20.92it/s]Loading weights:  14%|█▎        | 14/103 [00:00<00:02, 34.94it/s]Loading weights:  18%|█▊        | 19/103 [00:00<00:03, 27.51it/s]Loading weights:  27%|██▋       | 28/103 [00:00<00:01, 39.94it/s]Loading weights:  36%|███▌      | 37/103 [00:00<00:01, 50.17it/s]Loading weights:  43%|████▎     | 44/103 [00:01<00:01, 41.41it/s]Loading weights:  50%|█████     | 52/103 [00:01<00:01, 48.03it/s]Loading weights:  59%|█████▉    | 61/103 [00:01<00:00, 48.15it/s]Loading weights:  70%|██████▉   | 72/103 [00:01<00:00, 52.70it/s]Loading weights:  76%|███████▌  | 78/103 [00:01<00:00, 43.29it/s]Loading weights: 100%|██████████| 103/103 [00:01<00:00, 53.96it/s]
+Loading weights:   0%|          | 0/103 [00:00<?, ?it/s]Loading weights:   4%|▍         | 4/103 [00:00<00:02, 39.62it/s]Loading weights:  12%|█▏        | 12/103 [00:00<00:01, 56.22it/s]Loading weights:  22%|██▏       | 23/103 [00:00<00:01, 48.65it/s]Loading weights:  33%|███▎      | 34/103 [00:00<00:01, 54.35it/s]Loading weights:  39%|███▉      | 40/103 [00:00<00:01, 48.78it/s]Loading weights:  52%|█████▏    | 54/103 [00:00<00:00, 67.63it/s]Loading weights:  60%|██████    | 62/103 [00:01<00:00, 69.26it/s]Loading weights:  68%|██████▊   | 70/103 [00:01<00:01, 30.92it/s]Loading weights:  81%|████████  | 83/103 [00:02<00:00, 31.51it/s]Loading weights: 100%|██████████| 103/103 [00:02<00:00, 48.22it/s]
+bgebase trec-covid 5226 755s
+Loading weights:   0%|          | 0/103 [00:00<?, ?it/s]Loading weights: 100%|██████████| 103/103 [00:00<00:00, 1825.44it/s]
+bgebase quora 3776 530s
+Loading weights:   0%|          | 0/103 [00:00<?, ?it/s]Loading weights: 100%|██████████| 103/103 [00:00<00:00, 1997.68it/s]
+bgebase webis-touche2020 5227 696s
+Loading weights:   0%|          | 0/103 [00:00<?, ?it/s]Loading weights: 100%|██████████| 103/103 [00:00<00:00, 1709.68it/s]
+bge nfcorpus 4953 654s
+Loading weights:   0%|          | 0/103 [00:00<?, ?it/s]Loading weights: 100%|██████████| 103/103 [00:00<00:00, 2296.48it/s]
+bge scifact 4976 625s
+Loading weights:   0%|          | 0/103 [00:00<?, ?it/s]Loading weights: 100%|██████████| 103/103 [00:00<00:00, 2249.23it/s]
+bge fiqa 4628 587s
+Loading weights:   0%|          | 0/103 [00:00<?, ?it/s]Loading weights: 100%|██████████| 103/103 [00:00<00:00, 1770.52it/s]
+bge scidocs 4276 522s
+Loading weights:   0%|          | 0/103 [00:00<?, ?it/s]Loading weights: 100%|██████████| 103/103 [00:00<00:00, 2070.24it/s]
+bge arguana 3870 134s
+Loading weights:   0%|          | 0/103 [00:00<?, ?it/s]Loading weights: 100%|██████████| 103/103 [00:00<00:00, 1499.48it/s]
+bge trec-covid 5226 689s
+Loading weights:   0%|          | 0/103 [00:00<?, ?it/s]Loading weights: 100%|██████████| 103/103 [00:00<00:00, 1932.52it/s]
+bge quora 3776 510s
+Loading weights:   0%|          | 0/103 [00:00<?, ?it/s]Loading weights: 100%|██████████| 103/103 [00:00<00:00, 2188.00it/s]
+bge webis-touche2020 5227 667s
+Loading weights:   0%|          | 0/103 [00:00<?, ?it/s]Loading weights: 100%|██████████| 103/103 [00:00<00:00, 2189.47it/s]
+minilm nfcorpus 4953 676s
+Loading weights:   0%|          | 0/103 [00:00<?, ?it/s]Loading weights: 100%|██████████| 103/103 [00:00<00:00, 1744.19it/s]
+minilm scifact 4976 651s
+Loading weights:   0%|          | 0/103 [00:00<?, ?it/s]Loading weights: 100%|██████████| 103/103 [00:00<00:00, 2098.86it/s]
+minilm fiqa 4628 590s
+Loading weights:   0%|          | 0/103 [00:00<?, ?it/s]Loading weights: 100%|██████████| 103/103 [00:00<00:00, 1896.19it/s]
+minilm scidocs 4276 567s
+Loading weights:   0%|          | 0/103 [00:00<?, ?it/s]Loading weights: 100%|██████████| 103/103 [00:00<00:00, 1450.07it/s]
+minilm arguana 3870 141s
+Loading weights:   0%|          | 0/103 [00:00<?, ?it/s]Loading weights: 100%|██████████| 103/103 [00:00<00:00, 2040.00it/s]
+minilm trec-covid 5226 633s
+Loading weights:   0%|          | 0/103 [00:00<?, ?it/s]Loading weights: 100%|██████████| 103/103 [00:00<00:00, 1883.56it/s]
+minilm quora 3776 467s
+Loading weights:   0%|          | 0/103 [00:00<?, ?it/s]Loading weights: 100%|██████████| 103/103 [00:00<00:00, 2056.84it/s]
+minilm webis-touche2020 5227 613s
+ALLDONE

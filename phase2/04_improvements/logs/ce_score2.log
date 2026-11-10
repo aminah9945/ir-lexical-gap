@@ -1,0 +1,79 @@
+Loading weights:   0%|          | 0/105 [00:00<?, ?it/s]Loading weights: 100%|██████████| 105/105 [00:00<00:00, 2911.09it/s]
+scifact: 150 queries, 22207 pairs, 6207 to score
+  scifact: 2000/6207 pairs, 21.5 pairs/s
+  scifact: 4000/6207 pairs, 21.6 pairs/s
+  scifact: 6000/6207 pairs, 21.9 pairs/s
+  scifact: 6207/6207 pairs, 21.9 pairs/s
+scifact done in 283s
+nfcorpus: 150 queries, 19841 pairs, 19841 to score
+  nfcorpus: 2000/19841 pairs, 67.1 pairs/s
+  nfcorpus: 4000/19841 pairs, 53.2 pairs/s
+  nfcorpus: 6000/19841 pairs, 45.2 pairs/s
+  nfcorpus: 8000/19841 pairs, 40.2 pairs/s
+  nfcorpus: 10000/19841 pairs, 36.1 pairs/s
+  nfcorpus: 12000/19841 pairs, 33.1 pairs/s
+  nfcorpus: 14000/19841 pairs, 31.0 pairs/s
+  nfcorpus: 16000/19841 pairs, 29.5 pairs/s
+  nfcorpus: 18000/19841 pairs, 28.4 pairs/s
+  nfcorpus: 19841/19841 pairs, 27.6 pairs/s
+nfcorpus done in 719s
+quora: 150 queries, 15000 pairs, 15000 to score
+  quora: 2000/15000 pairs, 538.3 pairs/s
+  quora: 4000/15000 pairs, 511.1 pairs/s
+  quora: 6000/15000 pairs, 499.4 pairs/s
+  quora: 8000/15000 pairs, 483.9 pairs/s
+  quora: 10000/15000 pairs, 465.0 pairs/s
+  quora: 12000/15000 pairs, 437.2 pairs/s
+  quora: 14000/15000 pairs, 412.9 pairs/s
+  quora: 15000/15000 pairs, 394.0 pairs/s
+quora done in 38s
+webis-touche2020: 49 queries, 4900 pairs, 4900 to score
+  webis-touche2020: 2000/4900 pairs, 36.0 pairs/s
+  webis-touche2020: 4000/4900 pairs, 27.9 pairs/s
+  webis-touche2020: 4900/4900 pairs, 26.7 pairs/s
+webis-touche2020 done in 183s
+trec-covid: 50 queries, 5000 pairs, 5000 to score
+  trec-covid: 2000/5000 pairs, 41.7 pairs/s
+  trec-covid: 4000/5000 pairs, 29.5 pairs/s
+  trec-covid: 5000/5000 pairs, 27.4 pairs/s
+trec-covid done in 183s
+fiqa: 150 queries, 22020 pairs, 22020 to score
+  fiqa: 2000/22020 pairs, 161.3 pairs/s
+  fiqa: 4000/22020 pairs, 118.8 pairs/s
+  fiqa: 6000/22020 pairs, 99.1 pairs/s
+  fiqa: 8000/22020 pairs, 83.3 pairs/s
+  fiqa: 10000/22020 pairs, 71.6 pairs/s
+  fiqa: 12000/22020 pairs, 61.9 pairs/s
+  fiqa: 14000/22020 pairs, 50.9 pairs/s
+  fiqa: 16000/22020 pairs, 44.9 pairs/s
+  fiqa: 18000/22020 pairs, 40.2 pairs/s
+  fiqa: 20000/22020 pairs, 37.1 pairs/s
+  fiqa: 22000/22020 pairs, 34.6 pairs/s
+  fiqa: 22020/22020 pairs, 34.6 pairs/s
+fiqa done in 636s
+scidocs: 150 queries, 20933 pairs, 20933 to score
+  scidocs: 2000/20933 pairs, 80.5 pairs/s
+  scidocs: 4000/20933 pairs, 69.2 pairs/s
+  scidocs: 6000/20933 pairs, 63.1 pairs/s
+  scidocs: 8000/20933 pairs, 58.1 pairs/s
+  scidocs: 10000/20933 pairs, 55.1 pairs/s
+  scidocs: 12000/20933 pairs, 51.8 pairs/s
+  scidocs: 14000/20933 pairs, 49.1 pairs/s
+  scidocs: 16000/20933 pairs, 46.5 pairs/s
+  scidocs: 18000/20933 pairs, 43.5 pairs/s
+  scidocs: 20000/20933 pairs, 40.1 pairs/s
+  scidocs: 20933/20933 pairs, 38.6 pairs/s
+scidocs done in 542s
+arguana: 150 queries, 21148 pairs, 21148 to score
+  arguana: 2000/21148 pairs, 39.8 pairs/s
+  arguana: 4000/21148 pairs, 34.2 pairs/s
+  arguana: 6000/21148 pairs, 30.7 pairs/s
+  arguana: 8000/21148 pairs, 28.2 pairs/s
+  arguana: 10000/21148 pairs, 26.3 pairs/s
+  arguana: 12000/21148 pairs, 25.3 pairs/s
+  arguana: 14000/21148 pairs, 24.8 pairs/s
+  arguana: 16000/21148 pairs, 24.6 pairs/s
+  arguana: 18000/21148 pairs, 24.5 pairs/s
+  arguana: 20000/21148 pairs, 24.4 pairs/s
+  arguana: 21148/21148 pairs, 24.4 pairs/s
+arguana done in 867s

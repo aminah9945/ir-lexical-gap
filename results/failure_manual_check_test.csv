@@ -1,0 +1,46 @@
+round,dataset,qid,primary,evidence,correct,note
+"test (rules v2, fresh sample)",nfcorpus,PLAIN-977,AMBIG,"rel cov_max=1.00, top-10 nonrel cov=1.00",1,label is a defensible explanation
+"test (rules v2, fresh sample)",nfcorpus,PLAIN-1331,PARAPHRASE,rel cov_max=0.00,1,label is a defensible explanation
+"test (rules v2, fresh sample)",nfcorpus,PLAIN-1119,PARAPHRASE,rel cov_max=0.00,1,label is a defensible explanation
+"test (rules v2, fresh sample)",nfcorpus,PLAIN-1537,AMBIG,"rel cov_max=0.67, top-10 nonrel cov=0.70; relevant doc uses acronym 'LCD' for a query phrase",0,"clipping carb~carbohydrate, not term competition"
+"test (rules v2, fresh sample)",nfcorpus,PLAIN-551,MORPH,'amnesia' vs 'amnesic',1,label is a defensible explanation
+"test (rules v2, fresh sample)",nfcorpus,PLAIN-1409,AMBIG,"rel cov_max=0.50, top-10 nonrel cov=0.61",0,synonymy toxins~contaminants is the main cause
+"test (rules v2, fresh sample)",nfcorpus,PLAIN-123,PARAPHRASE,rel cov_max=0.25,1,label is a defensible explanation
+"test (rules v2, fresh sample)",nfcorpus,PLAIN-457,PARAPHRASE,rel cov_max=0.14,1,label is a defensible explanation
+"test (rules v2, fresh sample)",nfcorpus,PLAIN-2940,PARAPHRASE,rel cov_max=0.40,1,label is a defensible explanation
+"test (rules v2, fresh sample)",nfcorpus,PLAIN-1621,PARAPHRASE,rel cov_max=0.00,1,label is a defensible explanation
+"test (rules v2, fresh sample)",scifact,1278,PARAPHRASE,rel cov_max=0.33,1,label is a defensible explanation
+"test (rules v2, fresh sample)",scifact,690,PARAPHRASE,rel cov_max=0.27,1,label is a defensible explanation
+"test (rules v2, fresh sample)",scifact,437,PARAPHRASE,rel cov_max=0.15,1,label is a defensible explanation
+"test (rules v2, fresh sample)",scifact,384,AMBIG,"rel cov_max=0.50, top-10 nonrel cov=0.55; 'settings' ~ 'background'",0,paraphrase is the main cause; AMBIG only partly
+"test (rules v2, fresh sample)",scifact,1316,PARAPHRASE,rel cov_max=0.33,1,label is a defensible explanation
+"test (rules v2, fresh sample)",scifact,1175,PARAPHRASE,rel cov_max=0.12,1,label is a defensible explanation
+"test (rules v2, fresh sample)",scifact,821,PARAPHRASE,rel cov_max=0.33,1,label is a defensible explanation
+"test (rules v2, fresh sample)",scifact,783,PARAPHRASE,rel cov_max=0.25,0,abbreviation EAM and symbol γ vs 'gamma' missed
+"test (rules v2, fresh sample)",scifact,1221,PARAPHRASE,rel cov_max=0.25,0,misspelling 'matasteses' missed (no typo rule)
+"test (rules v2, fresh sample)",scifact,716,PARAPHRASE,rel cov_max=0.17,1,label is a defensible explanation
+"test (rules v2, fresh sample)",fiqa,89,AMBIG,"rel cov_max=0.82, top-10 nonrel cov=0.84",1,label is a defensible explanation
+"test (rules v2, fresh sample)",fiqa,10267,AMBIG,"rel cov_max=0.57, top-10 nonrel cov=0.73",1,label is a defensible explanation
+"test (rules v2, fresh sample)",fiqa,4837,PARAPHRASE,rel cov_max=0.38,1,label is a defensible explanation
+"test (rules v2, fresh sample)",fiqa,8982,AMBIG,"rel cov_max=0.56, top-10 nonrel cov=0.68; relevant doc uses acronym 'ETF' for a query phrase",1,label is a defensible explanation
+"test (rules v2, fresh sample)",fiqa,503,MORPH,'creditworthiness' vs 'credit',0,MORPH incidental; true cause paraphrase
+"test (rules v2, fresh sample)",fiqa,90,AMBIG,"rel cov_max=0.57, top-10 nonrel cov=0.74; 'corp' ~ 'corpor'",0,clipping s-corp~corporation missed
+"test (rules v2, fresh sample)",fiqa,3594,AMBIG,"rel cov_max=0.63, top-10 nonrel cov=0.63",1,label is a defensible explanation
+"test (rules v2, fresh sample)",fiqa,3995,AMBIG,"rel cov_max=0.60, top-10 nonrel cov=0.77",1,label is a defensible explanation
+"test (rules v2, fresh sample)",fiqa,687,ABBREV,relevant doc uses acronym 'ATM' for a query phrase; 'categories' vs 'categorizing',0,spurious acronym ATM
+"test (rules v2, fresh sample)",fiqa,5231,PARAPHRASE,rel cov_max=0.09,1,label is a defensible explanation
+"test (rules v2, fresh sample)",arguana,test-health-dhghwapgd-pro05a,PARAPHRASE,rel cov_max=0.13,1,label is a defensible explanation
+"test (rules v2, fresh sample)",arguana,test-society-tsmihwurpp-con02a,PARAPHRASE,rel cov_max=0.18,1,label is a defensible explanation
+"test (rules v2, fresh sample)",arguana,test-politics-epvhbfsmsaop-pro03a,PARAPHRASE,rel cov_max=0.16,1,label is a defensible explanation
+"test (rules v2, fresh sample)",arguana,test-international-ipecfiepg-con04a,PARAPHRASE,rel cov_max=0.14,1,label is a defensible explanation
+"test (rules v2, fresh sample)",arguana,test-free-speech-debate-nshbcsbawc-pro03a,PARAPHRASE,rel cov_max=0.08,1,label is a defensible explanation
+"test (rules v2, fresh sample)",scidocs,4acb38f96f3f69a443e1684040c14d1cecc4f841,PARAPHRASE,rel cov_max=0.38,1,label is a defensible explanation
+"test (rules v2, fresh sample)",scidocs,f68911078030c56f34e68041908c26808b63f57b,SYN,'approach' ~ 'come',0,spurious synonym approach~come
+"test (rules v2, fresh sample)",scidocs,bdd6b6635cf5861fc9d914a6d2938fcb2daea7ef,MORPH,'dialogue' vs 'dialog'; 'dialogue' ~ 'dialog',1,label is a defensible explanation
+"test (rules v2, fresh sample)",scidocs,76dac031066a95715a3b116eb2094ec9bdd15171,PARAPHRASE,rel cov_max=0.25,1,label is a defensible explanation
+"test (rules v2, fresh sample)",scidocs,43dd67cf1630eeac917c0dcd8e80425a6b93d38d,ABBREV,relevant doc uses acronym 'CNN' for a query phrase,1,label is a defensible explanation
+"test (rules v2, fresh sample)",quora,264830,AMBIG,"rel cov_max=0.56, top-10 nonrel cov=0.58",0,misspelling in the duplicate ('diciplined') missed
+"test (rules v2, fresh sample)",quora,92935,PARAPHRASE,rel cov_max=0.29,1,label is a defensible explanation
+"test (rules v2, fresh sample)",quora,479607,AMBIG,"rel cov_max=0.67, top-10 nonrel cov=0.88",1,label is a defensible explanation
+"test (rules v2, fresh sample)",quora,343039,AMBIG,"rel cov_max=0.60, top-10 nonrel cov=0.80",1,label is a defensible explanation
+"test (rules v2, fresh sample)",quora,243330,AMBIG,"rel cov_max=0.75, top-10 nonrel cov=0.78",1,label is a defensible explanation

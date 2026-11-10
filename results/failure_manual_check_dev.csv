@@ -1,0 +1,31 @@
+round,dataset,qid,primary,evidence,correct,note
+"dev (rules v1, before fixes)",nfcorpus,PLAIN-2134,PARAPHRASE,rel cov_max=0.00,1,indirect relevance (Splenda->maltodextrin); paraphrase OK
+"dev (rules v1, before fixes)",nfcorpus,PLAIN-2820,OTHER,,0,"term competition, not OTHER"
+"dev (rules v1, before fixes)",nfcorpus,PLAIN-1098,PARAPHRASE,rel cov_max=0.00,1,ingredient-level indirect relevance
+"dev (rules v1, before fixes)",nfcorpus,PLAIN-2281,PARAPHRASE,rel cov_max=0.00,1,hypernym/indirect
+"dev (rules v1, before fixes)",nfcorpus,PLAIN-217,SYN,'based' ~ 'establish',0,spurious WordNet synonym based~establish
+"dev (rules v1, before fixes)",nfcorpus,PLAIN-2880,SYN,'answer' ~ 'respons',0,spurious synonym answer~response
+"dev (rules v1, before fixes)",nfcorpus,PLAIN-1690,PARAPHRASE,rel cov_max=0.33,1,indirect
+"dev (rules v1, before fixes)",nfcorpus,PLAIN-1309,PARAPHRASE,rel cov_max=0.00,1,indirect
+"dev (rules v1, before fixes)",nfcorpus,PLAIN-1249,SYN,'manipulation' ~ 'us',0,spurious synonym; true = paraphrase
+"dev (rules v1, before fixes)",nfcorpus,PLAIN-2250,PARAPHRASE,rel cov_max=0.00,1,indirect
+"dev (rules v1, before fixes)",scifact,132,OTHER,,0,needs inference aspirin->COX; OTHER uninformative
+"dev (rules v1, before fixes)",scifact,775,PARAPHRASE,rel cov_max=0.21,1,paraphrase
+"dev (rules v1, before fixes)",scifact,834,MORPH,'reacting' vs 'reactive'; 'reacting' ~ 'respond',0,MORPH reacting/reactive incidental; true = inference/paraphrase
+"dev (rules v1, before fixes)",scifact,1272,PARAPHRASE,rel cov_max=0.30,1,paraphrase
+"dev (rules v1, before fixes)",scifact,800,PARAPHRASE,rel cov_max=0.25,1,paraphrase
+"dev (rules v1, before fixes)",scifact,1179,PARAPHRASE,rel cov_max=0.22,1,paraphrase (+acronym PRR)
+"dev (rules v1, before fixes)",scifact,13,PARAPHRASE,rel cov_max=0.43,1,paraphrase low birth weight~underweight
+"dev (rules v1, before fixes)",scifact,913,PARAPHRASE,rel cov_max=0.25,1,paraphrase
+"dev (rules v1, before fixes)",scifact,1110,PARAPHRASE,rel cov_max=0.20,1,paraphrase
+"dev (rules v1, before fixes)",scifact,502,ABBREV,relevant doc uses acronym 'CI' for a query phrase,0,spurious 2-letter acronym CI
+"dev (rules v1, before fixes)",fiqa,7017,OTHER,,0,term competition
+"dev (rules v1, before fixes)",fiqa,4188,PARAPHRASE,rel cov_max=0.11,1,paraphrase TPP~trade deals
+"dev (rules v1, before fixes)",fiqa,4142,OTHER,,0,term competition
+"dev (rules v1, before fixes)",fiqa,2051,PARAPHRASE,rel cov_max=0.25,1,paraphrase
+"dev (rules v1, before fixes)",fiqa,4500,OTHER,,0,"elliptical reference/paraphrase, not OTHER"
+"dev (rules v1, before fixes)",fiqa,7876,OTHER,,0,term competition
+"dev (rules v1, before fixes)",fiqa,559,PARAPHRASE,rel cov_max=0.33,1,paraphrase
+"dev (rules v1, before fixes)",fiqa,5534,OTHER,,0,term competition
+"dev (rules v1, before fixes)",fiqa,988,OTHER,,0,term competition
+"dev (rules v1, before fixes)",fiqa,1150,OTHER,,0,term competition

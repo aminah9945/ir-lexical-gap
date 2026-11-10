@@ -1,0 +1,8 @@
+run nfcorpus k1=2.0 b=0.6 done (1s)
+run scifact k1=2.0 b=0.6 done (1s)
+run fiqa k1=2.0 b=0.6 done (4s)
+run scidocs k1=2.0 b=0.6 done (4s)
+run arguana k1=2.5 b=0.4 done (5s)
+run trec-covid k1=1.5 b=0.6 done (4s)
+run quora k1=2.0 b=0.6 done (108s)
+run webis-touche2020 k1=2.0 b=0.75 done (13s)

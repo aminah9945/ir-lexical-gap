@@ -1,0 +1,14 @@
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+Loading weights:   0%|          | 0/103 [00:00<?, ?it/s]Loading weights: 100%|██████████| 103/103 [00:00<00:00, 1967.35it/s]
+=== minilm scidocs
+system
+hybrid_cc_minilm     0.2041
+hybrid_rrf_minilm    0.1970
+minilm               0.2165
+=== minilm fiqa
+    encoded 57638 in 2844s
+    encoded 648 in 4s
+system
+hybrid_cc_minilm     0.3944
+hybrid_rrf_minilm    0.3720
+minilm               0.3687

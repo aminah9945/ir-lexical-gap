@@ -1,0 +1,172 @@
+skip nfcorpus/hybrid_cc_bge: unscored docs for PLAIN-102: 25
+skip nfcorpus/hybrid_cc_bgebase: unscored docs for PLAIN-102: 16
+skip scifact/hybrid_cc_bge: unscored docs for 100: 9
+skip scifact/hybrid_cc_bgebase: unscored docs for 100: 14
+skip fiqa/hybrid_cc_bge: unscored docs for 10136: 42
+skip fiqa/hybrid_cc_bgebase: unscored docs for 10136: 45
+skip scidocs/hybrid_cc_bge: unscored docs for 030ff7012b92b805a60976f8dbd6a08c1cecebe6: 31
+skip scidocs/hybrid_cc_bgebase: unscored docs for 030ff7012b92b805a60976f8dbd6a08c1cecebe6: 36
+skip arguana/hybrid_cc_bge: unscored docs for test-culture-ascidfakhba-pro01a: 12
+skip arguana/hybrid_cc_bgebase: unscored docs for test-culture-ascidfakhba-pro01a: 11
+skip trec-covid/hybrid_cc_minilm: unscored docs for 1: 55
+skip trec-covid/hybrid_cc_bge: unscored docs for 1: 50
+skip trec-covid/hybrid_cc_bgebase: unscored docs for 1: 51
+skip quora/hybrid_cc_minilm: unscored docs for 104038: 16
+skip quora/hybrid_cc_bge: unscored docs for 104038: 14
+skip quora/hybrid_cc_bgebase: unscored docs for 104038: 12
+skip webis-touche2020/hybrid_cc_minilm: unscored docs for 1: 46
+skip webis-touche2020/hybrid_cc_bge: unscored docs for 1: 42
+skip webis-touche2020/hybrid_cc_bgebase: unscored docs for 1: 42
+             dataset       first_stage    n                         source    base      ce   delta  ref_bm25  ref_bge  ref_hybrid_cc_bge  ref_minilm  ref_hybrid_cc_minilm  ref_bgebase  ref_hybrid_cc_bgebase
+0           nfcorpus              bm25  150          cache/ce_nfcorpus.pkl  0.3339  0.3648  0.0309    0.3339   0.3558             0.3811      0.3355                0.3774       0.3986                 0.3954
+1           nfcorpus  hybrid_cc_minilm  150          cache/ce_nfcorpus.pkl  0.3774  0.3693 -0.0081    0.3339   0.3558             0.3811      0.3355                0.3774       0.3986                 0.3954
+2            scifact              bm25  150           cache/ce_scifact.pkl  0.6575  0.6842  0.0267    0.6575   0.6869             0.7152      0.6354                0.7153       0.7314                 0.7405
+3            scifact  hybrid_cc_minilm  150           cache/ce_scifact.pkl  0.7153  0.6934 -0.0219    0.6575   0.6869             0.7152      0.6354                0.7153       0.7314                 0.7405
+4               fiqa              bm25  150              cache/ce_fiqa.pkl  0.1905  0.2915  0.1010    0.1905   0.3671             0.3189      0.3303                0.3413       0.3641                 0.3262
+5               fiqa  hybrid_cc_minilm  150              cache/ce_fiqa.pkl  0.3413  0.3161 -0.0252    0.1905   0.3671             0.3189      0.3303                0.3413       0.3641                 0.3262
+6            scidocs              bm25  150           cache/ce_scidocs.pkl  0.1481  0.1727  0.0246    0.1481   0.2050             0.1962      0.2132                0.2015       0.2204                 0.2017
+7            scidocs  hybrid_cc_minilm  150           cache/ce_scidocs.pkl  0.2015  0.1784 -0.0232    0.1481   0.2050             0.1962      0.2132                0.2015       0.2204                 0.2017
+8            arguana              bm25  150           cache/ce_arguana.pkl  0.4107  0.4103 -0.0004    0.4107   0.6249             0.5630      0.5117                0.5227       0.6553                 0.6073
+9            arguana  hybrid_cc_minilm  150           cache/ce_arguana.pkl  0.5227  0.4023 -0.1204    0.4107   0.6249             0.5630      0.5117                0.5227       0.6553                 0.6073
+10        trec-covid              bm25   50        cache/ce_trec-covid.pkl  0.5949  0.7374  0.1426    0.5949   0.7464             0.7940      0.4723                0.6936       0.7756                 0.8064
+11             quora              bm25  150             cache/ce_quora.pkl  0.7719  0.8100  0.0382    0.7719   0.8909             0.8973      0.8681                0.8810       0.8730                 0.8922
+12  webis-touche2020              bm25   49  cache/ce_webis-touche2020.pkl  0.4442  0.2802 -0.1641    0.4442   0.2415             0.3577      0.1690                0.3572       0.2418                 0.3828
+         first_stage                              comparison    dataset  n  mean_a  mean_b   delta   ci_lo   ci_hi  se_boot  d_z  win  tie  loss       p  p_holm  p_one_sided  sig_pos_holm  sig_neg_holm      I2
+8               bm25                           CE(bm25)-base      MACRO  8     NaN     NaN  0.0249     NaN     NaN      NaN  NaN  NaN  NaN   NaN  0.0068     NaN       0.0036           4.0           1.0     NaN
+9               bm25                           CE(bm25)-base  POOLED_DL  8     NaN     NaN  0.0289 -0.0086  0.0664      NaN  NaN  NaN  NaN   NaN  0.1314     NaN          NaN           NaN           NaN  0.8939
+15  hybrid_cc_minilm               CE(hybrid_cc_minilm)-base      MACRO  5     NaN     NaN -0.0397     NaN     NaN      NaN  NaN  NaN  NaN   NaN  0.0001     NaN       1.0000           0.0           1.0     NaN
+16  hybrid_cc_minilm               CE(hybrid_cc_minilm)-base  POOLED_DL  5     NaN     NaN -0.0296 -0.0533 -0.0060      NaN  NaN  NaN  NaN   NaN  0.0140     NaN          NaN           NaN           NaN  0.6787
+25              bm25              CE(bm25)-ref_hybrid_cc_bge      MACRO  8     NaN     NaN -0.0590     NaN     NaN      NaN  NaN  NaN  NaN   NaN  0.0001     NaN       1.0000           0.0           5.0     NaN
+26              bm25              CE(bm25)-ref_hybrid_cc_bge  POOLED_DL  8     NaN     NaN -0.0523 -0.0763 -0.0283      NaN  NaN  NaN  NaN   NaN  0.0000     NaN          NaN           NaN           NaN  0.8038
+35              bm25                        CE(bm25)-ref_bge      MACRO  8     NaN     NaN -0.0459     NaN     NaN      NaN  NaN  NaN  NaN   NaN  0.0001     NaN       1.0000           0.0           4.0     NaN
+36              bm25                        CE(bm25)-ref_bge  POOLED_DL  8     NaN     NaN -0.0427 -0.0831 -0.0023      NaN  NaN  NaN  NaN   NaN  0.0381     NaN          NaN           NaN           NaN  0.8918
+42  hybrid_cc_minilm  CE(hybrid_cc_minilm)-ref_hybrid_cc_bge      MACRO  5     NaN     NaN -0.0430     NaN     NaN      NaN  NaN  NaN  NaN   NaN  0.0001     NaN       1.0000           0.0           1.0     NaN
+43  hybrid_cc_minilm  CE(hybrid_cc_minilm)-ref_hybrid_cc_bge  POOLED_DL  5     NaN     NaN -0.0332 -0.0636 -0.0027      NaN  NaN  NaN  NaN   NaN  0.0329     NaN          NaN           NaN           NaN  0.8335
+minilm nfcorpus alpha_hat 0.6 oracle 0.5
+minilm scifact alpha_hat 0.5 oracle 0.6
+minilm fiqa alpha_hat 0.5 oracle 0.3
+minilm scidocs alpha_hat 0.7 oracle 0.2
+minilm arguana alpha_hat 0.5 oracle 0.1
+minilm trec-covid alpha_hat 0.6 oracle 0.6
+minilm quora alpha_hat 0.6 oracle 0.4
+minilm webis-touche2020 alpha_hat 0.6 oracle 0.9
+bge nfcorpus alpha_hat 0.6 oracle 0.5
+bge scifact alpha_hat 0.5 oracle 0.4
+bge fiqa alpha_hat 0.5 oracle 0.3
+bge scidocs alpha_hat 0.6 oracle 0.2
+bge arguana alpha_hat 0.4 oracle 0.1
+bge trec-covid alpha_hat 0.6 oracle 0.4
+bge quora alpha_hat 0.6 oracle 0.3
+bge webis-touche2020 alpha_hat 0.6 oracle 0.9
+bgebase nfcorpus alpha_hat 0.6 oracle 0.3
+bgebase scifact alpha_hat 0.5 oracle 0.2
+bgebase fiqa alpha_hat 0.5 oracle 0.3
+bgebase scidocs alpha_hat 0.6 oracle 0.2
+bgebase arguana alpha_hat 0.4 oracle 0.1
+bgebase trec-covid alpha_hat 0.6 oracle 0.4
+bgebase quora alpha_hat 0.6 oracle 0.3
+bgebase webis-touche2020 alpha_hat 0.6 oracle 0.9
+      model           dataset  alpha_hat  alpha_oracle_all  H05_rest  Hhat_rest  H05_all  Hhat_all  Horacle_all  corr_pseudo_true_over_alpha  missing_ce_in_fused_top10
+0    minilm          nfcorpus        0.6               0.5    0.3358     0.3367   0.3551    0.3542       0.3551                       0.6877                          0
+1    minilm           scifact        0.5               0.6    0.7460     0.7460   0.7306    0.7306       0.7332                       0.7592                          0
+2    minilm              fiqa        0.5               0.3    0.4103     0.4103   0.3944    0.3944       0.4140                       0.1726                          0
+3    minilm           scidocs        0.7               0.2    0.2045     0.1817   0.2041    0.1813       0.2193                      -0.4867                          0
+4    minilm           arguana        0.5               0.1    0.4920     0.4920   0.4953    0.4953       0.5194                       0.6812                          0
+5    minilm        trec-covid        0.6               0.6       NaN        NaN   0.6936    0.7052       0.7052                       0.8708                       1932
+6    minilm             quora        0.6               0.4    0.8895     0.8818   0.8895    0.8817       0.8934                       0.2886                       2027
+7    minilm  webis-touche2020        0.6               0.9       NaN        NaN   0.3572    0.3902       0.4505                       0.9207                        970
+8       bge          nfcorpus        0.6               0.5    0.3531     0.3508   0.3661    0.3636       0.3661                       0.3958                       1692
+9       bge           scifact        0.5               0.4    0.7466     0.7466   0.7309    0.7309       0.7323                       0.5282                        489
+10      bge              fiqa        0.5               0.3    0.4133     0.4133   0.3915    0.3915       0.4152                       0.2942                        688
+11      bge           scidocs        0.6               0.2    0.1956     0.1880   0.1957    0.1884       0.2082                      -0.3619                        366
+12      bge           arguana        0.4               0.1    0.5463     0.5697   0.5481    0.5724       0.6091                       0.6874                        122
+13      bge        trec-covid        0.6               0.4       NaN        NaN   0.7940    0.7719       0.8041                      -0.2296                       1027
+14      bge             quora        0.6               0.3    0.8946     0.8850   0.8948    0.8852       0.8995                       0.2992                       2011
+15      bge  webis-touche2020        0.6               0.9       NaN        NaN   0.3577    0.3857       0.4516                       0.7701                        619
+16  bgebase          nfcorpus        0.6               0.3    0.3619     0.3587   0.3775    0.3736       0.3841                      -0.2301                       1953
+17  bgebase           scifact        0.5               0.2    0.7603     0.7603   0.7504    0.7504       0.7586                       0.1089                        541
+18  bgebase              fiqa        0.5               0.3    0.4176     0.4176   0.3964    0.3964       0.4210                       0.3079                        885
+19  bgebase           scidocs        0.6               0.2    0.2002     0.1906   0.2005    0.1910       0.2205                      -0.4956                        416
+20  bgebase           arguana        0.4               0.1    0.5717     0.6028   0.5755    0.6053       0.6360                       0.5552                        203
+21  bgebase        trec-covid        0.6               0.4       NaN        NaN   0.8064    0.7822       0.8238                      -0.3619                       1011
+22  bgebase             quora        0.6               0.3    0.8967     0.8870   0.8966    0.8869       0.9017                       0.3997                       1986
+23  bgebase  webis-touche2020        0.6               0.9       NaN        NaN   0.3828    0.4037       0.4592                       0.8076                        589
+/home/user/ir_lexical_gap/phase2/03_experiments/common2.py:221: RuntimeWarning: Mean of empty slice
+  bs[s0:s0 + m] = d[rng.integers(0, len(d), (m, len(d)))].mean(1)
+/usr/local/lib/python3.13/dist-packages/numpy/_core/_methods.py:134: RuntimeWarning: invalid value encountered in divide
+  ret = um.true_divide(
+/usr/local/lib/python3.13/dist-packages/numpy/_core/_methods.py:219: RuntimeWarning: Degrees of freedom <= 0 for slice
+  ret = _var(a, axis=axis, dtype=dtype, out=out, ddof=ddof,
+/usr/local/lib/python3.13/dist-packages/numpy/_core/_methods.py:178: RuntimeWarning: invalid value encountered in divide
+  arrmean = um.true_divide(arrmean, div, out=arrmean,
+/usr/local/lib/python3.13/dist-packages/numpy/_core/_methods.py:211: RuntimeWarning: invalid value encountered in scalar divide
+  ret = ret.dtype.type(ret / rcount)
+/usr/local/lib/python3.13/dist-packages/numpy/_core/fromnumeric.py:3862: RuntimeWarning: Mean of empty slice
+  return _methods._mean(a, axis=axis, dtype=dtype,
+/usr/local/lib/python3.13/dist-packages/numpy/_core/_methods.py:142: RuntimeWarning: invalid value encountered in scalar divide
+  ret = ret.dtype.type(ret / rcount)
+/home/user/ir_lexical_gap/phase2/03_experiments/common2.py:267: RuntimeWarning: Mean of empty slice
+  return dict(n=len(d), mean_a=float(np.mean(a)), mean_b=float(np.mean(b)), delta=float(d.mean()),
+/home/user/ir_lexical_gap/phase2/03_experiments/common2.py:187: RuntimeWarning: Mean of empty slice
+  obs = abs(d.mean())
+/home/user/ir_lexical_gap/phase2/03_experiments/common2.py:192: RuntimeWarning: Mean of empty slice
+  cnt += int((np.abs((s * d).mean(1)) >= obs - 1e-12).sum())
+/home/user/ir_lexical_gap/phase2/03_experiments/common2.py:202: RuntimeWarning: Mean of empty slice
+  obs = np.mean([v.mean() for v in ds])
+/home/user/ir_lexical_gap/phase2/03_experiments/common2.py:207: RuntimeWarning: Mean of empty slice
+  null[s0:s0 + m] += (rng.choice([-1.0, 1.0], size=(m, len(v))) * v).mean(1)
+/home/user/ir_lexical_gap/phase2/03_experiments/common2.py:221: RuntimeWarning: Mean of empty slice
+  bs[s0:s0 + m] = d[rng.integers(0, len(d), (m, len(d)))].mean(1)
+/usr/local/lib/python3.13/dist-packages/numpy/_core/_methods.py:134: RuntimeWarning: invalid value encountered in divide
+  ret = um.true_divide(
+/usr/local/lib/python3.13/dist-packages/numpy/_core/_methods.py:219: RuntimeWarning: Degrees of freedom <= 0 for slice
+  ret = _var(a, axis=axis, dtype=dtype, out=out, ddof=ddof,
+/usr/local/lib/python3.13/dist-packages/numpy/_core/_methods.py:178: RuntimeWarning: invalid value encountered in divide
+  arrmean = um.true_divide(arrmean, div, out=arrmean,
+/usr/local/lib/python3.13/dist-packages/numpy/_core/_methods.py:211: RuntimeWarning: invalid value encountered in scalar divide
+  ret = ret.dtype.type(ret / rcount)
+/usr/local/lib/python3.13/dist-packages/numpy/_core/fromnumeric.py:3862: RuntimeWarning: Mean of empty slice
+  return _methods._mean(a, axis=axis, dtype=dtype,
+/usr/local/lib/python3.13/dist-packages/numpy/_core/_methods.py:142: RuntimeWarning: invalid value encountered in scalar divide
+  ret = ret.dtype.type(ret / rcount)
+/home/user/ir_lexical_gap/phase2/03_experiments/common2.py:267: RuntimeWarning: Mean of empty slice
+  return dict(n=len(d), mean_a=float(np.mean(a)), mean_b=float(np.mean(b)), delta=float(d.mean()),
+/home/user/ir_lexical_gap/phase2/03_experiments/common2.py:187: RuntimeWarning: Mean of empty slice
+  obs = abs(d.mean())
+/home/user/ir_lexical_gap/phase2/03_experiments/common2.py:192: RuntimeWarning: Mean of empty slice
+  cnt += int((np.abs((s * d).mean(1)) >= obs - 1e-12).sum())
+/home/user/ir_lexical_gap/phase2/03_experiments/common2.py:202: RuntimeWarning: Mean of empty slice
+  obs = np.mean([v.mean() for v in ds])
+/home/user/ir_lexical_gap/phase2/03_experiments/common2.py:207: RuntimeWarning: Mean of empty slice
+  null[s0:s0 + m] += (rng.choice([-1.0, 1.0], size=(m, len(v))) * v).mean(1)
+/home/user/ir_lexical_gap/phase2/03_experiments/common2.py:221: RuntimeWarning: Mean of empty slice
+  bs[s0:s0 + m] = d[rng.integers(0, len(d), (m, len(d)))].mean(1)
+/usr/local/lib/python3.13/dist-packages/numpy/_core/_methods.py:134: RuntimeWarning: invalid value encountered in divide
+  ret = um.true_divide(
+/usr/local/lib/python3.13/dist-packages/numpy/_core/_methods.py:219: RuntimeWarning: Degrees of freedom <= 0 for slice
+  ret = _var(a, axis=axis, dtype=dtype, out=out, ddof=ddof,
+/usr/local/lib/python3.13/dist-packages/numpy/_core/_methods.py:178: RuntimeWarning: invalid value encountered in divide
+  arrmean = um.true_divide(arrmean, div, out=arrmean,
+/usr/local/lib/python3.13/dist-packages/numpy/_core/_methods.py:211: RuntimeWarning: invalid value encountered in scalar divide
+  ret = ret.dtype.type(ret / rcount)
+/usr/local/lib/python3.13/dist-packages/numpy/_core/fromnumeric.py:3862: RuntimeWarning: Mean of empty slice
+  return _methods._mean(a, axis=axis, dtype=dtype,
+/usr/local/lib/python3.13/dist-packages/numpy/_core/_methods.py:142: RuntimeWarning: invalid value encountered in scalar divide
+  ret = ret.dtype.type(ret / rcount)
+/home/user/ir_lexical_gap/phase2/03_experiments/common2.py:267: RuntimeWarning: Mean of empty slice
+  return dict(n=len(d), mean_a=float(np.mean(a)), mean_b=float(np.mean(b)), delta=float(d.mean()),
+/home/user/ir_lexical_gap/phase2/03_experiments/common2.py:187: RuntimeWarning: Mean of empty slice
+  obs = abs(d.mean())
+/home/user/ir_lexical_gap/phase2/03_experiments/common2.py:192: RuntimeWarning: Mean of empty slice
+  cnt += int((np.abs((s * d).mean(1)) >= obs - 1e-12).sum())
+/home/user/ir_lexical_gap/phase2/03_experiments/common2.py:202: RuntimeWarning: Mean of empty slice
+  obs = np.mean([v.mean() for v in ds])
+/home/user/ir_lexical_gap/phase2/03_experiments/common2.py:207: RuntimeWarning: Mean of empty slice
+  null[s0:s0 + m] += (rng.choice([-1.0, 1.0], size=(m, len(v))) * v).mean(1)
+      model scope dataset  n  mean_a  mean_b   delta  ci_lo  ci_hi  se_boot  d_z  win  tie  loss       p  p_holm  p_one_sided
+8    minilm  rest   MACRO  8     NaN     NaN     NaN    NaN    NaN      NaN  NaN  NaN  NaN   NaN  0.0001     NaN       0.0001
+17   minilm   all   MACRO  8     NaN     NaN  0.0017    NaN    NaN      NaN  NaN  NaN  NaN   NaN  0.4957     NaN       0.2513
+26      bge  rest   MACRO  8     NaN     NaN     NaN    NaN    NaN      NaN  NaN  NaN  NaN   NaN  0.0001     NaN       0.0001
+35      bge   all   MACRO  8     NaN     NaN  0.0013    NaN    NaN      NaN  NaN  NaN  NaN   NaN  0.4693     NaN       0.2413
+44  bgebase  rest   MACRO  8     NaN     NaN     NaN    NaN    NaN      NaN  NaN  NaN  NaN   NaN  0.0001     NaN       0.0001
+53  bgebase   all   MACRO  8     NaN     NaN  0.0004    NaN    NaN      NaN  NaN  NaN  NaN   NaN  0.7920     NaN       0.3971

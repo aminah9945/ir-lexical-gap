@@ -1,0 +1,5 @@
+test,k,delta,p_one_sided,p_holm,improvement
+"P1 E1 per-query alpha (Ridge, Tier A+B, MiniLM, LODO) - H0.5",5,-0.0013946086312856,0.744025597440256,1.0,False
+"P2 E2 CE-pseudo-label alpha (MiniLM, held-out queries) - H0.5",8,,9.999000099990002e-05,0.00039996000399960006,False
+P3 E3 CE re-rank of H(MiniLM) top-100 - H(MiniLM) (sample),5,-0.0397411556547625,1.0,1.0,False
+"P4 E4 in-domain router (A_bge_std, 5-fold CV) - always-H",8,0.0168555076444658,9.999000099990002e-05,0.00039996000399960006,True

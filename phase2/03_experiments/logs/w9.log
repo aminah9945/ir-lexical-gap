@@ -1,0 +1,73 @@
+nfcorpus done
+scifact done
+fiqa done
+scidocs done
+arguana done
+trec-covid done
+quora done
+webis-touche2020 done
+             dataset             system  judged10  judged100  ndcg10  ndcg10_condensed  condensed_gain      n
+0            arguana                bge     0.086      0.010   0.605             0.996           0.392   1406
+1            arguana            bgebase     0.089      0.010   0.635             0.996           0.361   1406
+2            arguana               bm25     0.067      0.009   0.402             0.987           0.585   1406
+3            arguana           bm25lodo     0.068      0.009   0.402             0.990           0.588   1406
+4            arguana      hybrid_cc_bge     0.085      0.010   0.548             0.996           0.448   1406
+5            arguana  hybrid_cc_bgebase     0.086      0.010   0.575             0.996           0.420   1406
+6            arguana   hybrid_cc_minilm     0.079      0.010   0.495             0.994           0.499   1406
+7            arguana             minilm     0.079      0.010   0.503             0.995           0.492   1406
+8               fiqa                bge     0.108      0.017   0.391             0.906           0.515    648
+9               fiqa            bgebase     0.112      0.018   0.401             0.922           0.521    648
+10              fiqa               bm25     0.065      0.013   0.237             0.780           0.544    648
+11              fiqa           bm25lodo     0.068      0.013   0.243             0.797           0.554    648
+12              fiqa      hybrid_cc_bge     0.106      0.017   0.391             0.900           0.508    648
+13              fiqa  hybrid_cc_bgebase     0.108      0.018   0.396             0.915           0.518    648
+14              fiqa   hybrid_cc_minilm     0.110      0.018   0.394             0.918           0.524    648
+15              fiqa             minilm     0.104      0.018   0.369             0.923           0.555    648
+16          nfcorpus                bge     0.256      0.078   0.344             0.825           0.481    323
+17          nfcorpus            bgebase     0.281      0.087   0.376             0.855           0.479    323
+18          nfcorpus               bm25     0.295      0.186   0.320             0.630           0.310    323
+19          nfcorpus           bm25lodo     0.302      0.185   0.328             0.631           0.303    323
+20          nfcorpus      hybrid_cc_bge     0.264      0.083   0.366             0.824           0.458    323
+21          nfcorpus  hybrid_cc_bgebase     0.274      0.089   0.377             0.857           0.479    323
+22          nfcorpus   hybrid_cc_minilm     0.259      0.083   0.355             0.837           0.482    323
+23          nfcorpus             minilm     0.243      0.080   0.316             0.833           0.518    323
+24             quora                bge     0.135      0.015   0.888             0.997           0.109  10000
+25             quora            bgebase     0.135      0.015   0.889             0.998           0.109  10000
+26             quora               bm25     0.120      0.014   0.788             0.996           0.209  10000
+27             quora           bm25lodo     0.121      0.014   0.802             0.997           0.195  10000
+28             quora      hybrid_cc_bge     0.135      0.015   0.895             1.000           0.105  10000
+29             quora  hybrid_cc_bgebase     0.135      0.015   0.897             1.000           0.103  10000
+30             quora   hybrid_cc_minilm     0.134      0.015   0.889             0.999           0.110  10000
+31             quora             minilm     0.134      0.015   0.876             0.996           0.120  10000
+32           scidocs                bge     0.106      0.023   0.204             0.793           0.589   1000
+33           scidocs            bgebase     0.114      0.025   0.217             0.828           0.611   1000
+34           scidocs               bm25     0.078      0.018   0.150             0.642           0.493   1000
+35           scidocs           bm25lodo     0.082      0.019   0.158             0.653           0.495   1000
+36           scidocs      hybrid_cc_bge     0.102      0.023   0.196             0.774           0.579   1000
+37           scidocs  hybrid_cc_bgebase     0.105      0.024   0.200             0.807           0.607   1000
+38           scidocs   hybrid_cc_minilm     0.107      0.025   0.204             0.806           0.602   1000
+39           scidocs             minilm     0.115      0.026   0.216             0.829           0.613   1000
+40           scifact                bge     0.093      0.011   0.701             0.997           0.296    300
+41           scifact            bgebase     0.099      0.011   0.737             0.997           0.260    300
+42           scifact               bm25     0.088      0.011   0.677             0.977           0.300    300
+43           scifact           bm25lodo     0.091      0.010   0.686             0.977           0.291    300
+44           scifact      hybrid_cc_bge     0.096      0.011   0.731             0.997           0.266    300
+45           scifact  hybrid_cc_bgebase     0.099      0.011   0.750             0.993           0.243    300
+46           scifact   hybrid_cc_minilm     0.096      0.011   0.731             0.993           0.263    300
+47           scifact             minilm     0.088      0.011   0.645             0.993           0.348    300
+48        trec-covid                bge     0.874      0.656   0.746             0.831           0.084     50
+49        trec-covid            bgebase     0.914      0.707   0.776             0.834           0.058     50
+50        trec-covid               bm25     0.914      0.736   0.595             0.624           0.029     50
+51        trec-covid           bm25lodo     0.924      0.750   0.647             0.674           0.027     50
+52        trec-covid      hybrid_cc_bge     0.980      0.802   0.794             0.802           0.008     50
+53        trec-covid  hybrid_cc_bgebase     0.988      0.828   0.806             0.812           0.006     50
+54        trec-covid   hybrid_cc_minilm     0.878      0.696   0.694             0.741           0.048     50
+55        trec-covid             minilm     0.604      0.436   0.472             0.703           0.231     50
+56  webis-touche2020                bge     0.304      0.109   0.242             0.626           0.385     49
+57  webis-touche2020            bgebase     0.314      0.113   0.242             0.643           0.401     49
+58  webis-touche2020               bm25     0.471      0.121   0.444             0.824           0.379     49
+59  webis-touche2020           bm25lodo     0.376      0.124   0.332             0.743           0.410     49
+60  webis-touche2020      hybrid_cc_bge     0.388      0.134   0.358             0.786           0.428     49
+61  webis-touche2020  hybrid_cc_bgebase     0.410      0.134   0.383             0.793           0.410     49
+62  webis-touche2020   hybrid_cc_minilm     0.386      0.136   0.357             0.782           0.425     49
+63  webis-touche2020             minilm     0.247      0.101   0.169             0.597           0.428     49

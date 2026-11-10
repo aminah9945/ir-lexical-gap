@@ -1,0 +1,341 @@
+% main.tex -- IEEE conference paper (IEEEtran). Overleaf-ready: upload main.tex, references.bib and figs/*.png.
+% Revised after the 08 critique (see REVISION_LOG.md). Every number is traced in numbers_trace.md.
+% 2026-11-03: all PENDING-COLAB items resolved from the 2026-10-22 Colab ingest (see PENDING.md, numbers_trace.md). Submitted interim version: main_submitted_final_backup.tex.
+\documentclass[conference]{IEEEtran}
+\usepackage{cite}
+\usepackage{iftex}
+\ifXeTeX\usepackage{fontspec}\setmainfont{texgyretermes}[Extension=.otf,UprightFont=*-regular,BoldFont=*-bold,ItalicFont=*-italic,BoldItalicFont=*-bolditalic]\fi % local XeTeX preview only; pdfLaTeX (Overleaf) uses IEEEtran's Times
+\usepackage{array}
+\usepackage{amsmath,amssymb}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{url}
+\usepackage[hidelinks]{hyperref}
+\graphicspath{{figs/}}
+\newcommand{\B}{\textsc{B}}
+\newcommand{\Dn}{\textsc{D}}
+\newcommand{\Hy}{\textsc{H}}
+\newcommand{\ndcg}{nDCG@10}
+
+\begin{document}
+
+\title{Choose Per Collection, Not Per Query: Selecting Between Sparse, Dense and Hybrid Retrieval on BEIR}
+
+\author{\IEEEauthorblockN{Aminah Ali}
+\IEEEauthorblockA{National University of Computer and Emerging Sciences (FAST-NUCES)\\
+Islamabad, Pakistan\\
+i269001@isb.nu.edu.pk}}
+
+\maketitle
+
+\begin{abstract}
+We find that the best choice between keyword search (BM25), dense (embedding-based) search and a hybrid of the two depends on the collection, not on the individual query. We test both levels of choice on eight BEIR collections with three dense models (22--110M parameters). The main tests and their pass rules were fixed before running them, and every comparison is checked with paired significance tests. Our starting idea, that BM25 does worse on collections full of specialised terms, is not supported ($\rho=+0.33$, $p=0.42$, $n=8$), although eight collections can only reveal large effects. A simple, untuned 50/50 hybrid is a safe default: with BGE-base it beats BM25 on 7 of 8 collections (pooled $+0.097$ \ndcg{}). We then try to choose a system for each query. A router that reads standard query-performance-prediction (QPP) signals never beats always using the hybrid, in any of 18 versions: macro \ndcg{} is 0.525 vs.\ 0.534 with BGE-small and 0.535 vs.\ 0.548 with BGE-base. A router that reads the query text with a small fine-tuned model does worse ($-0.022$). Three other planned methods also fail: predicting the hybrid weight per query, setting it with a cross-encoder as a teacher, and re-ranking with a cross-encoder. The reason is that the QPP signals measure how hard a query is for every system, not which system suits it. Choosing once per collection does work: setting the hybrid weight from 20 labelled queries gains $+0.021$ \ndcg{} with BGE-base ($+0.013$ without Touch\'e-2020; exploratory).
+\end{abstract}
+
+\begin{IEEEkeywords}
+BM25, dense retrieval, hybrid retrieval, query performance prediction, retriever selection, BEIR, negative results
+\end{IEEEkeywords}
+
+\section{Introduction}
+Keyword search methods such as BM25~\cite{robertson2009prf} miss relevant documents that use different words from the query, a problem known as vocabulary mismatch~\cite{furnas1987vocabulary}. Dense retrievers compare meanings instead of words, so in principle they avoid this. Yet on new topics BM25 often remains a strong baseline~\cite{thakur2021beir}, and hybrids that combine the two are often the most robust choice~\cite{wang2021bert,chen2022out,bruch2024fusion}. Anyone setting up search for a new collection must still decide which system to use, and whether to decide once for the collection or separately for each query.
+
+This project started from a simple idea: BM25 should do worse than dense search on collections with many specialised terms (words that are rare in everyday English). The data do not support it. Across eight BEIR collections, this ``jargon rate'' was not linked to BM25's quality in the expected direction ($\rho=+0.33$, $p=0.42$). If anything, BM25 did \emph{relatively} better on jargon-heavy collections ($\rho=-0.60$, $p=0.12$, for the dense gain). Inside each collection, however, BM25 did well when a query's words appeared in its relevant documents. This suggested that the query, not the topic, decides, and that a router could send each query to BM25, a dense model or the hybrid. We test that idea with tests and pass rules fixed in advance. Our contributions are:
+\begin{itemize}
+\item \textbf{Per-query routing does not beat a fixed hybrid.} QPP-based routers trained leave-one-dataset-out (LODO), and a pre-registered router that reads the query text, do not beat a fixed, untuned hybrid in any of 18 QPP configurations (three dense models of 22--110M parameters; two feature tiers; standard or percentile features; default or LODO-tuned BM25). We report bootstrap bounds and a small-collection sensitivity analysis. Three further pre-declared methods also fail to beat it: a continuous fusion weight, a label-free cross-encoder-tuned weight, and cross-encoder re-ranking.
+\item \textbf{An in-domain ceiling analysis.} Even with in-domain labels, the same features recover only the \emph{collection-level} choice of system, except on the one collection with 8k training queries. We also calibrate the per-query oracle against per-query noise.
+\item \textbf{Why word overlap predicts BM25.} About two thirds of the link is simply query difficulty, which affects dense retrievers too. The lexical-specific part needs relevance labels, and its label-free proxy carries no signal.
+\item \textbf{Evidence for a simple default.} We reproduce Pyserini's flat BM25 and report effect sizes for lexical fixes, dense models and hybrids. An untuned BM25+BGE-b hybrid beats BM25 on 7/8 collections (pooled $+0.097$ \ndcg{}); tuning its weight per collection from 20 labelled queries adds $+0.021$ (exploratory).
+\end{itemize}
+
+\section{Related Work}
+\textbf{BEIR and reproducibility.} BEIR~\cite{thakur2021beir} evaluates retrievers zero-shot on 18 datasets, using multifield Anserini BM25 ($k_1=0.9$, $b=0.4$). BM25 is a strong baseline there. BM25 followed by a cross-encoder beats BM25 on 16 of the 18 datasets, failing on ArguAna and Touch\'e-2020. Kamalloo et al.~\cite{kamalloo2024resources} provide reproducible Pyserini reference runs, including the ``flat'' (title+text) BM25 that we reproduce. An earlier version of their paper names two open problems: significance testing across a heterogeneous benchmark, and shallow, possibly lexically biased judgement pools. On Touch\'e-2020, neural models retrieve many short, unjudged passages; after denoising, neural \ndcg{} improves by up to 0.52, but BM25 remains more effective~\cite{thakur2024touche}.
+
+\textbf{Vocabulary mismatch and QPP.} Term-mismatch diagnosis~\cite{zhao2012automatic} and difficulty-based selective expansion~\cite{amati2004query} address the vocabulary problem in lexical retrieval. Formal et al.~\cite{formal2022match} find that neural IR fails to generalise term importance out of domain. QPP estimates effectiveness without labels, before retrieval~\cite{hauff2008survey,zhao2008effective} or from the result list (Clarity~\cite{cronentownsend2002predicting}, WIG~\cite{zhou2007query}, NQC~\cite{shtok2012predicting}, SMV~\cite{tao2014query}). We use the definitions collected by Meng et al.~\cite{meng2023qpp}. Faggioli et al.~\cite{faggioli2023qpp} report that QPP is less accurate for neural systems and, in lexical-oriented scenarios, fails on the queries where lexical and neural systems disagree most.
+
+\textbf{Selecting and fusing retrievers.} Arabzadeh et al.~\cite{arabzadeh2021predicting} fine-tune BERT classifiers to choose, per query, between sparse and dense retrieval, or between sparse retrieval and a pooled hybrid. The classifiers are trained and tested in-domain on MS~MARCO with recall@1000, and beat random assignment at equal budget. Khramtsova et al.~\cite{khramtsova2023selecting} find label-free \emph{collection-level} selection among dense retrievers on BEIR ineffective. Bruch et al.~\cite{bruch2024fusion} show that convex combination (CC) beats reciprocal rank fusion (RRF)~\cite{cormack2009rrf}, that RRF is parameter-sensitive, and that tuning CC is sample-efficient. Dense retrievers benefit from BM25 interpolation~\cite{wang2021bert}, and zero-shot hybrids help out of domain~\cite{chen2022out}. In legal paragraph retrieval, Mori et al.~\cite{mori2025assessing} find that query-level traits modulate the BM25--dense gap. There, BM25 beats off-the-shelf dense models where verbatim quotes are \emph{less} prevalent and on longer queries, while a dense model fine-tuned in-domain beats BM25 on most metrics.
+
+\section{Experimental Setup}
+\label{sec:setup}
+\textbf{Collections.} We use the test splits of eight BEIR datasets (Table~\ref{tab:data}). The jargon rate is the share of corpus tokens with Zipf frequency below 3 in the \texttt{wordfreq} lists.
+
+\begin{table}[t]
+\centering
+\caption{Collections. $|q|$: mean query length (tokens); rel/q: relevant documents per query; jargon: corpus jargon rate.}
+\label{tab:data}
+\footnotesize
+\setlength{\tabcolsep}{2.5pt}
+\begin{tabular}{@{}llrrrrr@{}}
+\toprule
+Dataset & Domain & Docs & Queries & $|q|$ & rel/q & jargon \\
+\midrule
+NFCorpus & nutrition/med. & 3,633 & 323 & 3.4 & 38.2 & 0.121 \\
+SciFact & scientific claims & 5,183 & 300 & 13.1 & 1.1 & 0.186 \\
+FiQA & finance QA & 57,638 & 648 & 11.2 & 2.6 & 0.034 \\
+SciDocs & citations & 25,657 & 1,000 & 10.0 & 4.9 & 0.085 \\
+ArguAna & counter-args & 8,674 & 1,406 & 195.8 & 1.0 & 0.033 \\
+TREC-COVID & COVID papers & 171,332 & 50 & 11.7 & 493.5 & 0.151 \\
+Quora & duplicate qs & 522,931 & 10,000 & 9.6 & 1.6 & 0.051 \\
+Touch\'e-2020 & arguments & 382,545 & 49 & 6.7 & 19.0 & 0.042 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\textbf{Systems.}
+\begin{itemize}
+\item \emph{Lexical}, implemented from scratch: Boolean AND/OR; TF-IDF with SMART \texttt{ltc} weighting~\cite{salton1988term}; and Lucene-style BM25 ($k_1=0.9$, $b=0.4$, Porter stemming, a flat title+text field). BM25 is also run with RM3 feedback~\cite{lavrenko2001relevance} and with WordNet expansion.
+\item \emph{Dense}: all-MiniLM-L6-v2 (``MiniLM'', 22M parameters)~\cite{reimers2019sbert}, bge-small-en-v1.5 (``BGE-s'', 33M)~\cite{xiao2024cpack} and bge-base-en-v1.5 (``BGE-b'', 110M)~\cite{xiao2024cpack,hf_bgebase}, with maximum length 256 and exact search. All three models were encoded on a Colab GPU for all eight collections (top-1000 rankings; top-100 for Quora).
+\item \emph{Hybrid}: $\Hy(\Dn)=0.5\,\mathrm{minmax}(\B)+0.5\,\mathrm{minmax}(\Dn)$ over the two top-1000 lists, never tuned; RRF ($k=60$) is secondary.
+\item \emph{Re-ranker}: the cross-encoder \texttt{cross-encoder/ms-marco-MiniLM-L-6-v2} (``CE'') re-ranks a top-100.
+\end{itemize}
+
+\textbf{Router features (no relevance labels).} \emph{Tier A} has 23 features: 15 pre-retrieval features (length, IDF, SCQ, VAR, avICTF, SCS, jargon and OOV statistics) and 8 BM25 post-retrieval predictors (WIG, NQC, SMV, Clarity and score gaps). \emph{Tier B} adds 19 features: the same predictors on the dense list, plus BM25--dense list agreement (Jaccard, RBO, cross-ranks, pseudo-coverage). Tier B exists for all three dense models on all eight collections; the full list is in the code release.
+For explanation only, the \emph{coverage} of a query is the mean share of its terms that occur in its relevant documents. Coverage needs labels, so it is never a router input.
+
+\textbf{Router.} Per query, $\Delta_\B=\mathrm{nDCG}_\B-\mathrm{nDCG}_\Hy$ and $\Delta_\Dn$ are regressed with Ridge or gradient-boosted trees; the model family is chosen by an inner LODO on the training collections. The pre-declared ``selected'' router picks $\arg\max\{0,\hat\Delta_\B,\hat\Delta_\Dn\}$, preferring the cheapest system ($\B<\Dn<\Hy$) within 0.005 of the maximum. Secondary variants are Ridge or HGB alone, logistic classification, transductive percentile features, a LODO-tuned BM25, and plain argmax without the cost rule (added post hoc). The outer loop is LODO: train on seven collections and test on the eighth.
+
+\textbf{Statistics.} The metric is per-query \ndcg{}.
+\begin{itemize}
+\item The headline is the \emph{macro} average over collections. It gives TREC-COVID (50 queries) and Touch\'e (49) the same weight as Quora (10k), so we also report results without them. The pre-declared secondary aggregate is the micro (query-weighted) average.
+\item Per collection: paired randomization tests~\cite{smucker2007comparison} ($10^4$ sign flips) with Holm's step-down correction within each declared family.
+\item Macro differences: a stratified sign-flip test, and a stratified percentile bootstrap 95\% CI ($10^4$ resamples within collections).
+\item \emph{Pooled} means a DerSimonian--Laird random-effects estimate~\cite{dersimonian1986meta}. With 5--8 collections these intervals are anti-conservative, so we treat the macro bootstrap as primary. The seed is 42.
+\end{itemize}
+
+\textbf{Pre-declaration and leakage.}
+\begin{itemize}
+\item H1 (BM25$>$TF-IDF$>$Boolean everywhere) and H2 (BM25 degrades with jargon) were fixed, with decision rules, in the Phase-1 analysis code; H2 is the motivating question of the project proposal.
+\item The router hypothesis (macro router $-$ always-\Hy{} $>0$), the headline variant and the test families were written into an experiment log before any router result was computed.
+\item Four improvement tests (P1--P4) were also declared in advance. A claim counts as an improvement only if the Holm-adjusted one-sided $p<0.05$ \emph{and} the macro gain is at least $+0.005$.
+\item These logs are local files with no external timestamp; they are not registered with a third party.
+\item Everything else is exploratory.
+\item Leakage controls: feature files are machine-checked to contain no qrel-derived columns; scalers and models are fitted on training collections only; tuned BM25 parameters are chosen LODO; the cross-encoder teacher uses no target labels and is evaluated on held-out queries.
+\end{itemize}
+
+\section{Results}
+\subsection{Baselines and the domain-level hypotheses}
+Table~\ref{tab:main} gives \ndcg{}. At three decimals, our BM25 is within 0.005 of the Pyserini flat reference~\cite{kamalloo2024resources} on all eight collections (mean $|\Delta|=0.0018$). BGE-s is within 0.02 of its model card's scores~\cite{hf_bgesmall}.
+
+\begin{table}[t]
+\centering
+\caption{\ndcg{}. Ref: Pyserini BM25-flat~\cite{kamalloo2024resources}. \Hy(Mi), \Hy(s), \Hy(b): CC hybrid ($\alpha=0.5$) of BM25 with MiniLM, BGE-s and BGE-b. Best per row in bold.}
+\label{tab:main}
+\footnotesize
+\setlength{\tabcolsep}{1.6pt}
+\resizebox{\columnwidth}{!}{%
+\begin{tabular}{@{}lccccccccc@{}}
+\toprule
+Dataset & Ref & BM25 & TF-IDF & MiniLM & BGE-s & BGE-b & \Hy(Mi) & \Hy(s) & \Hy(b) \\
+\midrule
+NFCorpus   & .322 & .320 & .316 & .316 & .343 & .376 & .355 & .366 & \textbf{.377} \\
+SciFact    & .679 & .677 & .646 & .645 & .701 & .737 & .731 & .731 & \textbf{.750} \\
+FiQA       & .236 & .237 & .175 & .369 & .391 & \textbf{.401} & .394 & .391 & .396 \\
+SciDocs    & .149 & .150 & .146 & .216 & .203 & \textbf{.217} & .204 & .196 & .200 \\
+ArguAna    & .397 & .402 & .534 & .503 & .603 & \textbf{.635} & .495 & .548 & .575 \\
+TREC-COVID & .595 & .595 & .290 & .472 & .746 & .776 & .694 & .794 & \textbf{.806} \\
+Quora      & .789 & .788 & .785 & .876 & .888 & .889 & .883 & .887 & \textbf{.897} \\
+Touch\'e   & .442 & \textbf{.444} & .049 & .169 & .242 & .242 & .357 & .358 & .383 \\
+\midrule
+Macro      & .451 & .452 & .368 & .446 & .515 & .534 & .514 & .534 & \textbf{.548} \\
+\bottomrule
+\end{tabular}}
+\end{table}
+
+\textbf{H1 is not supported.} BM25 beats TF-IDF with Holm significance on only 4/8 collections. TF-IDF wins on ArguAna (0.534 vs.\ 0.402), whose queries are whole arguments; BM25 tuned on that test set reaches 0.528. The pooled difference is $+0.064$ [0.025, 0.103], but $-0.005$ [$-0.039$, 0.029] without TREC-COVID and Touch\'e. Boolean AND returns an empty set for 62--93\% of queries on six collections.
+
+\textbf{H2 is not supported.} Jargon rate and BM25 \ndcg{} correlate at $\rho=+0.33$ ($p=0.42$); jargon and the MiniLM gain over BM25 correlate at $\rho=-0.60$ ($p=0.12$). With $n=8$, the minimum detectable $|\rho|$ ($\alpha=0.05$, power 0.8) is about 0.85, so we report \emph{no detectable} domain effect. FiQA has the largest MiniLM gain ($+0.132$) and one of the lowest jargon rates.
+
+\begin{table}[t]
+\centering
+\caption{Paired differences in \ndcg{} over 8 collections. Macro: unweighted mean of per-collection differences. Pooled: DerSimonian--Laird with 95\% CI. Sig.\,$\pm$: collections with a Holm-significant gain/loss.}
+\label{tab:effects}
+\footnotesize
+\setlength{\tabcolsep}{2pt}
+\begin{tabular}{@{}lcccc@{}}
+\toprule
+Comparison & Macro & Pooled [95\% CI] & Signs & Sig.\,$\pm$ \\
+\midrule
+BM25 $-$ TF-IDF        & $+0.084$ & $+0.064$ [$+0.025$, $+0.103$] & 7/1 & 4/1 \\
+Stemming (BM25)        & $+0.000$ & $+0.005$ [$-0.017$, $+0.026$] & 6/2 & 2/1 \\
+RM3 $-$ BM25           & $-0.004$ & $-0.005$ [$-0.038$, $+0.029$] & 4/4 & 2/3 \\
+WordNet $-$ BM25       & $-0.004$ & $-0.003$ [$-0.007$, $+0.001$] & 4/4 & 0/1 \\
+BM25-LODO $-$ BM25     & $-0.002$ & $+0.005$ [$-0.002$, $+0.013$] & 6/2 & 4/1 \\
+MiniLM $-$ BM25        & $-0.006$ & $+0.007$ [$-0.033$, $+0.047$] & 4/4 & 4/2 \\
+BGE-s $-$ BM25         & $+0.063$ & $+0.067$ [$+0.024$, $+0.110$] & 7/1 & 5/1 \\
+\Hy(MiniLM) $-$ BM25   & $+0.063$ & $+0.066$ [$+0.041$, $+0.092$] & 7/1 & 7/1 \\
+\Hy(BGE-s) $-$ BM25    & $+0.082$ & $+0.083$ [$+0.051$, $+0.115$] & 7/1 & 7/1 \\
+\Hy(BGE-s) $-$ BGE-s   & $+0.019$ & $+0.011$ [$-0.006$, $+0.028$] & 5/3 & 2/1 \\
+BGE-b $-$ BM25         & $+0.082$ & $+0.086$ [$+0.041$, $+0.130$] & 7/1 & 7/1 \\
+\Hy(BGE-b) $-$ BM25    & $+0.097$ & $+0.097$ [$+0.063$, $+0.132$] & 7/1 & 7/1 \\
+\Hy(BGE-b) $-$ BGE-b   & $+0.014$ & $+0.006$ [$-0.013$, $+0.025$] & 5/3 & 2/2 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Table~\ref{tab:effects} reports the paired effects. Heterogeneity is extreme ($I^2=0.87$--$0.99$). The classical lexical fixes do not help on average. Leakage-free BM25 tuning gains $+0.005$ pooled ($-0.002$ macro) and costs Touch\'e $-0.112$ [$-0.147$, $-0.077$]. MiniLM alone is not reliably better than BM25. The fixed hybrid is the most robust choice. \Hy(BGE-s) and \Hy(BGE-b) beat BM25 with Holm significance on 7/8 collections and have higher recall@100 on all eight (7 Holm-significant); their only \ndcg{} loss is on Touch\'e. BGE-b alone also beats BM25 on 7/8 collections, but loses $-0.202$ on Touch\'e, where the hybrid limits the loss to $-0.061$. With BGE-b, however, the hybrid's gain over the dense model alone is small and uncertain (pooled $+0.006$ [$-0.013$, $+0.025$]; 2 Holm-significant gains, 2 losses): as the dense model gets stronger, the hybrid acts mainly as insurance against the rare collection where dense retrieval fails. CC slightly beats RRF (macro 0.534 vs.\ 0.528 for BGE-s), consistent with~\cite{bruch2024fusion}.
+
+\subsection{Query-level overlap: difficulty vs.\ lexical match}
+Within collections, coverage predicts BM25 \ndcg{} (partial $\rho=0.37$--$0.73$ on 7/8; null on Touch\'e), but coverage also measures how hard a query is for any retriever. We regress per collection, controlling for query length, IDF and the number of relevant documents, and pool. The coverage slope is 0.182 [0.144, 0.219] on BM25 \ndcg{}, but also 0.120 on MiniLM and 0.119 on BGE-s \ndcg{}. About two thirds of the association (ratio 0.66) is therefore shared difficulty. The lexical-specific remainder, $+0.059$ [0.046, 0.073] (MiniLM) and $+0.063$ [0.050, 0.076] (BGE-s), equals by OLS linearity the negative of the slope of the dense$-$BM25 gap on coverage. That gap slope is negative on 8/8 collections; it is the same evidence, not independent evidence. The deployable version fails: a label-free proxy (coverage of query terms in the dense top 10) correlates with coverage at $\rho=0.39$--$0.53$, but its gap slope is $-0.006$ [$-0.022$, 0.011] on five collections.
+
+QPP features behave the same way. The best pre-retrieval predictor (VAR$_{\max}$) correlates with BM25, MiniLM and BGE-s \ndcg{} almost identically (Kendall $\tau=0.130$, 0.119, 0.118). On the five collections with MiniLM lists, the post-retrieval picture is mixed. $s_1-s_{10}$ is stronger on the MiniLM list than on the BM25 list (0.30 vs.\ 0.24), whereas WIG (0.14 vs.\ 0.17) and NQC (0.16 vs.\ 0.19) are weaker, partly in line with~\cite{faggioli2023qpp}.
+
+\subsection{Query-time routing does not beat always-hybrid}
+\begin{table*}[t]
+\centering
+\caption{LODO routing, macro \ndcg{} over held-out collections. Router: the pre-declared selected variant. $\Delta$: router $-$ always-\Hy, with stratified bootstrap 95\% CI; $p$: one-sided sign-flip test of $\Delta>0$. Holm$\pm$: collections where the router is significantly better/worse than always-\Hy. Mix: \% of queries sent to \B/\Dn/\Hy. $^\dagger$BM25 tuned LODO (also inside \Hy).}
+\label{tab:router}
+\footnotesize
+\setlength{\tabcolsep}{3.6pt}
+\begin{tabular}{@{}llccccccccccc@{}}
+\toprule
+Features & \Dn{} (\#coll.) & always-\B & always-\Dn & always-\Hy & ds.\ oracle & q.\ oracle & Router & $\Delta$ & 95\% CI & $p$ & Holm$\pm$ & Mix \\
+\midrule
+Tier A & BGE-b (8)  & 0.452 & 0.534 & \textbf{0.548} & 0.566 & 0.613 & 0.535 & $-0.013$ & [$-0.020$, $-0.007$] & 1.00 & 1/2 & 3/50/47 \\
+Tier A & BGE-s (8)  & 0.452 & 0.515 & \textbf{0.534} & 0.553 & 0.598 & 0.525 & $-0.009$ & [$-0.015$, $-0.003$] & 0.99 & 1/2 & 5/41/54 \\
+Tier A & MiniLM (8) & 0.452 & 0.446 & \textbf{0.514} & 0.528 & 0.576 & 0.506 & $-0.008$ & [$-0.012$, $-0.005$] & 1.00 & 0/5 & 5/6/89 \\
+Tier B & BGE-b (8)  & 0.452 & 0.534 & \textbf{0.548} & 0.566 & 0.613 & 0.542 & $-0.007$ & [$-0.013$, $-0.001$] & 0.98 & 2/2 & 4/53/43 \\
+Tier B & BGE-s (8)  & 0.452 & 0.515 & \textbf{0.534} & 0.553 & 0.598 & 0.525 & $-0.009$ & [$-0.014$, $-0.004$] & 1.00 & 1/3 & 11/35/54 \\
+Tier B & MiniLM (8) & 0.452 & 0.446 & \textbf{0.514} & 0.528 & 0.576 & 0.508 & $-0.006$ & [$-0.010$, $-0.002$] & 1.00 & 0/2 & 9/8/83 \\
+Tier A$^\dagger$ & BGE-b (8) & 0.450 & 0.534 & \textbf{0.541} & 0.553 & 0.598 & 0.533 & $-0.008$ & [$-0.015$, $-0.001$] & 0.98 & 1/2 & 2/60/38 \\
+\bottomrule
+\end{tabular}
+\end{table*}
+
+Table~\ref{tab:router} gives the core result (seven of the 18 configurations; all are in the release). With BGE-s, the per-query oracle lies $+0.064$ above always-\Hy, 3.4 times the dataset-oracle headroom ($+0.019$). Yet the pre-declared router scores 0.525 against 0.534 ($\Delta=-0.009$ [$-0.015$, $-0.003$], one-sided $p=0.99$). With the stronger BGE-b, the oracle headroom is $+0.065$ (3.7 times $+0.018$), and the router loses more: 0.535 vs.\ 0.548 ($\Delta=-0.013$ [$-0.020$, $-0.007$]). \textbf{The router hypothesis is not supported in any of the 18 configurations.}
+
+\emph{Touch\'e drives the size of the loss.} Without Touch\'e the BGE-s router is at $+0.002$ [$-0.003$, $+0.006$]. Without Touch\'e and TREC-COVID it is at $+0.004$ [$-0.001$, $+0.008$] ($p=0.06$; Table~\ref{tab:sens}). With BGE-b, the same post-hoc exclusions give $+0.003$ [$-0.002$, $+0.008$] and $+0.006$ [$+0.001$, $+0.010$] ($p=0.01$); with Tier B features, $+0.007$ [$+0.002$, $+0.012$]. On the six larger collections, a small routing gain with the stronger dense model is therefore plausible. It is a post-hoc subset analysis, it is barely above the $+0.005$ we pre-declared as the minimum useful gain, and the router's loss on Touch\'e outweighs it under the headline. The pre-declared micro average is 0.765 vs.\ 0.761 ($+0.004$), carried by ArguAna's 1,406 queries; under the macro headline this is not a win.
+
+\emph{Other variants.} The best of 90 variant--configuration pairs, Ridge on Tier A with LODO-tuned BM25 and BGE-b, reaches $+0.0053$ (95\% CI [$+0.002$, $+0.009$], uncorrected one-sided $p=0.004$). This is the maximum over 90 uncorrected comparisons, and the same Ridge model with default BM25 is at $-0.003$; the second-best pair reaches $+0.0015$. We therefore do not read it as evidence that routing works. Plain argmax and percentile features stay below always-\Hy. Logistic classification mostly collapses to always-dense ($\geq$91\% dense in 12 of 18 configurations).
+
+\emph{Per collection} (Holm), the BGE-s router is better than always-\Hy{} only on ArguAna ($+0.048$, routing 91\% of queries to the dense model). It is worse on SciDocs ($-0.004$) and Touch\'e ($-0.082$). The BGE-b router shows the same pattern: ArguAna $+0.052$, Quora $-0.005$, Touch\'e $-0.126$. On Touch\'e it sends no query to BM25, plausibly because no training collection has BM25 far ahead of dense retrieval.
+
+\emph{Diagnostics.} Three checks locate the failure.
+\begin{itemize}
+\item Within held-out collections, Kendall $\tau$ between predicted and true $\Delta_\B$ is only 0.03--0.11 (Tier A) and 0.12 (Tier B, MiniLM, five collections), and about 0 for $\Delta_\Dn$ (computed for MiniLM and BGE-s).
+\item The router beats random routing with the same per-collection mix by only $-0.0001$ to $+0.003$ with Tier A features, and by $+0.002$ to $+0.014$ with Tier B: the dense-list features carry some signal, but not enough to beat always-\Hy.
+\item An efficiency variant that sends confident queries to BM25 alone lies on the random-assignment curve (3.6--7.9\% BM25-only at a loss of 0.003--0.008).
+\end{itemize}
+
+\emph{A router that reads the query text.} QPP features may simply be too coarse. We therefore also fine-tuned a small text encoder (all-MiniLM-L6-v2 with a two-output regression head, end to end; LODO; Quora capped at 1,500 training queries; no hyperparameter search) to predict $\Delta_\B$ and $\Delta_\Dn$ from the query alone, using the same decision rule. This test, its settings and its success criterion (macro gain $\geq+0.005$ and one-sided $p<0.05$ with BGE-b) were pre-registered in a file whose upload time is recorded by a third-party service (Google Drive) before any data were downloaded. It fails clearly. With BGE-b, the text router scores 0.526 against 0.548 ($\Delta=-0.022$ [$-0.031$, $-0.014$], $p=1.00$), worse than the QPP router. Without Touch\'e it is at $-0.008$, and without Touch\'e and TREC-COVID at $-0.004$. Its within-collection Kendall $\tau$ with the true $\Delta_\B$ is 0.03, and about 0 for $\Delta_\Dn$. It sends 88\% of Touch\'e queries to the dense model ($-0.126$ there), and gains only on ArguAna ($+0.048$). The secondary runs agree: $-0.017$ [$-0.024$, $-0.009$] with BGE-s and $-0.028$ [$-0.035$, $-0.020$] with MiniLM.
+
+\subsection{Pre-declared improvement attempts (P1--P4)}
+\label{sec:improve}
+Table~\ref{tab:improve} reports the four pre-declared tests. P1--P3 were declared with MiniLM as the dense model. After the full Colab encoding, P1 runs on all eight collections. P2 is evaluated on held-out queries; at declaration time it was scoped to the five collections with MiniLM rankings (none of them small), and we keep that scope. P3 uses the cross-encoder sample on the same five collections.
+
+\begin{table}[t]
+\centering
+\caption{Pre-declared improvement tests (one-sided, Holm over P1--P4; pass: $p_{\text{Holm}}<0.05$ and $\Delta\geq+0.005$). $k$: collections; CI: stratified bootstrap 95\%.}
+\label{tab:improve}
+\footnotesize
+\setlength{\tabcolsep}{1.8pt}
+\begin{tabular}{@{}>{\raggedright\arraybackslash}p{2.75cm}ccccc@{}}
+\toprule
+Test (vs.\ baseline) & $k$ & $\Delta$ & 95\% CI & $p_{\text{Holm}}$ & Pass \\
+\midrule
+P1 per-query fusion weight vs.\ \Hy$_{0.5}$ & 8 & $-0.0014$ & [$-0.005$, $+0.003$] & 1.00 & no \\
+P2 CE-teacher label-free weight vs.\ \Hy$_{0.5}$ & 5 & $-0.0044$ & [$-0.006$, $-0.003$] & 1.00 & no \\
+P3 CE re-rank of \Hy(MiniLM) (sample) & 5 & $-0.0397$ & [$-0.057$, $-0.023$] & 1.00 & no \\
+P4 \emph{in-domain} router vs.\ always-\Hy{} (diagnostic) & 8 & $+0.0169$ & [$+0.010$, $+0.023$] & $<10^{-3}$ & formally \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\textbf{P1, a per-query fusion weight.} A Ridge model predicts $\alpha_q$ in $\alpha\,\mathrm{minmax}(\B)+(1-\alpha)\,\mathrm{minmax}(\Dn)$ from Tier A+B features (LODO). It loses $-0.0014$ [$-0.005$, $+0.003$], with Holm-significant losses on FiQA ($-0.013$) and SciDocs ($-0.005$) and a gain on ArguAna ($+0.015$). The secondary HGB variant ($-0.007$) and a single LODO-global weight ($-0.005$) also lose. Even the best weight per collection in hindsight gains only $+0.021$. With BGE-s as the dense model (secondary, not declared), the Ridge weight gains $+0.0053$ [$+0.001$, $+0.010$]; with BGE-b it gains $+0.0005$ [$-0.005$, $+0.005$]. Because the sign and size depend on the dense model, we do not read the BGE-s result as a reliable gain. The fusion weight barely matters, as Bruch et al.~\cite{bruch2024fusion} found for tuning; we find the same for prediction.
+
+\textbf{P2, a label-free weight.} The CE scores 150 unlabelled target queries, and its scores serve as pseudo-gains for choosing $\hat\alpha$, evaluated on the remaining queries. The selector picks 0.5 on 3/5 collections. On SciDocs it goes the wrong way (0.7 vs.\ an oracle of 0.2): there, the pseudo-metric is anti-correlated with true \ndcg{} across $\alpha$ ($r=-0.49$). Including Quora, the sixth collection with held-out queries, gives $-0.0049$. In secondary runs with BGE-s and BGE-b, the selector gains $+0.003$ and $+0.004$ on the five collections (both below the $+0.005$ threshold, and mostly from ArguAna) and $+0.001$ on six.
+
+\textbf{P3, a stronger model.} Re-ranking the hybrid's top 100 with the 22M-parameter CE \emph{hurts} ($-0.040$; ArguAna $-0.120$). Re-ranking BM25's top 100 helps on 8 collections: $+0.025$ [$+0.009$, $+0.041$], $p=0.004$, Holm $+4/-1$; TREC-COVID $+0.143$, Touch\'e $-0.164$ [$-0.230$, $-0.100$]. Its direction matches BEIR's BM25+CE results on seven collections and is null on ArguAna in both~\cite{thakur2021beir}. CE(BM25) still trails the untuned \Hy(BGE-s) by $-0.059$ (5/8 Holm-significant). The CE runs use at most 150 queries per collection (all 50/49 for TREC-COVID/Touch\'e); a full-scale CE run was not performed.
+
+\textbf{P4, the in-domain ceiling.} If query-level signal exists but does not transfer, a router trained in-domain (5-fold CV inside each collection, same features and model selection) should beat always-\Hy. It does: $+0.0169$. But it ties with the in-domain \emph{best fixed system} ($-0.0005$ [$-0.003$, $+0.002$], $p=0.66$; Fig.~\ref{fig:indomain}). Essentially all of the gain is the collection prior: dense retrieval for ArguAna and SciDocs, BM25 for Touch\'e. The same holds for MiniLM with Tier A ($-0.0036$ vs.\ fixed) and Tier B ($-0.0016$). The router beats the fixed system only on Quora, which has about 8k training queries per fold: $+0.0046$ [0.0026, 0.0066], Holm $p=0.0008$. With BGE-b and with Tier B features for the BGE models, the in-domain router beats the in-domain best fixed system by $+0.0016$ to $+0.0028$ (uncorrected one-sided $p=0.03$--$0.16$), below the $+0.005$ threshold. P4 uses target labels, so it is a diagnostic, not a deployable improvement.
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=0.92\columnwidth]{fig_indomain.png}
+\caption{Gain over always-\Hy(BGE-s). The in-domain CV router (purple) matches the in-domain best fixed system (grey); the LODO router (light purple) loses on Touch\'e; the per-query oracle (black) is out of reach.}
+\label{fig:indomain}
+\end{figure}
+
+\subsection{How much of the oracle headroom is real?}
+Part of the per-query headroom is measurement noise. Consider BM25 with and without stemming, whose macro \ndcg{} differs by only 0.0004 (although by up to 0.09 on single collections). An oracle choosing between them per query already gains $+0.043$ over BM25. For BM25 vs.\ BM25+WordNet, the gain is $+0.013$. Against these reference points, the $+0.064$ three-way headroom is modest. The collection-level headroom, by contrast, is realisable: choosing the best fixed system on a random half of each collection and evaluating it on the other half (1,000 splits) gains $+0.0182$ for BGE-s, close to the in-sample $+0.0188$ (BGE-b: $+0.015$ vs.\ $+0.018$); the query oracle has no such out-of-sample check.
+
+The headroom is also concentrated. For BGE-s, the queries with an oracle gain above 0.2 are 2--27\% of all queries but carry 23--87\% of the headroom (BGE-b: 2--25\% and 18--88\%). On ArguAna, SciFact and Quora the median query has one relevant document, and queries with at most two carry 83--100\% of the headroom. There, a per-query ``preference'' amounts to whether one document crosses rank 10.
+
+\subsection{Collection-level selection with few labels (exploratory)}
+In a post-hoc analysis, we choose one system (\B, \Dn{} or \Hy) per collection from $k$ random labelled queries and evaluate it on the rest (Fig.~\ref{fig:fewshot}). For BGE-s this gains $+0.004$, $+0.010$, $+0.014$ and $+0.016$ at $k=5,10,20,30$; for BGE-b, $+0.003$, $+0.009$, $+0.012$ and $+0.014$; for MiniLM, $-0.004$, $+0.005$, $+0.009$ and $+0.010$. These gains depend on Touch\'e (Table~\ref{tab:sens}). Without it, BGE-s gains $-0.006$, $0.000$, $+0.004$ and $+0.006$; BGE-b gains $-0.003$, $+0.002$, $+0.006$ and $+0.007$, mostly from ArguAna, where the dense model alone beats the hybrid; and MiniLM is negative for every $k\leq30$. Touch\'e, where BM25 is selected, is also the collection whose pool favours BM25 (Sec.~\ref{sec:limits}), so the gain may partly reflect judgement bias.
+
+\textbf{Tuning the fusion weight from a few labels (exploratory).} Choosing among only three systems is coarse. We therefore also choose the hybrid weight $\alpha\in\{0,0.1,\dots,1\}$ per collection from $k$ labelled queries (ties to 0.5; $\alpha=1$ is BM25 alone and $\alpha=0$ the dense model alone) and evaluate on the remaining queries (1,000 draws). We wrote this rule, with BGE-b at $k=20$ as the primary contrast and ``a gain of at least $+0.005$ that survives removing Touch\'e'' as the bar, before running it; the record is local and not externally timestamped. With BGE-b and $k=20$, the gain over \Hy$_{0.5}$ is $+0.021$ (2.5--97.5\% range over draws [$+0.011$, $+0.028$]); without Touch\'e it is $+0.013$, and without Touch\'e and ArguAna $+0.006$. At $k=10$ it is already $+0.017$. This is larger than choosing among three systems ($+0.012$) and recovers about three quarters of the hindsight per-collection optimum ($+0.027$). The selected weights lean towards the dense model ($\alpha=0.1$--0.4) everywhere except Touch\'e ($\alpha=0.9$). The gain holds for BGE-s ($+0.019$) and MiniLM ($+0.013$), but small losses remain on SciFact and Quora ($-0.002$ to $-0.003$ with BGE-b). The range covers only the choice of labelled queries, and part of the gain again comes from Touch\'e, whose pool favours BM25. A pre-registered refinement, labelling the $k$ queries on which BM25 and BGE-b disagree most (lowest rank-biased overlap) instead of random ones, did not help: $+0.002$ over random labelling at $k=20$ (pass bar $+0.003$), with 34\% of random draws doing at least as well, and losses with BGE-s and MiniLM.
+
+\begin{table}[t]
+\centering
+\caption{Small-collection sensitivity: macro $\Delta$ \ndcg{} on all 8 collections, without Touch\'e, and without Touch\'e and TREC-COVID. Stratified bootstrap CIs for rows 1--6 are in \texttt{numbers\_trace.md} (rows 1, 2 and 4 also in the text). All exclusions, and rows 7--11, are exploratory.}
+\label{tab:sens}
+\footnotesize
+\setlength{\tabcolsep}{4pt}
+\begin{tabular}{@{}lccc@{}}
+\toprule
+Contrast & All 8 & $-$Touch\'e & $-$Touch\'e $-$COVID \\
+\midrule
+Router $-$ \Hy{} (BGE-b) & $-0.013$ & $+0.003$ & $+0.006$ \\
+Router $-$ \Hy{} (BGE-s) & $-0.009$ & $+0.002$ & $+0.004$ \\
+Router $-$ \Hy{} (MiniLM) & $-0.008$ & $-0.010$ & $-0.007$ \\
+Router $-$ \Hy{} (Tier B, BGE-b) & $-0.007$ & $+0.005$ & $+0.007$ \\
+In-domain router $-$ \Hy{} (BGE-s) & $+0.017$ & $+0.007$ & $+0.008$ \\
+CE(BM25) $-$ BM25 (sample) & $+0.025$ & $+0.052$ & $+0.037$ \\
+Split-half choice (BGE-b) & $+0.015$ & $+0.009$ & $+0.012$ \\
+Split-half choice (BGE-s) & $+0.018$ & $+0.008$ & $+0.010$ \\
+$k{=}20$ choice (BGE-b) & $+0.012$ & $+0.006$ & $+0.008$ \\
+$k{=}20$ choice (BGE-s) & $+0.014$ & $+0.004$ & $+0.005$ \\
+$k{=}20$ choice (MiniLM) & $+0.008$ & $-0.003$ & $-0.003$ \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=0.85\columnwidth]{fig_fewshot.png}
+\caption{Exploratory: macro gain over always-\Hy{} when one fixed system is chosen per collection from $k$ labelled queries (mean of 1,000 draws). Crosses: LODO query routers. Most of the gain comes from Touch\'e (Table~\ref{tab:sens}).}
+\label{fig:fewshot}
+\end{figure}
+
+\section{Discussion}
+\label{sec:discussion}
+\textbf{Why routing fails.} Three explanations fit the evidence.
+\begin{itemize}
+\item \emph{The signals measure difficulty, not preference.} They tell how hard a query is for every system. A router needs the opposite: which system is \emph{better} for this query. On that, the signals barely agree with the truth ($\tau\leq0.12$), in line with Faggioli et al.~\cite{faggioli2023qpp}.
+\item \emph{The per-query ``best system'' is noisy.} Many queries have only one or two relevant documents, so the winner often depends on a single document moving above or below rank 10. Even two almost identical versions of BM25 show a large per-query ``headroom''.
+\item \emph{The real differences are per collection.} Dense search wins clearly on ArguAna and BM25 on Touch\'e. A router trained on the other collections cannot learn a pattern that none of them shows, which is why it fails on Touch\'e. This is not only a judging artefact: on Touch\'e, the dense results are less often judged than BM25's (judged@10 0.31 for BGE-b vs.\ 0.47), but BM25 still wins on judged-only lists (0.824 vs.\ 0.643), consistent with~\cite{thakur2024touche}.
+\end{itemize}
+Even when trained on the same collection, the router learns only the best fixed system for that collection, except on Quora, which has thousands of training queries.
+
+\textbf{Practical guideline.} Use a hybrid of BM25 and a dense model. Without labelled queries, keep the 50/50 weight. With 10--20 labelled queries from the new collection, try weights from 0 to 1 on them and keep the best: in our data this adds $+0.017$ to $+0.021$ with BGE-b, mostly by giving the dense model more weight, and it spots the rare collection where BM25 is better (Touch\'e). Do not copy BM25 settings tuned on other collections: this costs Touch\'e $-0.112$. Do not assume that a small cross-encoder improves a hybrid.
+
+\textbf{Positioning.} Our setting differs from Arabzadeh et al.~\cite{arabzadeh2021predicting} in data (zero-shot across BEIR vs.\ in-domain MS~MARCO), router (hand-crafted QPP features vs.\ a fine-tuned BERT), metric and hybrid, so we do not contradict them. Our Quora fold, the one with abundant in-domain labels, shows a small learnable query-level signal. We complement Khramtsova et al.~\cite{khramtsova2023selecting} at the query level: here too, selection is ineffective. Our hybrid's exceptions (Touch\'e, ArguAna, Quora and SciDocs) largely coincide with those Kamalloo et al.\ list for their min-max hybrid~\cite{kamalloo2024resources}. Our result concerns cheap QPP features and a small fine-tuned text encoder (which also fails, Sec.~IV-C); larger learned routers and large language models are not tested here. Arabzadeh et al.\ train and test in-domain on MS~MARCO, so the two results are compatible: what does not transfer across collections is the router, not necessarily the signal. Mori et al.~\cite{mori2025assessing} report query-level modulators of the BM25--dense gap in a legal setting. We find a qrel-based modulator in all eight domains, but its label-free proxy fails. Their constructs differ from ours, so the two results neither confirm nor contradict each other.
+
+\section{Threats to Validity}
+\label{sec:limits}
+\begin{itemize}
+\item \textbf{Power and weighting.} Eight collections can detect only $|\rho|\gtrsim0.85$. The macro headline gives two 50-query collections a quarter of the weight, so we report sensitivities (Table~\ref{tab:sens}).
+\item \textbf{Judgement pools.} On Touch\'e, only 47\% of BM25's top 10 is judged, and BM25's \ndcg{} rises from 0.444 to 0.824 on condensed lists. The dense lists are judged less often still (judged@10 0.25--0.31). On NFCorpus, BM25's judged@100 is 0.186 vs.\ 0.078--0.087 for the dense models. On TREC-COVID, BGE-b and BM25 are judged equally often (judged@10 0.91), so pool bias does not explain the dense gain there; on Quora, condensed \ndcg{} is close to 1 for every system and therefore uninformative. All Touch\'e statements carry this caveat~\cite{thakur2024touche}.
+\item \textbf{Model strength and router capacity.} Our dense models are small to mid-sized (22--110M parameters). Moving from BGE-s to BGE-b raises every fixed system but leaves the routing conclusion unchanged; larger encoders (e.g.\ 335M) are untested. The CE results come from one small re-ranker on a query sample. Our routers are linear or tree models on hand-crafted features, plus one small (22M-parameter) text encoder. On TREC-COVID and Touch\'e, the in-domain tree router is constant by construction (40-query folds, leaf size 50). The negative result is bounded to these choices.
+\item \textbf{Configuration and statistics.} Flat and multifield BM25 differ by up to 0.077 on our collections. The router tests are not corrected across the 90 variant--configuration pairs; this does not weaken a negative claim, and we do not read the best pair as a win.
+\item \textbf{Post-hoc analyses.} The argmax router variant, few-shot selection, sensitivities, noise reference points and bootstrap CIs were added after the main results. A single-annotator failure taxonomy from an earlier phase is omitted.
+\end{itemize}
+
+\section{Conclusion}
+Across eight BEIR collections and three dense models, the best choice among BM25, dense and hybrid search can be predicted for a collection but not for a single query. A perfect per-query choice would gain a lot in theory, but much of that gain is noise. No router we built captures the rest, whether it uses standard QPP signals, list-agreement signals or the query text, predicts a weight, learns from a cross-encoder, or is trained on the same collection. These signals measure how hard a query is, which affects all systems alike. A fixed hybrid is the safe default, and a few labelled queries, used to set its weight for the whole collection, improve on it ($+0.021$ with BGE-b, exploratory).
+
+\section*{Reproducibility}
+The code covers indexing, retrieval, metrics, features, routers, statistics and figures. It runs on 4 CPU cores; GPU encodings come from the provided Colab notebooks. The release also includes the per-query result files, the experiment logs with their pre-declarations, and scripts for every number (seed 42; $10^4$ permutations and resamples). All dense encodings were redone on a Colab GPU after the interim version of this paper. Locally encoded MiniLM rankings for five collections agree with them within macro 0.002 (a few near-tied documents swap order); the sanity gate was relaxed to this tolerance before any downstream result was computed. The re-encoding changed the P1 result from $-0.0069$ (five collections) to $-0.0014$ (eight); no conclusion changed. The code, notebooks and per-query result files are available from the author on request.
+
+\section*{Acknowledgment and Use of AI Tools}
+The author thanks Dr.~Bilal for guidance and supervision, and her husband, Meherban, for support throughout this work. This work was carried out with extensive use of an AI assistant (Anthropic Claude, via Claude Code), under the direction of the author. The assistant:
+\begin{itemize}
+\item designed and ran the experiments and statistical analyses, and wrote the analysis code and the pre-declarations in the experiment logs;
+\item searched and verified the literature;
+\item drafted and revised this manuscript.
+\end{itemize}
+The author directed the work, ran the GPU notebooks in Google Colab, and takes full responsibility for the content.
+
+\bibliographystyle{IEEEtran}
+\bibliography{references}
+
+\end{document}

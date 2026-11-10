@@ -1,0 +1,26 @@
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+Loading weights:   0%|          | 0/103 [00:00<?, ?it/s]Loading weights: 100%|██████████| 103/103 [00:00<00:00, 20203.59it/s]
+=== minilm nfcorpus
+    encoded 3633 in 163s
+    encoded 323 in 6s
+system
+hybrid_cc_minilm     0.3551
+hybrid_rrf_minilm    0.3551
+minilm               0.3159
+=== minilm scifact
+    encoded 5183 in 221s
+    encoded 300 in 6s
+system
+hybrid_cc_minilm     0.7306
+hybrid_rrf_minilm    0.7219
+minilm               0.6451
+=== minilm arguana
+    encoded 8674 in 328s
+    encoded 1406 in 57s
+system
+hybrid_cc_minilm     0.4953
+hybrid_rrf_minilm    0.4952
+minilm               0.5030
+=== minilm scidocs
+    encoded 25657 in 970s
+    encoded 1000 in 2s

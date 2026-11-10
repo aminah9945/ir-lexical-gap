@@ -1,0 +1,41 @@
+grid exists nfcorpus
+grid exists scifact
+grid exists fiqa
+grid exists scidocs
+grid exists arguana
+grid exists trec-covid
+grid exists quora
+grid exists webis-touche2020
+/home/user/ir_lexical_gap/phase2/03_experiments/bm25_lodo.py:79: Pandas4Warning: Starting with pandas version 4.0 all arguments of mean will be keyword-only.
+  score = piv[others].mean(1)
+/home/user/ir_lexical_gap/phase2/03_experiments/bm25_lodo.py:79: Pandas4Warning: Starting with pandas version 4.0 all arguments of mean will be keyword-only.
+  score = piv[others].mean(1)
+/home/user/ir_lexical_gap/phase2/03_experiments/bm25_lodo.py:79: Pandas4Warning: Starting with pandas version 4.0 all arguments of mean will be keyword-only.
+  score = piv[others].mean(1)
+/home/user/ir_lexical_gap/phase2/03_experiments/bm25_lodo.py:79: Pandas4Warning: Starting with pandas version 4.0 all arguments of mean will be keyword-only.
+  score = piv[others].mean(1)
+/home/user/ir_lexical_gap/phase2/03_experiments/bm25_lodo.py:79: Pandas4Warning: Starting with pandas version 4.0 all arguments of mean will be keyword-only.
+  score = piv[others].mean(1)
+/home/user/ir_lexical_gap/phase2/03_experiments/bm25_lodo.py:79: Pandas4Warning: Starting with pandas version 4.0 all arguments of mean will be keyword-only.
+  score = piv[others].mean(1)
+/home/user/ir_lexical_gap/phase2/03_experiments/bm25_lodo.py:79: Pandas4Warning: Starting with pandas version 4.0 all arguments of mean will be keyword-only.
+  score = piv[others].mean(1)
+/home/user/ir_lexical_gap/phase2/03_experiments/bm25_lodo.py:79: Pandas4Warning: Starting with pandas version 4.0 all arguments of mean will be keyword-only.
+  score = piv[others].mean(1)
+            dataset   k1     b  train_macro  test_ndcg_selected  test_ndcg_default  oracle_k1  oracle_b  test_ndcg_oracle_upper_bound  n_train  grid_edge
+0          nfcorpus  2.0  0.60       0.4871              0.3282             0.3205        3.0      0.40                        0.3296        7      False
+1           scifact  2.0  0.60       0.4360              0.6859             0.6769        2.0      0.90                        0.6904        7      False
+2              fiqa  2.0  0.60       0.4992              0.2432             0.2369        1.5      0.75                        0.2533        7      False
+3           scidocs  2.0  0.60       0.5114              0.1580             0.1499        3.0      0.90                        0.1623        7      False
+4           arguana  2.5  0.40       0.4728              0.4017             0.4030        2.5      0.90                        0.5280        7      False
+5        trec-covid  1.5  0.60       0.4401              0.6479             0.5945        2.5      0.40                        0.6653        7      False
+6             quora  2.0  0.60       0.4195              0.8015             0.7875        0.6      0.90                        0.8096        7      False
+7  webis-touche2020  2.0  0.75       0.4794              0.3330             0.4443        3.0      0.20                        0.5177        7      False
+run nfcorpus k1=2.0 b=0.6 done (2s)
+run scifact k1=2.0 b=0.6 done (3s)
+run fiqa k1=2.0 b=0.6 done (10s)
+run scidocs k1=2.0 b=0.6 done (9s)
+run arguana k1=2.5 b=0.4 done (13s)
+run trec-covid k1=1.5 b=0.6 done (10s)
+run quora k1=2.0 b=0.6 done (144s)
+run webis-touche2020 k1=2.0 b=0.75 done (32s)

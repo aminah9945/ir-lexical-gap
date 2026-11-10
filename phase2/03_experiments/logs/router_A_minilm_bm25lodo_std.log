@@ -1,0 +1,8 @@
+== A_minilm_bm25lodo_std_k8: 8 datasets, 13776 queries, 23 features
+  A_minilm_bm25lodo_std_k8: fitted in 230s; inner choice [('nfcorpus', 'ridge'), ('scifact', 'ridge'), ('fiqa', 'hgb'), ('scidocs', 'ridge'), ('arguana', 'ridge'), ('trec-covid', 'hgb'), ('quora', 'ridge'), ('webis-touche2020', 'ridge')]
+           variant  always_B  always_D  always_H  best_fixed_train  oracle_dataset  oracle_query  router  HR_macro   pct_B   pct_D   pct_H
+0              hgb    0.4498    0.4457    0.5073            0.5073          0.5151         0.563  0.5060   -0.0236  0.0258  0.1559  0.8183
+1           logreg    0.4498    0.4457    0.5073            0.5073          0.5151         0.563  0.4311   -1.3674  0.2430  0.6848  0.0722
+2            ridge    0.4498    0.4457    0.5073            0.5073          0.5151         0.563  0.5041   -0.0576  0.0407  0.0449  0.9145
+3         selected    0.4498    0.4457    0.5073            0.5073          0.5151         0.563  0.5036   -0.0652  0.0449  0.0914  0.8638
+4  selected_argmax    0.4498    0.4457    0.5073            0.5073          0.5151         0.563  0.5036   -0.0660  0.0352  0.0765  0.8884

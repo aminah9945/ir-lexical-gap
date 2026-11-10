@@ -1,0 +1,43 @@
+skip /home/user/ir_lexical_gap/phase2/04_improvements/results/alpha_grid_minilm_nfcorpus.csv.gz
+skip /home/user/ir_lexical_gap/phase2/04_improvements/results/alpha_grid_minilm_scifact.csv.gz
+skip /home/user/ir_lexical_gap/phase2/04_improvements/results/alpha_grid_minilm_fiqa.csv.gz
+skip /home/user/ir_lexical_gap/phase2/04_improvements/results/alpha_grid_minilm_scidocs.csv.gz
+skip /home/user/ir_lexical_gap/phase2/04_improvements/results/alpha_grid_minilm_arguana.csv.gz
+  trec-covid: alpha=0.5 vs hybrid_cc_minilm: max|diff|=1.11e-16
+minilm trec-covid: 50 q in 0s
+  quora: alpha=0.5 vs hybrid_cc_minilm: max|diff|=1.00e+00
+minilm quora: 10000 q in 26s
+  webis-touche2020: alpha=0.5 vs hybrid_cc_minilm: max|diff|=2.63e-03
+minilm webis-touche2020: 49 q in 1s
+  nfcorpus: alpha=0.5 vs hybrid_cc_bge: max|diff|=3.68e-03
+bge nfcorpus: 323 q in 1s
+  scifact: alpha=0.5 vs hybrid_cc_bge: max|diff|=1.11e-16
+bge scifact: 300 q in 1s
+  fiqa: alpha=0.5 vs hybrid_cc_bge: max|diff|=7.31e-02
+bge fiqa: 648 q in 3s
+  scidocs: alpha=0.5 vs hybrid_cc_bge: max|diff|=4.90e-03
+bge scidocs: 1000 q in 4s
+  arguana: alpha=0.5 vs hybrid_cc_bge: max|diff|=4.38e-02
+bge arguana: 1406 q in 4s
+  trec-covid: alpha=0.5 vs hybrid_cc_bge: max|diff|=4.82e-03
+bge trec-covid: 50 q in 0s
+  quora: alpha=0.5 vs hybrid_cc_bge: max|diff|=6.85e-01
+bge quora: 10000 q in 27s
+  webis-touche2020: alpha=0.5 vs hybrid_cc_bge: max|diff|=8.33e-17
+bge webis-touche2020: 49 q in 1s
+  nfcorpus: alpha=0.5 vs hybrid_cc_bgebase: max|diff|=1.11e-16
+bgebase nfcorpus: 323 q in 1s
+  scifact: alpha=0.5 vs hybrid_cc_bgebase: max|diff|=1.11e-16
+bgebase scifact: 300 q in 1s
+  fiqa: alpha=0.5 vs hybrid_cc_bgebase: max|diff|=1.11e-16
+bgebase fiqa: 648 q in 2s
+  scidocs: alpha=0.5 vs hybrid_cc_bgebase: max|diff|=1.11e-16
+bgebase scidocs: 1000 q in 3s
+  arguana: alpha=0.5 vs hybrid_cc_bgebase: max|diff|=5.55e-17
+bgebase arguana: 1406 q in 4s
+  trec-covid: alpha=0.5 vs hybrid_cc_bgebase: max|diff|=1.11e-16
+bgebase trec-covid: 50 q in 0s
+  quora: alpha=0.5 vs hybrid_cc_bgebase: max|diff|=1.11e-16
+bgebase quora: 10000 q in 26s
+  webis-touche2020: alpha=0.5 vs hybrid_cc_bgebase: max|diff|=9.02e-17
+bgebase webis-touche2020: 49 q in 1s

@@ -1,0 +1,8 @@
+== A_bgebase_pct_k8: 8 datasets, 13776 queries, 23 features
+  A_bgebase_pct_k8: fitted in 229s; inner choice [('nfcorpus', 'ridge'), ('scifact', 'ridge'), ('fiqa', 'ridge'), ('scidocs', 'ridge'), ('arguana', 'ridge'), ('trec-covid', 'ridge'), ('quora', 'ridge'), ('webis-touche2020', 'hgb')]
+           variant  always_B  always_D  always_H  best_fixed_train  oracle_dataset  oracle_query  router  HR_macro   pct_B   pct_D   pct_H
+0              hgb    0.4516     0.534    0.5483            0.5306           0.566         0.613  0.5141   -0.5280  0.1277  0.6062  0.2661
+1           logreg    0.4516     0.534    0.5483            0.5306           0.566         0.613  0.5340   -0.2198  0.0000  1.0000  0.0000
+2            ridge    0.4516     0.534    0.5483            0.5306           0.566         0.613  0.5363   -0.1845  0.0091  0.3417  0.6493
+3         selected    0.4516     0.534    0.5483            0.5306           0.566         0.613  0.5340   -0.2196  0.0091  0.3544  0.6365
+4  selected_argmax    0.4516     0.534    0.5483            0.5306           0.566         0.613  0.5384   -0.1528  0.0058  0.2430  0.7512

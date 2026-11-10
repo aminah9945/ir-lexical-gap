@@ -1,0 +1,9 @@
+dataset,AMBIG,ABBREV,MORPH,SYN,PARAPHRASE,OTHER
+nfcorpus,31,0,5,6,67,3
+scifact,3,2,2,2,42,2
+fiqa,154,2,23,24,115,24
+scidocs,133,14,52,48,132,21
+arguana,0,4,58,33,305,0
+trec-covid,0,0,0,0,0,1
+quora,214,0,16,8,123,39
+webis-touche2020,1,0,0,0,0,1

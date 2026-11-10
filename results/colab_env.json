@@ -1,0 +1,7 @@
+{
+ "gpu": "Tesla T4",
+ "torch": "2.11.0+cu130",
+ "python": "3.13.15",
+ "maxlen": "256",
+ "batch": "256"
+}

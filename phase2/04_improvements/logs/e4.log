@@ -1,0 +1,287 @@
+e4_splithalf
+      model           dataset      n  oracle_ds_gain_insample  splithalf_gain_mean  splithalf_gain_lo  splithalf_gain_hi
+0    minilm          nfcorpus    323                   -0.000                0.000              0.000              0.000
+1    minilm           scifact    300                   -0.000                0.000              0.000              0.000
+2    minilm              fiqa    648                    0.000               -0.000              0.000              0.000
+3    minilm           scidocs   1000                    0.012                0.012              0.004              0.020
+4    minilm           arguana   1406                    0.007                0.005             -0.006              0.014
+5    minilm        trec-covid     50                   -0.000                0.000              0.000              0.000
+6    minilm             quora  10000                    0.000                0.000              0.000              0.000
+7    minilm  webis-touche2020     49                    0.087                0.088              0.047              0.130
+8       bge          nfcorpus    323                    0.000               -0.000              0.000              0.000
+9       bge           scifact    300                   -0.000               -0.000              0.000              0.000
+10      bge              fiqa    648                    0.000               -0.003             -0.014              0.000
+11      bge           scidocs   1000                    0.008                0.008              0.000              0.014
+12      bge           arguana   1406                    0.055                0.055              0.043              0.069
+13      bge        trec-covid     50                    0.000               -0.001              0.000              0.000
+14      bge             quora  10000                    0.001               -0.000             -0.003              0.001
+15      bge  webis-touche2020     49                    0.087                0.087              0.040              0.132
+16  bgebase          nfcorpus    323                    0.000               -0.002             -0.011              0.000
+17  bgebase           scifact    300                   -0.000               -0.004             -0.037              0.000
+18  bgebase              fiqa    648                    0.004                0.000             -0.012              0.008
+19  bgebase           scidocs   1000                    0.017                0.017              0.010              0.024
+20  bgebase           arguana   1406                    0.060                0.059              0.046              0.073
+21  bgebase        trec-covid     50                    0.000               -0.007             -0.074              0.000
+22  bgebase             quora  10000                    0.000                0.000              0.000              0.000
+23  bgebase  webis-touche2020     49                    0.061                0.060              0.012              0.105
+e4_headroom_concentration
+      model           dataset      n  headroom  share_queries_gain_gt0  share_from_le_005  share_from_005_02  share_from_gt_02  share_queries_gt_02
+0    minilm          nfcorpus    323     0.038                   0.393              0.057              0.731             0.212                0.028
+1    minilm           scifact    300     0.040                   0.153              0.019              0.091             0.891                0.093
+2    minilm              fiqa    648     0.063                   0.327              0.026              0.298             0.676                0.120
+3    minilm           scidocs   1000     0.050                   0.413              0.059              0.541             0.400                0.066
+4    minilm           arguana   1406     0.100                   0.408              0.019              0.141             0.840                0.213
+5    minilm        trec-covid     50     0.046                   0.420              0.050              0.719             0.231                0.040
+6    minilm             quora  10000     0.040                   0.167              0.016              0.158             0.826                0.086
+7    minilm  webis-touche2020     49     0.118                   0.714              0.020              0.351             0.629                0.245
+8       bge          nfcorpus    323     0.036                   0.399              0.079              0.692             0.228                0.031
+9       bge           scifact    300     0.052                   0.197              0.010              0.122             0.868                0.123
+10      bge              fiqa    648     0.069                   0.329              0.016              0.265             0.718                0.134
+11      bge           scidocs   1000     0.046                   0.389              0.064              0.546             0.390                0.067
+12      bge           arguana   1406     0.122                   0.433              0.013              0.113             0.874                0.267
+13      bge        trec-covid     50     0.034                   0.380              0.099              0.664             0.236                0.020
+14      bge             quora  10000     0.039                   0.164              0.020              0.160             0.820                0.081
+15      bge  webis-touche2020     49     0.119                   0.673              0.021              0.367             0.612                0.224
+16  bgebase          nfcorpus    323     0.037                   0.406              0.073              0.744             0.183                0.025
+17  bgebase           scifact    300     0.060                   0.217              0.013              0.134             0.854                0.127
+18  bgebase              fiqa    648     0.070                   0.350              0.021              0.279             0.700                0.140
+19  bgebase           scidocs   1000     0.052                   0.418              0.056              0.578             0.366                0.065
+20  bgebase           arguana   1406     0.121                   0.408              0.010              0.107             0.884                0.255
+21  bgebase        trec-covid     50     0.042                   0.420              0.135              0.352             0.513                0.060
+22  bgebase             quora  10000     0.032                   0.148              0.023              0.189             0.787                0.066
+23  bgebase  webis-touche2020     49     0.106                   0.612              0.021              0.364             0.615                0.204
+e4_label_consistency
+      model           dataset      n  n_nontie  share_ties_ndcg  n_both_recall@100  sign_agree_recall@100  n_both_mrr@10  sign_agree_mrr@10  median_nrel  share_q_nrel_le2  headroom_share_nrel_le2
+0    minilm          nfcorpus    323       174            0.461                126                  0.690             91              0.945         16.0             0.142                    0.057
+1    minilm           scifact    300        85            0.717                  2                  1.000             77              0.987          1.0             0.970                    0.954
+2    minilm              fiqa    648       379            0.415                146                  0.918            308              0.997          2.0             0.623                    0.649
+3    minilm           scidocs   1000       509            0.491                252                  0.853            395              0.972          5.0             0.001                    0.000
+4    minilm           arguana   1406       718            0.489                 10                  1.000            718              1.000          1.0             1.000                    1.000
+5    minilm        trec-covid     50        46            0.080                 34                  0.676             14              0.786        478.0             0.000                    0.000
+6    minilm             quora  10000      3396            0.660                337                  0.958           2555              0.991          1.0             0.906                    0.827
+7    minilm  webis-touche2020     49        47            0.041                 34                  0.471             25              0.920         19.0             0.000                    0.000
+8       bge          nfcorpus    323       166            0.486                110                  0.755             84              0.929         16.0             0.142                    0.030
+9       bge           scifact    300        93            0.690                  3                  1.000             85              0.988          1.0             0.970                    0.957
+10      bge              fiqa    648       361            0.443                138                  0.906            286              0.986          2.0             0.623                    0.609
+11      bge           scidocs   1000       493            0.507                232                  0.780            391              0.964          5.0             0.001                    0.000
+12      bge           arguana   1406       825            0.413                 17                  1.000            825              1.000          1.0             1.000                    1.000
+13      bge        trec-covid     50        46            0.080                 36                  0.972             10              1.000        478.0             0.000                    0.000
+14      bge             quora  10000      3414            0.659                343                  0.953           2587              0.993          1.0             0.906                    0.832
+15      bge  webis-touche2020     49        44            0.102                 32                  0.469             27              0.852         19.0             0.000                    0.000
+16  bgebase          nfcorpus    323       169            0.477                131                  0.779             85              0.953         16.0             0.142                    0.002
+17  bgebase           scifact    300       101            0.663                  6                  1.000             94              1.000          1.0             0.970                    0.939
+18  bgebase              fiqa    648       380            0.414                146                  0.897            307              0.993          2.0             0.623                    0.626
+19  bgebase           scidocs   1000       515            0.485                244                  0.754            390              0.964          5.0             0.001                    0.000
+20  bgebase           arguana   1406       856            0.391                 20                  1.000            856              1.000          1.0             1.000                    1.000
+21  bgebase        trec-covid     50        45            0.100                 40                  0.900             11              0.818        478.0             0.000                    0.000
+22  bgebase             quora  10000      3565            0.644                365                  0.948           2720              0.993          1.0             0.906                    0.834
+23  bgebase  webis-touche2020     49        46            0.061                 35                  0.457             25              0.840         19.0             0.000                    0.000
+e4_fewshot_dataset_selection
+       model           dataset    k  gain_mean  gain_lo  gain_hi  p_loss
+0     minilm          nfcorpus    5     -0.019   -0.041    0.000   0.502
+1     minilm          nfcorpus   10     -0.013   -0.041    0.000   0.351
+2     minilm          nfcorpus   20     -0.008   -0.043    0.000   0.203
+3     minilm          nfcorpus   30     -0.004   -0.044    0.000   0.102
+4     minilm          nfcorpus   50     -0.001   -0.001    0.000   0.025
+5     minilm          nfcorpus  100      0.000    0.000    0.000   0.000
+6     minilm           scifact    5     -0.036   -0.089    0.000   0.521
+7     minilm           scifact   10     -0.019   -0.090    0.000   0.266
+8     minilm           scifact   20     -0.009   -0.093    0.000   0.122
+9     minilm           scifact   30     -0.004   -0.063    0.000   0.057
+10    minilm           scifact   50     -0.001    0.000    0.000   0.012
+11    minilm           scifact  100      0.000    0.000    0.000   0.000
+12    minilm              fiqa    5     -0.017   -0.159    0.000   0.452
+13    minilm              fiqa   10     -0.011   -0.028    0.000   0.381
+14    minilm              fiqa   20     -0.008   -0.029    0.000   0.299
+15    minilm              fiqa   30     -0.007   -0.029    0.000   0.249
+16    minilm              fiqa   50     -0.006   -0.030    0.000   0.195
+17    minilm              fiqa  100     -0.003   -0.032    0.000   0.086
+18    minilm           scidocs    5      0.004   -0.054    0.012   0.060
+19    minilm           scidocs   10      0.006    0.000    0.013   0.023
+20    minilm           scidocs   20      0.008    0.000    0.013   0.002
+21    minilm           scidocs   30      0.008    0.000    0.013   0.000
+22    minilm           scidocs   50      0.009    0.000    0.013   0.000
+23    minilm           scidocs  100      0.010    0.000    0.014   0.000
+24    minilm           arguana    5     -0.007   -0.094    0.007   0.115
+25    minilm           arguana   10      0.001   -0.094    0.007   0.033
+26    minilm           arguana   20      0.002    0.000    0.007   0.012
+27    minilm           arguana   30      0.004    0.000    0.007   0.001
+28    minilm           arguana   50      0.004    0.000    0.008   0.000
+29    minilm           arguana  100      0.004    0.000    0.008   0.000
+30    minilm        trec-covid    5     -0.014   -0.116    0.000   0.126
+31    minilm        trec-covid   10     -0.004   -0.124    0.000   0.031
+32    minilm        trec-covid   20     -0.000    0.000    0.000   0.002
+33    minilm        trec-covid   30      0.000    0.000    0.000   0.000
+34    minilm             quora    5     -0.022   -0.095    0.000   0.666
+35    minilm             quora   10     -0.007   -0.095    0.000   0.505
+36    minilm             quora   20     -0.004   -0.008    0.000   0.429
+37    minilm             quora   30     -0.004   -0.008    0.000   0.443
+38    minilm             quora   50     -0.003   -0.008    0.000   0.364
+39    minilm             quora  100     -0.003   -0.008    0.000   0.345
+40    minilm  webis-touche2020    5      0.077    0.000    0.096   0.000
+41    minilm  webis-touche2020   10      0.084    0.000    0.106   0.000
+42    minilm  webis-touche2020   20      0.086    0.048    0.124   0.000
+43    minilm  webis-touche2020   30      0.087    0.030    0.140   0.001
+44       bge          nfcorpus    5     -0.016   -0.047    0.000   0.495
+45       bge          nfcorpus   10     -0.011   -0.048    0.000   0.379
+46       bge          nfcorpus   20     -0.007   -0.049    0.000   0.229
+47       bge          nfcorpus   30     -0.004   -0.027    0.000   0.160
+48       bge          nfcorpus   50     -0.002   -0.029    0.000   0.071
+49       bge          nfcorpus  100     -0.000    0.000    0.000   0.013
+50       bge           scifact    5     -0.027   -0.056    0.000   0.656
+51       bge           scifact   10     -0.019   -0.057    0.000   0.492
+52       bge           scifact   20     -0.013   -0.059    0.000   0.334
+53       bge           scifact   30     -0.009   -0.061    0.000   0.224
+54       bge           scifact   50     -0.006   -0.042    0.000   0.152
+55       bge           scifact  100     -0.002   -0.047    0.000   0.042
+56       bge              fiqa    5     -0.006   -0.156    0.000   0.542
+57       bge              fiqa   10     -0.002   -0.002    0.000   0.512
+58       bge              fiqa   20     -0.001   -0.003    0.000   0.491
+59       bge              fiqa   30     -0.001   -0.004    0.000   0.494
+60       bge              fiqa   50     -0.001   -0.005    0.000   0.501
+61       bge              fiqa  100     -0.001   -0.007    0.000   0.507
+62       bge           scidocs    5     -0.001   -0.046    0.008   0.104
+63       bge           scidocs   10      0.002   -0.046    0.008   0.050
+64       bge           scidocs   20      0.004    0.000    0.008   0.007
+65       bge           scidocs   30      0.004    0.000    0.008   0.001
+66       bge           scidocs   50      0.005    0.000    0.008   0.000
+67       bge           scidocs  100      0.005    0.000    0.009   0.000
+68       bge           arguana    5      0.034   -0.146    0.056   0.036
+69       bge           arguana   10      0.039    0.000    0.056   0.007
+70       bge           arguana   20      0.046    0.000    0.056   0.000
+71       bge           arguana   30      0.049    0.000    0.056   0.000
+72       bge           arguana   50      0.052    0.000    0.057   0.000
+73       bge           arguana  100      0.055    0.051    0.059   0.000
+74       bge        trec-covid    5     -0.013   -0.061    0.000   0.218
+75       bge        trec-covid   10     -0.007   -0.069    0.000   0.115
+76       bge        trec-covid   20     -0.002    0.000    0.000   0.021
+77       bge        trec-covid   30      0.000    0.000    0.000   0.000
+78       bge             quora    5     -0.015   -0.100    0.001   0.151
+79       bge             quora   10     -0.003   -0.100    0.001   0.031
+80       bge             quora   20     -0.000    0.000    0.001   0.005
+81       bge             quora   30      0.000    0.000    0.001   0.001
+82       bge             quora   50      0.000    0.000    0.001   0.000
+83       bge             quora  100      0.000    0.000    0.001   0.000
+84       bge  webis-touche2020    5      0.075    0.000    0.096   0.003
+85       bge  webis-touche2020   10      0.084    0.000    0.106   0.000
+86       bge  webis-touche2020   20      0.086    0.047    0.124   0.000
+87       bge  webis-touche2020   30      0.086    0.031    0.141   0.000
+88   bgebase          nfcorpus    5     -0.009   -0.058    0.000   0.618
+89   bgebase          nfcorpus   10     -0.004   -0.059    0.000   0.512
+90   bgebase          nfcorpus   20     -0.002   -0.004    0.000   0.494
+91   bgebase          nfcorpus   30     -0.001   -0.005    0.000   0.489
+92   bgebase          nfcorpus   50     -0.002   -0.006    0.000   0.464
+93   bgebase          nfcorpus  100     -0.002   -0.008    0.000   0.433
+94   bgebase           scifact    5     -0.023   -0.076    0.000   0.684
+95   bgebase           scifact   10     -0.015   -0.077    0.000   0.524
+96   bgebase           scifact   20     -0.008   -0.022    0.000   0.418
+97   bgebase           scifact   30     -0.007   -0.022    0.000   0.355
+98   bgebase           scifact   50     -0.005   -0.024    0.000   0.269
+99   bgebase           scifact  100     -0.005   -0.030    0.000   0.190
+100  bgebase              fiqa    5     -0.004   -0.161    0.004   0.035
+101  bgebase              fiqa   10      0.001    0.000    0.004   0.004
+102  bgebase              fiqa   20      0.002    0.000    0.004   0.001
+103  bgebase              fiqa   30      0.002    0.000    0.004   0.005
+104  bgebase              fiqa   50      0.001    0.000    0.004   0.021
+105  bgebase              fiqa  100      0.001   -0.002    0.005   0.111
+106  bgebase           scidocs    5      0.006   -0.051    0.017   0.077
+107  bgebase           scidocs   10      0.009   -0.051    0.017   0.036
+108  bgebase           scidocs   20      0.012    0.000    0.017   0.010
+109  bgebase           scidocs   30      0.013    0.000    0.017   0.001
+110  bgebase           scidocs   50      0.014    0.000    0.018   0.000
+111  bgebase           scidocs  100      0.016    0.000    0.018   0.000
+112  bgebase           arguana    5      0.040    0.000    0.060   0.018
+113  bgebase           arguana   10      0.045    0.000    0.060   0.000
+114  bgebase           arguana   20      0.049    0.000    0.060   0.000
+115  bgebase           arguana   30      0.054    0.000    0.061   0.000
+116  bgebase           arguana   50      0.056    0.000    0.062   0.000
+117  bgebase           arguana  100      0.059    0.056    0.063   0.000
+118  bgebase        trec-covid    5     -0.013   -0.046    0.000   0.324
+119  bgebase        trec-covid   10     -0.012   -0.055    0.000   0.256
+120  bgebase        trec-covid   20     -0.008   -0.066    0.000   0.141
+121  bgebase        trec-covid   30     -0.005   -0.090    0.000   0.061
+122  bgebase             quora    5     -0.021   -0.109    0.000   0.656
+123  bgebase             quora   10     -0.008   -0.109    0.000   0.490
+124  bgebase             quora   20     -0.004   -0.008    0.000   0.467
+125  bgebase             quora   30     -0.003   -0.008    0.000   0.390
+126  bgebase             quora   50     -0.003   -0.008    0.000   0.326
+127  bgebase             quora  100     -0.002   -0.008    0.000   0.276
+128  bgebase  webis-touche2020    5      0.048    0.000    0.068   0.001
+129  bgebase  webis-touche2020   10      0.053    0.000    0.076   0.000
+130  bgebase  webis-touche2020   20      0.059    0.014    0.097   0.000
+131  bgebase  webis-touche2020   30      0.062    0.001    0.122   0.023
+{'config': 'A_bge_std_k8', 'dataset': 'nfcorpus', 'n': 323, 'always_B': np.float64(0.32045650314265), 'always_D': np.float64(0.3430095477945192), 'always_H': np.float64(0.36609527032069383), 'indomain_best_fixed': np.float64(0.36609527032069383), 'indomain_router': np.float64(0.35904873134460574), 'oracle_dataset': np.float64(0.366095270320694), 'oracle_query': np.float64(0.4018474038661262), 'pct_B': np.float64(0.018575851393188854), 'pct_D': np.float64(0.2043343653250774), 'pct_H': np.float64(0.7770897832817337), 'kinds': 'ridge/ridge/hgb/ridge/ridge'}
+{'config': 'A_bge_std_k8', 'dataset': 'scifact', 'n': 300, 'always_B': np.float64(0.6768873734115012), 'always_D': np.float64(0.7005040179184696), 'always_H': np.float64(0.7308559584498021), 'indomain_best_fixed': np.float64(0.7308559584498021), 'indomain_router': np.float64(0.7207358528881028), 'oracle_dataset': np.float64(0.730855958449802), 'oracle_query': np.float64(0.7826750775854143), 'pct_B': np.float64(0.11666666666666667), 'pct_D': np.float64(0.23), 'pct_H': np.float64(0.6533333333333333), 'kinds': 'ridge/hgb/ridge/ridge/ridge'}
+{'config': 'A_bge_std_k8', 'dataset': 'fiqa', 'n': 648, 'always_B': np.float64(0.236909127587768), 'always_D': np.float64(0.3913351127755536), 'always_H': np.float64(0.39135831311595703), 'indomain_best_fixed': np.float64(0.3808027778377195), 'indomain_router': np.float64(0.3899281153005731), 'oracle_dataset': np.float64(0.39135831311595737), 'oracle_query': np.float64(0.4599954619260683), 'pct_B': np.float64(0.0030864197530864196), 'pct_D': np.float64(0.595679012345679), 'pct_H': np.float64(0.4012345679012346), 'kinds': 'ridge/ridge/ridge/ridge/ridge'}
+{'config': 'A_bge_std_k8', 'dataset': 'scidocs', 'n': 1000, 'always_B': np.float64(0.14991174573715405), 'always_D': np.float64(0.20342871878785496), 'always_H': np.float64(0.1956845437222217), 'indomain_best_fixed': np.float64(0.20342871878785496), 'indomain_router': np.float64(0.20324847936726173), 'oracle_dataset': np.float64(0.20342871878785526), 'oracle_query': np.float64(0.2417158969632112), 'pct_B': np.float64(0.0), 'pct_D': np.float64(0.917), 'pct_H': np.float64(0.083), 'kinds': 'ridge/ridge/ridge/ridge/ridge'}
+{'config': 'A_bge_std_k8', 'dataset': 'arguana', 'n': 1406, 'always_B': np.float64(0.4021305803238016), 'always_D': np.float64(0.6033736259091418), 'always_H': np.float64(0.5480386435334031), 'indomain_best_fixed': np.float64(0.6033736259091418), 'indomain_router': np.float64(0.6032745252263922), 'oracle_dataset': np.float64(0.6033736259091403), 'oracle_query': np.float64(0.6702988498144461), 'pct_B': np.float64(0.0), 'pct_D': np.float64(0.9943100995732574), 'pct_H': np.float64(0.005689900426742532), 'kinds': 'ridge/ridge/ridge/hgb/hgb'}
+{'config': 'A_bge_std_k8', 'dataset': 'trec-covid', 'n': 50, 'always_B': np.float64(0.5948820806472941), 'always_D': np.float64(0.7463808675810196), 'always_H': np.float64(0.7940033755312627), 'indomain_best_fixed': np.float64(0.7940033755312627), 'indomain_router': np.float64(0.7940033755312627), 'oracle_dataset': np.float64(0.7940033755312627), 'oracle_query': np.float64(0.8277903699904577), 'pct_B': np.float64(0.0), 'pct_D': np.float64(0.0), 'pct_H': np.float64(1.0), 'kinds': 'hgb/hgb/hgb/hgb/hgb'}
+{'config': 'A_bge_std_k8', 'dataset': 'quora', 'n': 10000, 'always_B': np.float64(0.7876730075230676), 'always_D': np.float64(0.8878407689469346), 'always_H': np.float64(0.8873015911301069), 'indomain_best_fixed': np.float64(0.8867693239543565), 'indomain_router': np.float64(0.8913959413914622), 'oracle_dataset': np.float64(0.8878407689469443), 'oracle_query': np.float64(0.9262940883322349), 'pct_B': np.float64(0.0108), 'pct_D': np.float64(0.6924), 'pct_H': np.float64(0.2968), 'kinds': 'ridge/hgb/hgb/hgb/hgb'}
+{'config': 'A_bge_std_k8', 'dataset': 'webis-touche2020', 'n': 49, 'always_B': np.float64(0.4442412041063184), 'always_D': np.float64(0.24151576265307304), 'always_H': np.float64(0.3576944681968042), 'indomain_best_fixed': np.float64(0.4442412041063184), 'indomain_router': np.float64(0.4442412041063184), 'oracle_dataset': np.float64(0.44424120410631834), 'oracle_query': np.float64(0.4766022736170686), 'pct_B': np.float64(1.0), 'pct_D': np.float64(0.0), 'pct_H': np.float64(0.0), 'kinds': 'ridge/hgb/hgb/hgb/hgb'}
+{'config': 'A_minilm_std_k8', 'dataset': 'nfcorpus', 'n': 323, 'always_B': np.float64(0.32045650314265), 'always_D': np.float64(0.31598272770665287), 'always_H': np.float64(0.3551075451995827), 'indomain_best_fixed': np.float64(0.3551075451995827), 'indomain_router': np.float64(0.3551026215248708), 'oracle_dataset': np.float64(0.3551075451995826), 'oracle_query': np.float64(0.39336786535039203), 'pct_B': np.float64(0.10526315789473684), 'pct_D': np.float64(0.03715170278637771), 'pct_H': np.float64(0.8575851393188855), 'kinds': 'ridge/ridge/ridge/ridge/ridge'}
+{'config': 'A_minilm_std_k8', 'dataset': 'scifact', 'n': 300, 'always_B': np.float64(0.6768873734115012), 'always_D': np.float64(0.6450816521455774), 'always_H': np.float64(0.7306182760045644), 'indomain_best_fixed': np.float64(0.7306182760045644), 'indomain_router': np.float64(0.7266474330910502), 'oracle_dataset': np.float64(0.730618276004564), 'oracle_query': np.float64(0.7705490450505071), 'pct_B': np.float64(0.16), 'pct_D': np.float64(0.023333333333333334), 'pct_H': np.float64(0.8166666666666667), 'kinds': 'ridge/ridge/ridge/ridge/hgb'}
+{'config': 'A_minilm_std_k8', 'dataset': 'fiqa', 'n': 648, 'always_B': np.float64(0.236909127587768), 'always_D': np.float64(0.36867136984071575), 'always_H': np.float64(0.3943751697752159), 'indomain_best_fixed': np.float64(0.3943751697752159), 'indomain_router': np.float64(0.384238898387016), 'oracle_dataset': np.float64(0.3943751697752159), 'oracle_query': np.float64(0.45703289164361804), 'pct_B': np.float64(0.0), 'pct_D': np.float64(0.1527777777777778), 'pct_H': np.float64(0.8472222222222222), 'kinds': 'ridge/ridge/ridge/hgb/ridge'}
+{'config': 'A_minilm_std_k8', 'dataset': 'scidocs', 'n': 1000, 'always_B': np.float64(0.14991174573715405), 'always_D': np.float64(0.21649959493635254), 'always_H': np.float64(0.2040709860872566), 'indomain_best_fixed': np.float64(0.21649959493635254), 'indomain_router': np.float64(0.2166016123031777), 'oracle_dataset': np.float64(0.21649959493635282), 'oracle_query': np.float64(0.25385515564135297), 'pct_B': np.float64(0.0), 'pct_D': np.float64(0.972), 'pct_H': np.float64(0.028), 'kinds': 'ridge/ridge/ridge/ridge/ridge'}
+{'config': 'A_minilm_std_k8', 'dataset': 'arguana', 'n': 1406, 'always_B': np.float64(0.4021305803238016), 'always_D': np.float64(0.5026412542535738), 'always_H': np.float64(0.49529260656775315), 'indomain_best_fixed': np.float64(0.5026412542535738), 'indomain_router': np.float64(0.5027373375293485), 'oracle_dataset': np.float64(0.5026412542535731), 'oracle_query': np.float64(0.5953812885050109), 'pct_B': np.float64(0.0007112375533428165), 'pct_D': np.float64(0.7190611664295875), 'pct_H': np.float64(0.2802275960170697), 'kinds': 'ridge/ridge/hgb/hgb/ridge'}
+{'config': 'A_minilm_std_k8', 'dataset': 'trec-covid', 'n': 50, 'always_B': np.float64(0.5948820806472941), 'always_D': np.float64(0.4722587939246013), 'always_H': np.float64(0.6935957817746689), 'indomain_best_fixed': np.float64(0.6935957817746689), 'indomain_router': np.float64(0.6777292409416453), 'oracle_dataset': np.float64(0.6935957817746687), 'oracle_query': np.float64(0.7394564419570031), 'pct_B': np.float64(0.02), 'pct_D': np.float64(0.02), 'pct_H': np.float64(0.96), 'kinds': 'hgb/hgb/ridge/hgb/hgb'}
+{'config': 'A_minilm_std_k8', 'dataset': 'quora', 'n': 10000, 'always_B': np.float64(0.7876730075230676), 'always_D': np.float64(0.8755102597520781), 'always_H': np.float64(0.8829181135892057), 'indomain_best_fixed': np.float64(0.8829181135892057), 'indomain_router': np.float64(0.8861829759187476), 'oracle_dataset': np.float64(0.8829181135892155), 'oracle_query': np.float64(0.9232993178034885), 'pct_B': np.float64(0.0), 'pct_D': np.float64(0.4222), 'pct_H': np.float64(0.5778), 'kinds': 'hgb/hgb/hgb/hgb/hgb'}
+{'config': 'A_minilm_std_k8', 'dataset': 'webis-touche2020', 'n': 49, 'always_B': np.float64(0.4442412041063184), 'always_D': np.float64(0.1690401473327351), 'always_H': np.float64(0.3571881876384692), 'indomain_best_fixed': np.float64(0.4442412041063184), 'indomain_router': np.float64(0.44162534563445993), 'oracle_dataset': np.float64(0.44424120410631834), 'oracle_query': np.float64(0.4749777793611739), 'pct_B': np.float64(0.9795918367346939), 'pct_D': np.float64(0.0), 'pct_H': np.float64(0.02040816326530612), 'kinds': 'hgb/ridge/ridge/ridge/hgb'}
+{'config': 'B_minilm_std_k8', 'dataset': 'nfcorpus', 'n': 323, 'always_B': np.float64(0.32045650314265), 'always_D': np.float64(0.31598272770665287), 'always_H': np.float64(0.3551075451995827), 'indomain_best_fixed': np.float64(0.3551075451995827), 'indomain_router': np.float64(0.35290117762060413), 'oracle_dataset': np.float64(0.3551075451995826), 'oracle_query': np.float64(0.39336786535039203), 'pct_B': np.float64(0.15789473684210525), 'pct_D': np.float64(0.1393188854489164), 'pct_H': np.float64(0.7027863777089783), 'kinds': 'ridge/ridge/ridge/ridge/ridge'}
+{'config': 'B_minilm_std_k8', 'dataset': 'scifact', 'n': 300, 'always_B': np.float64(0.6768873734115012), 'always_D': np.float64(0.6450816521455774), 'always_H': np.float64(0.7306182760045644), 'indomain_best_fixed': np.float64(0.7306182760045644), 'indomain_router': np.float64(0.7218277343670804), 'oracle_dataset': np.float64(0.730618276004564), 'oracle_query': np.float64(0.7705490450505071), 'pct_B': np.float64(0.15666666666666668), 'pct_D': np.float64(0.1), 'pct_H': np.float64(0.7433333333333333), 'kinds': 'ridge/ridge/hgb/ridge/hgb'}
+{'config': 'B_minilm_std_k8', 'dataset': 'fiqa', 'n': 648, 'always_B': np.float64(0.236909127587768), 'always_D': np.float64(0.36867136984071575), 'always_H': np.float64(0.3943751697752159), 'indomain_best_fixed': np.float64(0.3943751697752159), 'indomain_router': np.float64(0.39815260820991805), 'oracle_dataset': np.float64(0.3943751697752159), 'oracle_query': np.float64(0.45703289164361804), 'pct_B': np.float64(0.0), 'pct_D': np.float64(0.3132716049382716), 'pct_H': np.float64(0.6867283950617284), 'kinds': 'hgb/hgb/ridge/ridge/ridge'}
+{'config': 'B_minilm_std_k8', 'dataset': 'scidocs', 'n': 1000, 'always_B': np.float64(0.14991174573715405), 'always_D': np.float64(0.21649959493635254), 'always_H': np.float64(0.2040709860872566), 'indomain_best_fixed': np.float64(0.21649959493635254), 'indomain_router': np.float64(0.21710664653662848), 'oracle_dataset': np.float64(0.21649959493635282), 'oracle_query': np.float64(0.25385515564135297), 'pct_B': np.float64(0.0), 'pct_D': np.float64(0.877), 'pct_H': np.float64(0.123), 'kinds': 'ridge/hgb/hgb/ridge/ridge'}
+{'config': 'B_minilm_std_k8', 'dataset': 'arguana', 'n': 1406, 'always_B': np.float64(0.4021305803238016), 'always_D': np.float64(0.5026412542535738), 'always_H': np.float64(0.49529260656775315), 'indomain_best_fixed': np.float64(0.5026412542535738), 'indomain_router': np.float64(0.5013648592055411), 'oracle_dataset': np.float64(0.5026412542535731), 'oracle_query': np.float64(0.5953812885050109), 'pct_B': np.float64(0.0), 'pct_D': np.float64(0.6792318634423897), 'pct_H': np.float64(0.3207681365576102), 'kinds': 'hgb/hgb/hgb/hgb/ridge'}
+{'config': 'B_minilm_std_k8', 'dataset': 'trec-covid', 'n': 50, 'always_B': np.float64(0.5948820806472941), 'always_D': np.float64(0.4722587939246013), 'always_H': np.float64(0.6935957817746689), 'indomain_best_fixed': np.float64(0.6935957817746689), 'indomain_router': np.float64(0.6935957817746689), 'oracle_dataset': np.float64(0.6935957817746687), 'oracle_query': np.float64(0.7394564419570031), 'pct_B': np.float64(0.0), 'pct_D': np.float64(0.0), 'pct_H': np.float64(1.0), 'kinds': 'hgb/hgb/hgb/hgb/hgb'}
+{'config': 'B_minilm_std_k8', 'dataset': 'quora', 'n': 10000, 'always_B': np.float64(0.7876730075230676), 'always_D': np.float64(0.8755102597520781), 'always_H': np.float64(0.8829181135892057), 'indomain_best_fixed': np.float64(0.8829181135892057), 'indomain_router': np.float64(0.8883736029486292), 'oracle_dataset': np.float64(0.8829181135892155), 'oracle_query': np.float64(0.9232993178034885), 'pct_B': np.float64(0.0), 'pct_D': np.float64(0.6961), 'pct_H': np.float64(0.3039), 'kinds': 'hgb/hgb/hgb/hgb/hgb'}
+{'config': 'B_minilm_std_k8', 'dataset': 'webis-touche2020', 'n': 49, 'always_B': np.float64(0.4442412041063184), 'always_D': np.float64(0.1690401473327351), 'always_H': np.float64(0.3571881876384692), 'indomain_best_fixed': np.float64(0.4442412041063184), 'indomain_router': np.float64(0.4442412041063184), 'oracle_dataset': np.float64(0.44424120410631834), 'oracle_query': np.float64(0.4749777793611739), 'pct_B': np.float64(1.0), 'pct_D': np.float64(0.0), 'pct_H': np.float64(0.0), 'kinds': 'hgb/hgb/hgb/hgb/hgb'}
+{'config': 'A_bgebase_std_k8', 'dataset': 'nfcorpus', 'n': 323, 'always_B': np.float64(0.32045650314265), 'always_D': np.float64(0.3761494973947523), 'always_H': np.float64(0.37747506108679973), 'indomain_best_fixed': np.float64(0.3729472480606676), 'indomain_router': np.float64(0.3784409533180009), 'oracle_dataset': np.float64(0.3774750610867998), 'oracle_query': np.float64(0.414329007998637), 'pct_B': np.float64(0.0030959752321981426), 'pct_D': np.float64(0.6873065015479877), 'pct_H': np.float64(0.30959752321981426), 'kinds': 'ridge/ridge/ridge/ridge/ridge'}
+{'config': 'A_bgebase_std_k8', 'dataset': 'scifact', 'n': 300, 'always_B': np.float64(0.6768873734115012), 'always_D': np.float64(0.7367170608224856), 'always_H': np.float64(0.7503860237617099), 'indomain_best_fixed': np.float64(0.7503860237617099), 'indomain_router': np.float64(0.7561202841438196), 'oracle_dataset': np.float64(0.7503860237617096), 'oracle_query': np.float64(0.8099828765027608), 'pct_B': np.float64(0.07), 'pct_D': np.float64(0.42), 'pct_H': np.float64(0.51), 'kinds': 'ridge/hgb/hgb/ridge/ridge'}
+{'config': 'A_bgebase_std_k8', 'dataset': 'fiqa', 'n': 648, 'always_B': np.float64(0.236909127587768), 'always_D': np.float64(0.40061036237261394), 'always_H': np.float64(0.3964207311215676), 'indomain_best_fixed': np.float64(0.38943465988798887), 'indomain_router': np.float64(0.39833462702456846), 'oracle_dataset': np.float64(0.40061036237261416), 'oracle_query': np.float64(0.46625159006595984), 'pct_B': np.float64(0.0), 'pct_D': np.float64(0.7175925925925926), 'pct_H': np.float64(0.2824074074074074), 'kinds': 'ridge/ridge/hgb/ridge/ridge'}
+{'config': 'A_bgebase_std_k8', 'dataset': 'scidocs', 'n': 1000, 'always_B': np.float64(0.14991174573715405), 'always_D': np.float64(0.21730145561487899), 'always_H': np.float64(0.2004621842834535), 'indomain_best_fixed': np.float64(0.21730145561487899), 'indomain_router': np.float64(0.2175790739518812), 'oracle_dataset': np.float64(0.21730145561487918), 'oracle_query': np.float64(0.25224119015872504), 'pct_B': np.float64(0.0), 'pct_D': np.float64(0.991), 'pct_H': np.float64(0.009), 'kinds': 'ridge/ridge/ridge/ridge/ridge'}
+{'config': 'A_bgebase_std_k8', 'dataset': 'arguana', 'n': 1406, 'always_B': np.float64(0.4021305803238016), 'always_D': np.float64(0.6350916855458025), 'always_H': np.float64(0.5754932574220557), 'indomain_best_fixed': np.float64(0.6350916855458025), 'indomain_router': np.float64(0.6351446509590069), 'oracle_dataset': np.float64(0.6350916855458012), 'oracle_query': np.float64(0.6961627608944201), 'pct_B': np.float64(0.0), 'pct_D': np.float64(0.9985775248933144), 'pct_H': np.float64(0.001422475106685633), 'kinds': 'ridge/ridge/ridge/ridge/ridge'}
+{'config': 'A_bgebase_std_k8', 'dataset': 'trec-covid', 'n': 50, 'always_B': np.float64(0.5948820806472941), 'always_D': np.float64(0.7756422457248097), 'always_H': np.float64(0.8064083009913017), 'indomain_best_fixed': np.float64(0.8064083009913017), 'indomain_router': np.float64(0.80051146250124), 'oracle_dataset': np.float64(0.8064083009913017), 'oracle_query': np.float64(0.8481239330629138), 'pct_B': np.float64(0.0), 'pct_D': np.float64(0.18), 'pct_H': np.float64(0.82), 'kinds': 'hgb/ridge/ridge/hgb/ridge'}
+{'config': 'A_bgebase_std_k8', 'dataset': 'quora', 'n': 10000, 'always_B': np.float64(0.7876730075230676), 'always_D': np.float64(0.888922283376864), 'always_H': np.float64(0.89661442788479), 'indomain_best_fixed': np.float64(0.89661442788479), 'indomain_router': np.float64(0.8950176439812593), 'oracle_dataset': np.float64(0.896614427884799), 'oracle_query': np.float64(0.928145797039852), 'pct_B': np.float64(0.0226), 'pct_D': np.float64(0.3979), 'pct_H': np.float64(0.5795), 'kinds': 'ridge/ridge/hgb/hgb/hgb'}
+{'config': 'A_bgebase_std_k8', 'dataset': 'webis-touche2020', 'n': 49, 'always_B': np.float64(0.4442412041063184), 'always_D': np.float64(0.2418232014369488), 'always_H': np.float64(0.3828348659419589), 'indomain_best_fixed': np.float64(0.4442412041063184), 'indomain_router': np.float64(0.4442412041063184), 'oracle_dataset': np.float64(0.44424120410631834), 'oracle_query': np.float64(0.48878146680455115), 'pct_B': np.float64(1.0), 'pct_D': np.float64(0.0), 'pct_H': np.float64(0.0), 'kinds': 'hgb/hgb/hgb/hgb/hgb'}
+{'config': 'B_bge_std_k8', 'dataset': 'nfcorpus', 'n': 323, 'always_B': np.float64(0.32045650314265), 'always_D': np.float64(0.3430095477945192), 'always_H': np.float64(0.36609527032069383), 'indomain_best_fixed': np.float64(0.36609527032069383), 'indomain_router': np.float64(0.3653675224692355), 'oracle_dataset': np.float64(0.366095270320694), 'oracle_query': np.float64(0.4018474038661262), 'pct_B': np.float64(0.07739938080495357), 'pct_D': np.float64(0.28173374613003094), 'pct_H': np.float64(0.6408668730650154), 'kinds': 'ridge/ridge/hgb/ridge/ridge'}
+{'config': 'B_bge_std_k8', 'dataset': 'scifact', 'n': 300, 'always_B': np.float64(0.6768873734115012), 'always_D': np.float64(0.7005040179184696), 'always_H': np.float64(0.7308559584498021), 'indomain_best_fixed': np.float64(0.7308559584498021), 'indomain_router': np.float64(0.7302930527418027), 'oracle_dataset': np.float64(0.730855958449802), 'oracle_query': np.float64(0.7826750775854143), 'pct_B': np.float64(0.12333333333333334), 'pct_D': np.float64(0.33), 'pct_H': np.float64(0.5466666666666666), 'kinds': 'ridge/hgb/ridge/ridge/ridge'}
+{'config': 'B_bge_std_k8', 'dataset': 'fiqa', 'n': 648, 'always_B': np.float64(0.236909127587768), 'always_D': np.float64(0.3913351127755536), 'always_H': np.float64(0.39135831311595703), 'indomain_best_fixed': np.float64(0.3808027778377195), 'indomain_router': np.float64(0.3913311441170572), 'oracle_dataset': np.float64(0.39135831311595737), 'oracle_query': np.float64(0.4599954619260683), 'pct_B': np.float64(0.006172839506172839), 'pct_D': np.float64(0.5540123456790124), 'pct_H': np.float64(0.4398148148148148), 'kinds': 'ridge/ridge/hgb/hgb/ridge'}
+{'config': 'B_bge_std_k8', 'dataset': 'scidocs', 'n': 1000, 'always_B': np.float64(0.14991174573715405), 'always_D': np.float64(0.20342871878785496), 'always_H': np.float64(0.1956845437222217), 'indomain_best_fixed': np.float64(0.20342871878785496), 'indomain_router': np.float64(0.2053007471948123), 'oracle_dataset': np.float64(0.20342871878785526), 'oracle_query': np.float64(0.2417158969632112), 'pct_B': np.float64(0.0), 'pct_D': np.float64(0.828), 'pct_H': np.float64(0.172), 'kinds': 'ridge/ridge/ridge/ridge/ridge'}
+{'config': 'B_bge_std_k8', 'dataset': 'arguana', 'n': 1406, 'always_B': np.float64(0.4021305803238016), 'always_D': np.float64(0.6033736259091418), 'always_H': np.float64(0.5480386435334031), 'indomain_best_fixed': np.float64(0.6033736259091418), 'indomain_router': np.float64(0.6027564231671315), 'oracle_dataset': np.float64(0.6033736259091403), 'oracle_query': np.float64(0.6702988498144461), 'pct_B': np.float64(0.0), 'pct_D': np.float64(0.9928876244665719), 'pct_H': np.float64(0.007112375533428165), 'kinds': 'ridge/ridge/ridge/hgb/ridge'}
+{'config': 'B_bge_std_k8', 'dataset': 'trec-covid', 'n': 50, 'always_B': np.float64(0.5948820806472941), 'always_D': np.float64(0.7463808675810196), 'always_H': np.float64(0.7940033755312627), 'indomain_best_fixed': np.float64(0.7940033755312627), 'indomain_router': np.float64(0.788990241601324), 'oracle_dataset': np.float64(0.7940033755312627), 'oracle_query': np.float64(0.8277903699904577), 'pct_B': np.float64(0.0), 'pct_D': np.float64(0.1), 'pct_H': np.float64(0.9), 'kinds': 'ridge/hgb/hgb/ridge/hgb'}
+{'config': 'B_bge_std_k8', 'dataset': 'quora', 'n': 10000, 'always_B': np.float64(0.7876730075230676), 'always_D': np.float64(0.8878407689469346), 'always_H': np.float64(0.8873015911301069), 'indomain_best_fixed': np.float64(0.8867693239543565), 'indomain_router': np.float64(0.8951103451603196), 'oracle_dataset': np.float64(0.8878407689469443), 'oracle_query': np.float64(0.9262940883322349), 'pct_B': np.float64(0.0), 'pct_D': np.float64(0.824), 'pct_H': np.float64(0.176), 'kinds': 'hgb/hgb/hgb/hgb/hgb'}
+{'config': 'B_bge_std_k8', 'dataset': 'webis-touche2020', 'n': 49, 'always_B': np.float64(0.4442412041063184), 'always_D': np.float64(0.24151576265307304), 'always_H': np.float64(0.3576944681968042), 'indomain_best_fixed': np.float64(0.4442412041063184), 'indomain_router': np.float64(0.4442412041063184), 'oracle_dataset': np.float64(0.44424120410631834), 'oracle_query': np.float64(0.4766022736170686), 'pct_B': np.float64(1.0), 'pct_D': np.float64(0.0), 'pct_H': np.float64(0.0), 'kinds': 'hgb/hgb/hgb/hgb/hgb'}
+{'config': 'B_bgebase_std_k8', 'dataset': 'nfcorpus', 'n': 323, 'always_B': np.float64(0.32045650314265), 'always_D': np.float64(0.3761494973947523), 'always_H': np.float64(0.37747506108679973), 'indomain_best_fixed': np.float64(0.3729472480606676), 'indomain_router': np.float64(0.37740880585229003), 'oracle_dataset': np.float64(0.3774750610867998), 'oracle_query': np.float64(0.414329007998637), 'pct_B': np.float64(0.04953560371517028), 'pct_D': np.float64(0.5820433436532507), 'pct_H': np.float64(0.3684210526315789), 'kinds': 'hgb/ridge/ridge/ridge/ridge'}
+{'config': 'B_bgebase_std_k8', 'dataset': 'scifact', 'n': 300, 'always_B': np.float64(0.6768873734115012), 'always_D': np.float64(0.7367170608224856), 'always_H': np.float64(0.7503860237617099), 'indomain_best_fixed': np.float64(0.7503860237617099), 'indomain_router': np.float64(0.7587766540201794), 'oracle_dataset': np.float64(0.7503860237617096), 'oracle_query': np.float64(0.8099828765027608), 'pct_B': np.float64(0.08333333333333333), 'pct_D': np.float64(0.46), 'pct_H': np.float64(0.45666666666666667), 'kinds': 'ridge/hgb/ridge/ridge/ridge'}
+{'config': 'B_bgebase_std_k8', 'dataset': 'fiqa', 'n': 648, 'always_B': np.float64(0.236909127587768), 'always_D': np.float64(0.40061036237261394), 'always_H': np.float64(0.3964207311215676), 'indomain_best_fixed': np.float64(0.38943465988798887), 'indomain_router': np.float64(0.4030540976252232), 'oracle_dataset': np.float64(0.40061036237261416), 'oracle_query': np.float64(0.46625159006595984), 'pct_B': np.float64(0.0), 'pct_D': np.float64(0.6095679012345679), 'pct_H': np.float64(0.3904320987654321), 'kinds': 'ridge/hgb/ridge/hgb/hgb'}
+{'config': 'B_bgebase_std_k8', 'dataset': 'scidocs', 'n': 1000, 'always_B': np.float64(0.14991174573715405), 'always_D': np.float64(0.21730145561487899), 'always_H': np.float64(0.2004621842834535), 'indomain_best_fixed': np.float64(0.21730145561487899), 'indomain_router': np.float64(0.2186790449207735), 'oracle_dataset': np.float64(0.21730145561487918), 'oracle_query': np.float64(0.25224119015872504), 'pct_B': np.float64(0.0), 'pct_D': np.float64(0.863), 'pct_H': np.float64(0.137), 'kinds': 'hgb/ridge/hgb/hgb/hgb'}
+{'config': 'B_bgebase_std_k8', 'dataset': 'arguana', 'n': 1406, 'always_B': np.float64(0.4021305803238016), 'always_D': np.float64(0.6350916855458025), 'always_H': np.float64(0.5754932574220557), 'indomain_best_fixed': np.float64(0.6350916855458025), 'indomain_router': np.float64(0.6353090989583073), 'oracle_dataset': np.float64(0.6350916855458012), 'oracle_query': np.float64(0.6961627608944201), 'pct_B': np.float64(0.0), 'pct_D': np.float64(0.9914651493598862), 'pct_H': np.float64(0.008534850640113799), 'kinds': 'ridge/ridge/ridge/ridge/ridge'}
+{'config': 'B_bgebase_std_k8', 'dataset': 'trec-covid', 'n': 50, 'always_B': np.float64(0.5948820806472941), 'always_D': np.float64(0.7756422457248097), 'always_H': np.float64(0.8064083009913017), 'indomain_best_fixed': np.float64(0.8064083009913017), 'indomain_router': np.float64(0.798606162384054), 'oracle_dataset': np.float64(0.8064083009913017), 'oracle_query': np.float64(0.8481239330629138), 'pct_B': np.float64(0.02), 'pct_D': np.float64(0.24), 'pct_H': np.float64(0.74), 'kinds': 'ridge/ridge/ridge/hgb/ridge'}
+{'config': 'B_bgebase_std_k8', 'dataset': 'quora', 'n': 10000, 'always_B': np.float64(0.7876730075230676), 'always_D': np.float64(0.888922283376864), 'always_H': np.float64(0.89661442788479), 'indomain_best_fixed': np.float64(0.89661442788479), 'indomain_router': np.float64(0.8987229510521941), 'oracle_dataset': np.float64(0.896614427884799), 'oracle_query': np.float64(0.928145797039852), 'pct_B': np.float64(0.027), 'pct_D': np.float64(0.6206), 'pct_H': np.float64(0.3524), 'kinds': 'hgb/ridge/hgb/hgb/ridge'}
+{'config': 'B_bgebase_std_k8', 'dataset': 'webis-touche2020', 'n': 49, 'always_B': np.float64(0.4442412041063184), 'always_D': np.float64(0.2418232014369488), 'always_H': np.float64(0.3828348659419589), 'indomain_best_fixed': np.float64(0.4442412041063184), 'indomain_router': np.float64(0.4442412041063184), 'oracle_dataset': np.float64(0.44424120410631834), 'oracle_query': np.float64(0.48878146680455115), 'pct_B': np.float64(1.0), 'pct_D': np.float64(0.0), 'pct_H': np.float64(0.0), 'kinds': 'hgb/hgb/hgb/hgb/hgb'}
+                  always_H  indomain_best_fixed  indomain_router  oracle_dataset  oracle_query
+config                                                                                        
+A_bge_std_k8        0.5339               0.5512           0.5507          0.5526        0.5984
+A_bgebase_std_k8    0.5483               0.5641           0.5657          0.5660        0.6130
+A_minilm_std_k8     0.5141               0.5275           0.5239          0.5275        0.5760
+B_bge_std_k8        0.5339               0.5512           0.5529          0.5526        0.5984
+B_bgebase_std_k8    0.5483               0.5641           0.5668          0.5660        0.6130
+B_minilm_std_k8     0.5141               0.5275           0.5272          0.5275        0.5760
+               config    comparison dataset   n  mean_a  mean_b   delta  ci_lo  ci_hi  se_boot  d_z  win  tie  loss       p  p_holm  p_one_sided  sig_pos_holm  sig_neg_holm
+8        A_bge_std_k8      router-H   MACRO NaN     NaN     NaN  0.0169    NaN    NaN      NaN  NaN  NaN  NaN   NaN  0.0001     NaN       0.0001           3.0           0.0
+18       A_bge_std_k8  router-fixed   MACRO NaN     NaN     NaN -0.0005    NaN    NaN      NaN  NaN  NaN  NaN   NaN  0.6948     NaN       0.6571           1.0           0.0
+28       A_bge_std_k8       fixed-H   MACRO NaN     NaN     NaN  0.0173    NaN    NaN      NaN  NaN  NaN  NaN   NaN  0.0001     NaN       0.0001           2.0           0.0
+38    A_minilm_std_k8      router-H   MACRO NaN     NaN     NaN  0.0097    NaN    NaN      NaN  NaN  NaN  NaN   NaN  0.0066     NaN       0.0036           3.0           1.0
+48    A_minilm_std_k8  router-fixed   MACRO NaN     NaN     NaN -0.0036    NaN    NaN      NaN  NaN  NaN  NaN   NaN  0.0178     NaN       0.9901           1.0           1.0
+58    A_minilm_std_k8       fixed-H   MACRO NaN     NaN     NaN  0.0134    NaN    NaN      NaN  NaN  NaN  NaN   NaN  0.0001     NaN       0.0001           2.0           0.0
+68    B_minilm_std_k8      router-H   MACRO NaN     NaN     NaN  0.0130    NaN    NaN      NaN  NaN  NaN  NaN   NaN  0.0001     NaN       0.0001           3.0           0.0
+78    B_minilm_std_k8  router-fixed   MACRO NaN     NaN     NaN -0.0003    NaN    NaN      NaN  NaN  NaN  NaN   NaN  0.7542     NaN       0.6252           1.0           0.0
+88    B_minilm_std_k8       fixed-H   MACRO NaN     NaN     NaN  0.0134    NaN    NaN      NaN  NaN  NaN  NaN   NaN  0.0001     NaN       0.0001           2.0           0.0
+98   A_bgebase_std_k8      router-H   MACRO NaN     NaN     NaN  0.0174    NaN    NaN      NaN  NaN  NaN  NaN   NaN  0.0001     NaN       0.0001           2.0           0.0
+108  A_bgebase_std_k8  router-fixed   MACRO NaN     NaN     NaN  0.0016    NaN    NaN      NaN  NaN  NaN  NaN   NaN  0.3174     NaN       0.1558           0.0           0.0
+118  A_bgebase_std_k8       fixed-H   MACRO NaN     NaN     NaN  0.0158    NaN    NaN      NaN  NaN  NaN  NaN   NaN  0.0001     NaN       0.0001           2.0           0.0
+128      B_bge_std_k8      router-H   MACRO NaN     NaN     NaN  0.0190    NaN    NaN      NaN  NaN  NaN  NaN   NaN  0.0001     NaN       0.0001           4.0           0.0
+138      B_bge_std_k8  router-fixed   MACRO NaN     NaN     NaN  0.0017    NaN    NaN      NaN  NaN  NaN  NaN   NaN  0.1461     NaN       0.0730           1.0           0.0
+148      B_bge_std_k8       fixed-H   MACRO NaN     NaN     NaN  0.0173    NaN    NaN      NaN  NaN  NaN  NaN   NaN  0.0001     NaN       0.0001           2.0           0.0
+158  B_bgebase_std_k8      router-H   MACRO NaN     NaN     NaN  0.0186    NaN    NaN      NaN  NaN  NaN  NaN   NaN  0.0001     NaN       0.0001           3.0           0.0
+168  B_bgebase_std_k8  router-fixed   MACRO NaN     NaN     NaN  0.0028    NaN    NaN      NaN  NaN  NaN  NaN   NaN  0.0582     NaN       0.0294           2.0           0.0
+178  B_bgebase_std_k8       fixed-H   MACRO NaN     NaN     NaN  0.0158    NaN    NaN      NaN  NaN  NaN  NaN   NaN  0.0001     NaN       0.0001           2.0           0.0

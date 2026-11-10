@@ -1,0 +1,11 @@
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+Loading weights:   0%|          | 0/105 [00:00<?, ?it/s]Loading weights: 100%|██████████| 105/105 [00:00<00:00, 2933.82it/s]
+scifact: 150 queries, 22207 pairs, 22207 to score
+  scifact: 2000/22207 pairs, 43.0 pairs/s
+  scifact: 4000/22207 pairs, 36.7 pairs/s
+  scifact: 6000/22207 pairs, 33.4 pairs/s
+  scifact: 8000/22207 pairs, 31.0 pairs/s
+  scifact: 10000/22207 pairs, 28.4 pairs/s
+  scifact: 12000/22207 pairs, 26.4 pairs/s
+  scifact: 14000/22207 pairs, 24.6 pairs/s
+  scifact: 16000/22207 pairs, 23.3 pairs/s

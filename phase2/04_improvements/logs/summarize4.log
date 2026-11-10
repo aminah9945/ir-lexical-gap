@@ -1,0 +1,9 @@
+# Agent 4 machine summary (regenerate with `python summarize4.py`)
+
+## F4 primary family (Holm)
+| test | k | delta | p_one_sided | p_holm | improvement |
+|---|---|---|---|---|---|
+| P1 E1 per-query alpha (Ridge, Tier A+B, MiniLM, LODO) - H0.5 | 5 | -0.0014 | 0.7440 | 1.0000 | False |
+| P2 E2 CE-pseudo-label alpha (MiniLM, held-out queries) - H0.5 | 8 | nan | 0.0001 | 0.0004 | False |
+| P3 E3 CE re-rank of H(MiniLM) top-100 - H(MiniLM) (sample) | 5 | -0.0397 | 1.0000 | 1.0000 | False |
+| P4 E4 in-domain router (A_bge_std, 5-fold CV) - always-H | 8 | 0.0169 | 0.0001 | 0.0004 | True |

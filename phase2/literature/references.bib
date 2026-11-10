@@ -1,0 +1,458 @@
+% references.bib -- Phase 2, Agent 2 (Verifier), 2026-10-21
+% ONLY entries whose existence was confirmed against a primary record:
+%   Crossref DOI registry record (api.crossref.org/works/<doi>), arXiv abs page,
+%   ACL Anthology, Springer chapter page, NeurIPS proceedings page, TREC/NIST PDF, or Hugging Face model card.
+% dl.acm.org is blocked: ACM entries were verified via their Crossref DOI record (registered by ACM).
+% Excluded (not verified to primary standard): Holm 1979 (secondary sources only; JSTOR blocked, no DOI),
+%   He & Ounis RIAO 2004 model selection (secondary listings only), Zhao (CMU) thesis (not located).
+
+%% ---------- Classical IR / BM25 ----------
+@article{robertson1976relevance,
+  author  = {Robertson, Stephen E. and Sparck Jones, Karen},
+  title   = {Relevance Weighting of Search Terms},
+  journal = {Journal of the American Society for Information Science},
+  volume  = {27}, number = {3}, pages = {129--146}, year = {1976},
+  doi     = {10.1002/asi.4630270302}, url = {https://doi.org/10.1002/asi.4630270302}
+}
+@article{salton1988term,
+  author  = {Salton, Gerard and Buckley, Christopher},
+  title   = {Term-Weighting Approaches in Automatic Text Retrieval},
+  journal = {Information Processing \& Management},
+  volume  = {24}, number = {5}, pages = {513--523}, year = {1988},
+  doi     = {10.1016/0306-4573(88)90021-0}, url = {https://doi.org/10.1016/0306-4573(88)90021-0}
+}
+@article{robertson2009prf,
+  author  = {Robertson, Stephen and Zaragoza, Hugo},
+  title   = {The Probabilistic Relevance Framework: {BM25} and Beyond},
+  journal = {Foundations and Trends in Information Retrieval},
+  volume  = {3}, number = {4}, pages = {333--389}, year = {2009},
+  doi     = {10.1561/1500000019}, url = {https://doi.org/10.1561/1500000019},
+  note    = {Crossref metadata lists vol. 4(1--2); publisher listing is vol. 3(4), pp. 333--389}
+}
+@inproceedings{lavrenko2001relevance,
+  author    = {Lavrenko, Victor and Croft, W. Bruce},
+  title     = {Relevance Based Language Models},
+  booktitle = {Proceedings of the 24th Annual International ACM SIGIR Conference on Research and Development in Information Retrieval},
+  pages     = {120--127}, year = {2001}, publisher = {ACM},
+  doi       = {10.1145/383952.383972}, url = {https://doi.org/10.1145/383952.383972}
+}
+@inproceedings{abduljaleel2004umass,
+  author    = {Abdul-Jaleel, Nasreen and Allan, James and Croft, W. Bruce and Diaz, Fernando and Larkey, Leah and Li, Xiaoyan and Smucker, Mark D. and Wade, Courtney},
+  title     = {{UMass} at {TREC} 2004: Novelty and {HARD}},
+  booktitle = {Proceedings of the Thirteenth Text REtrieval Conference (TREC 2004)},
+  year      = {2004}, publisher = {NIST},
+  url       = {https://trec.nist.gov/pubs/trec13/papers/umass.novelty.hard.pdf}
+}
+
+%% ---------- Vocabulary mismatch ----------
+@article{furnas1987vocabulary,
+  author  = {Furnas, George W. and Landauer, Thomas K. and Gomez, Louis M. and Dumais, Susan T.},
+  title   = {The Vocabulary Problem in Human-System Communication},
+  journal = {Communications of the ACM},
+  volume  = {30}, number = {11}, pages = {964--971}, year = {1987},
+  doi     = {10.1145/32206.32212}, url = {https://doi.org/10.1145/32206.32212}
+}
+@inproceedings{zhao2010term,
+  author    = {Zhao, Le and Callan, Jamie},
+  title     = {Term Necessity Prediction},
+  booktitle = {Proceedings of the 19th ACM International Conference on Information and Knowledge Management (CIKM)},
+  pages     = {259--268}, year = {2010}, publisher = {ACM},
+  doi       = {10.1145/1871437.1871474}, url = {https://doi.org/10.1145/1871437.1871474}
+}
+@inproceedings{zhao2012automatic,
+  author    = {Zhao, Le and Callan, Jamie},
+  title     = {Automatic Term Mismatch Diagnosis for Selective Query Expansion},
+  booktitle = {Proceedings of the 35th International ACM SIGIR Conference on Research and Development in Information Retrieval},
+  pages     = {515--524}, year = {2012}, publisher = {ACM},
+  doi       = {10.1145/2348283.2348354}, url = {https://doi.org/10.1145/2348283.2348354}
+}
+
+%% ---------- BEIR, reproducibility, dense-vs-lexical analyses ----------
+@inproceedings{thakur2021beir,
+  author    = {Thakur, Nandan and Reimers, Nils and R{\"u}ckl{\'e}, Andreas and Srivastava, Abhishek and Gurevych, Iryna},
+  title     = {{BEIR}: A Heterogeneous Benchmark for Zero-shot Evaluation of Information Retrieval Models},
+  booktitle = {Proceedings of the Neural Information Processing Systems Track on Datasets and Benchmarks},
+  year      = {2021},
+  url       = {https://datasets-benchmarks-proceedings.neurips.cc/paper/2021/hash/65b9eea6e1cc6bb9f0cd2a47751a186f-Abstract-round2.html},
+  eprint    = {2104.08663}, archivePrefix = {arXiv}
+}
+@inproceedings{kamalloo2024resources,
+  author    = {Kamalloo, Ehsan and Thakur, Nandan and Lassance, Carlos and Ma, Xueguang and Yang, Jheng-Hong and Lin, Jimmy},
+  title     = {Resources for Brewing {BEIR}: Reproducible Reference Models and Statistical Analyses},
+  booktitle = {Proceedings of the 47th International ACM SIGIR Conference on Research and Development in Information Retrieval},
+  pages     = {1431--1440}, year = {2024}, publisher = {ACM},
+  doi       = {10.1145/3626772.3657862}, url = {https://doi.org/10.1145/3626772.3657862},
+  note      = {arXiv:2306.07471 is an earlier version titled ``...Reproducible Reference Models and an Official Leaderboard''}
+}
+@inproceedings{lin2021pyserini,
+  author    = {Lin, Jimmy and Ma, Xueguang and Lin, Sheng-Chieh and Yang, Jheng-Hong and Pradeep, Ronak and Nogueira, Rodrigo},
+  title     = {Pyserini: A {Python} Toolkit for Reproducible Information Retrieval Research with Sparse and Dense Representations},
+  booktitle = {Proceedings of the 44th International ACM SIGIR Conference on Research and Development in Information Retrieval},
+  pages     = {2356--2362}, year = {2021}, publisher = {ACM},
+  doi       = {10.1145/3404835.3463238}, url = {https://doi.org/10.1145/3404835.3463238}
+}
+@inproceedings{muennighoff2023mteb,
+  author    = {Muennighoff, Niklas and Tazi, Nouamane and Magne, Loic and Reimers, Nils},
+  title     = {{MTEB}: Massive Text Embedding Benchmark},
+  booktitle = {Proceedings of the 17th Conference of the European Chapter of the Association for Computational Linguistics},
+  pages     = {2014--2037}, year = {2023}, publisher = {ACL},
+  doi       = {10.18653/v1/2023.eacl-main.148}, url = {https://aclanthology.org/2023.eacl-main.148/}
+}
+@inproceedings{thakur2024touche,
+  author    = {Thakur, Nandan and Bonifacio, Luiz and Fr{\"o}be, Maik and Bondarenko, Alexander and Kamalloo, Ehsan and Potthast, Martin and Hagen, Matthias and Lin, Jimmy},
+  title     = {Systematic Evaluation of Neural Retrieval Models on the {Touch\'e} 2020 Argument Retrieval Subset of {BEIR}},
+  booktitle = {Proceedings of the 47th International ACM SIGIR Conference on Research and Development in Information Retrieval},
+  pages     = {1420--1430}, year = {2024}, publisher = {ACM},
+  doi       = {10.1145/3626772.3657861}, url = {https://doi.org/10.1145/3626772.3657861}
+}
+@inproceedings{ren2023thorough,
+  author    = {Ren, Ruiyang and Qu, Yingqi and Liu, Jing and Zhao, Wayne Xin and Wu, Qifei and Ding, Yuchen and Wu, Hua and Wang, Haifeng and Wen, Ji-Rong},
+  title     = {A Thorough Examination on Zero-shot Dense Retrieval},
+  booktitle = {Findings of the Association for Computational Linguistics: EMNLP 2023},
+  pages     = {15783--15796}, year = {2023}, publisher = {ACL},
+  doi       = {10.18653/v1/2023.findings-emnlp.1057}, url = {https://aclanthology.org/2023.findings-emnlp.1057/}
+}
+@inproceedings{sciavolino2021simple,
+  author    = {Sciavolino, Christopher and Zhong, Zexuan and Lee, Jinhyuk and Chen, Danqi},
+  title     = {Simple Entity-Centric Questions Challenge Dense Retrievers},
+  booktitle = {Proceedings of the 2021 Conference on Empirical Methods in Natural Language Processing},
+  pages     = {6138--6148}, year = {2021}, publisher = {ACL},
+  doi       = {10.18653/v1/2021.emnlp-main.496}, url = {https://aclanthology.org/2021.emnlp-main.496/}
+}
+@inproceedings{formal2022match,
+  author    = {Formal, Thibault and Piwowarski, Benjamin and Clinchant, St{\'e}phane},
+  title     = {Match Your Words! {A} Study of Lexical Matching in Neural Information Retrieval},
+  booktitle = {Advances in Information Retrieval (ECIR 2022)},
+  series    = {Lecture Notes in Computer Science},
+  pages     = {120--127}, year = {2022}, publisher = {Springer},
+  doi       = {10.1007/978-3-030-99739-7_14}, url = {https://doi.org/10.1007/978-3-030-99739-7_14}
+}
+@inproceedings{formal2021splade,
+  author    = {Formal, Thibault and Piwowarski, Benjamin and Clinchant, St{\'e}phane},
+  title     = {{SPLADE}: Sparse Lexical and Expansion Model for First Stage Ranking},
+  booktitle = {Proceedings of the 44th International ACM SIGIR Conference on Research and Development in Information Retrieval},
+  pages     = {2288--2292}, year = {2021}, publisher = {ACM},
+  doi       = {10.1145/3404835.3463098}, url = {https://doi.org/10.1145/3404835.3463098}
+}
+@misc{ma2021replication,
+  author = {Ma, Xueguang and Sun, Kai and Pradeep, Ronak and Lin, Jimmy},
+  title  = {A Replication Study of Dense Passage Retriever},
+  year   = {2021}, eprint = {2104.05740}, archivePrefix = {arXiv},
+  url    = {https://arxiv.org/abs/2104.05740}
+}
+@misc{lin2021fewbrief,
+  author = {Lin, Jimmy and Ma, Xueguang},
+  title  = {A Few Brief Notes on {DeepImpact}, {COIL}, and a Conceptual Framework for Information Retrieval Techniques},
+  year   = {2021}, eprint = {2106.14807}, archivePrefix = {arXiv},
+  url    = {https://arxiv.org/abs/2106.14807}
+}
+
+%% ---------- Query performance prediction ----------
+@inproceedings{cronentownsend2002predicting,
+  author    = {Cronen-Townsend, Steve and Zhou, Yun and Croft, W. Bruce},
+  title     = {Predicting Query Performance},
+  booktitle = {Proceedings of the 25th Annual International ACM SIGIR Conference on Research and Development in Information Retrieval},
+  pages     = {299--306}, year = {2002}, publisher = {ACM},
+  doi       = {10.1145/564376.564429}, url = {https://doi.org/10.1145/564376.564429}
+}
+@inproceedings{zhou2007query,
+  author    = {Zhou, Yun and Croft, W. Bruce},
+  title     = {Query Performance Prediction in Web Search Environments},
+  booktitle = {Proceedings of the 30th Annual International ACM SIGIR Conference on Research and Development in Information Retrieval},
+  pages     = {543--550}, year = {2007}, publisher = {ACM},
+  doi       = {10.1145/1277741.1277835}, url = {https://doi.org/10.1145/1277741.1277835}
+}
+@article{shtok2012predicting,
+  author  = {Shtok, Anna and Kurland, Oren and Carmel, David and Raiber, Fiana and Markovits, Gad},
+  title   = {Predicting Query Performance by Query-Drift Estimation},
+  journal = {ACM Transactions on Information Systems},
+  volume  = {30}, number = {2}, pages = {1--35}, year = {2012},
+  doi     = {10.1145/2180868.2180873}, url = {https://doi.org/10.1145/2180868.2180873}
+}
+@inproceedings{tao2014query,
+  author    = {Tao, Yongquan and Wu, Shengli},
+  title     = {Query Performance Prediction by Considering Score Magnitude and Variance Together},
+  booktitle = {Proceedings of the 23rd ACM International Conference on Information and Knowledge Management (CIKM)},
+  pages     = {1891--1894}, year = {2014}, publisher = {ACM},
+  doi       = {10.1145/2661829.2661906}, url = {https://doi.org/10.1145/2661829.2661906}
+}
+@inproceedings{he2004inferring,
+  author    = {He, Ben and Ounis, Iadh},
+  title     = {Inferring Query Performance Using Pre-retrieval Predictors},
+  booktitle = {String Processing and Information Retrieval (SPIRE 2004)},
+  series    = {Lecture Notes in Computer Science},
+  pages     = {43--54}, year = {2004}, publisher = {Springer},
+  doi       = {10.1007/978-3-540-30213-1_5}, url = {https://doi.org/10.1007/978-3-540-30213-1_5}
+}
+@inproceedings{zhao2008effective,
+  author    = {Zhao, Ying and Scholer, Falk and Tsegay, Yohannes},
+  title     = {Effective Pre-retrieval Query Performance Prediction Using Similarity and Variability Evidence},
+  booktitle = {Advances in Information Retrieval (ECIR 2008)},
+  series    = {Lecture Notes in Computer Science},
+  pages     = {52--64}, year = {2008}, publisher = {Springer},
+  doi       = {10.1007/978-3-540-78646-7_8}, url = {https://doi.org/10.1007/978-3-540-78646-7_8}
+}
+@inproceedings{hauff2008survey,
+  author    = {Hauff, Claudia and Hiemstra, Djoerd and de Jong, Franciska},
+  title     = {A Survey of Pre-retrieval Query Performance Predictors},
+  booktitle = {Proceedings of the 17th ACM Conference on Information and Knowledge Management (CIKM)},
+  pages     = {1419--1420}, year = {2008}, publisher = {ACM},
+  doi       = {10.1145/1458082.1458311}, url = {https://doi.org/10.1145/1458082.1458311}
+}
+@book{carmel2010estimating,
+  author    = {Carmel, David and Yom-Tov, Elad},
+  title     = {Estimating the Query Difficulty for Information Retrieval},
+  series    = {Synthesis Lectures on Information Concepts, Retrieval, and Services},
+  publisher = {Morgan \& Claypool}, year = {2010},
+  doi       = {10.2200/S00235ED1V01Y201004ICR015}, url = {https://doi.org/10.2200/S00235ED1V01Y201004ICR015}
+}
+@inproceedings{faggioli2021enhanced,
+  author    = {Faggioli, Guglielmo and Zendel, Oleg and Culpepper, J. Shane and Ferro, Nicola and Scholer, Falk},
+  title     = {An Enhanced Evaluation Framework for Query Performance Prediction},
+  booktitle = {Advances in Information Retrieval (ECIR 2021)},
+  series    = {Lecture Notes in Computer Science},
+  pages     = {115--129}, year = {2021}, publisher = {Springer},
+  doi       = {10.1007/978-3-030-72113-8_8}, url = {https://doi.org/10.1007/978-3-030-72113-8_8}
+}
+@inproceedings{faggioli2023qpp,
+  author    = {Faggioli, Guglielmo and Formal, Thibault and Marchesin, Stefano and Clinchant, St{\'e}phane and Ferro, Nicola and Piwowarski, Benjamin},
+  title     = {Query Performance Prediction for Neural {IR}: Are We There Yet?},
+  booktitle = {Advances in Information Retrieval (ECIR 2023)},
+  series    = {Lecture Notes in Computer Science},
+  pages     = {232--248}, year = {2023}, publisher = {Springer},
+  doi       = {10.1007/978-3-031-28244-7_15}, url = {https://doi.org/10.1007/978-3-031-28244-7_15}
+}
+@inproceedings{arabzadeh2021bertqpp,
+  author    = {Arabzadeh, Negar and Khodabakhsh, Maryam and Bagheri, Ebrahim},
+  title     = {{BERT-QPP}: Contextualized Pre-trained Transformers for Query Performance Prediction},
+  booktitle = {Proceedings of the 30th ACM International Conference on Information and Knowledge Management (CIKM)},
+  pages     = {2857--2861}, year = {2021}, publisher = {ACM},
+  doi       = {10.1145/3459637.3482063}, url = {https://doi.org/10.1145/3459637.3482063}
+}
+@inproceedings{meng2023qpp,
+  author    = {Meng, Chuan and Arabzadeh, Negar and Aliannejadi, Mohammad and de Rijke, Maarten},
+  title     = {Query Performance Prediction: From Ad-hoc to Conversational Search},
+  booktitle = {Proceedings of the 46th International ACM SIGIR Conference on Research and Development in Information Retrieval},
+  pages     = {2583--2593}, year = {2023}, publisher = {ACM},
+  doi       = {10.1145/3539618.3591919}, url = {https://doi.org/10.1145/3539618.3591919}
+}
+
+%% ---------- Selective / adaptive retrieval and routing ----------
+@inproceedings{amati2004query,
+  author    = {Amati, Giambattista and Carpineto, Claudio and Romano, Giovanni},
+  title     = {Query Difficulty, Robustness, and Selective Application of Query Expansion},
+  booktitle = {Advances in Information Retrieval (ECIR 2004)},
+  series    = {Lecture Notes in Computer Science},
+  pages     = {127--137}, year = {2004}, publisher = {Springer},
+  doi       = {10.1007/978-3-540-24752-4_10}, url = {https://doi.org/10.1007/978-3-540-24752-4_10}
+}
+@inproceedings{cronentownsend2004framework,
+  author    = {Cronen-Townsend, Steve and Zhou, Yun and Croft, W. Bruce},
+  title     = {A Framework for Selective Query Expansion},
+  booktitle = {Proceedings of the 13th ACM International Conference on Information and Knowledge Management (CIKM)},
+  pages     = {236--237}, year = {2004}, publisher = {ACM},
+  doi       = {10.1145/1031171.1031220}, url = {https://doi.org/10.1145/1031171.1031220}
+}
+@inproceedings{arabzadeh2021predicting,
+  author    = {Arabzadeh, Negar and Yan, Xinyi and Clarke, Charles L. A.},
+  title     = {Predicting Efficiency/Effectiveness Trade-offs for Dense vs. Sparse Retrieval Strategy Selection},
+  booktitle = {Proceedings of the 30th ACM International Conference on Information and Knowledge Management (CIKM)},
+  pages     = {2862--2866}, year = {2021}, publisher = {ACM},
+  doi       = {10.1145/3459637.3482159}, url = {https://doi.org/10.1145/3459637.3482159}
+}
+@inproceedings{khramtsova2023selecting,
+  author    = {Khramtsova, Ekaterina and Zhuang, Shengyao and Baktashmotlagh, Mahsa and Wang, Xi and Zuccon, Guido},
+  title     = {Selecting which Dense Retriever to use for Zero-Shot Search},
+  booktitle = {Proceedings of the Annual International ACM SIGIR Conference on Research and Development in Information Retrieval in the Asia Pacific Region (SIGIR-AP)},
+  pages     = {223--233}, year = {2023}, publisher = {ACM},
+  doi       = {10.1145/3624918.3625330}, url = {https://doi.org/10.1145/3624918.3625330}
+}
+@inproceedings{mallen2023when,
+  author    = {Mallen, Alex and Asai, Akari and Zhong, Victor and Das, Rajarshi and Khashabi, Daniel and Hajishirzi, Hannaneh},
+  title     = {When Not to Trust Language Models: Investigating Effectiveness of Parametric and Non-Parametric Memories},
+  booktitle = {Proceedings of the 61st Annual Meeting of the Association for Computational Linguistics (Volume 1: Long Papers)},
+  pages     = {9802--9822}, year = {2023}, publisher = {ACL},
+  doi       = {10.18653/v1/2023.acl-long.546}, url = {https://aclanthology.org/2023.acl-long.546/}
+}
+@inproceedings{jeong2024adaptive,
+  author    = {Jeong, Soyeong and Baek, Jinheon and Cho, Sukmin and Hwang, Sung Ju and Park, Jong C.},
+  title     = {Adaptive-{RAG}: Learning to Adapt Retrieval-Augmented Large Language Models through Question Complexity},
+  booktitle = {Proceedings of the 2024 Conference of the North American Chapter of the Association for Computational Linguistics: Human Language Technologies (Volume 1: Long Papers)},
+  pages     = {7036--7050}, year = {2024}, publisher = {ACL},
+  doi       = {10.18653/v1/2024.naacl-long.389}, url = {https://aclanthology.org/2024.naacl-long.389/}
+}
+
+%% ---------- Hybrid fusion ----------
+@inproceedings{cormack2009rrf,
+  author    = {Cormack, Gordon V. and Clarke, Charles L. A. and B{\"u}ttcher, Stefan},
+  title     = {Reciprocal Rank Fusion Outperforms {Condorcet} and Individual Rank Learning Methods},
+  booktitle = {Proceedings of the 32nd International ACM SIGIR Conference on Research and Development in Information Retrieval},
+  pages     = {758--759}, year = {2009}, publisher = {ACM},
+  doi       = {10.1145/1571941.1572114}, url = {https://doi.org/10.1145/1571941.1572114}
+}
+@article{bruch2024fusion,
+  author  = {Bruch, Sebastian and Gai, Siyu and Ingber, Amir},
+  title   = {An Analysis of Fusion Functions for Hybrid Retrieval},
+  journal = {ACM Transactions on Information Systems},
+  volume  = {42}, number = {1}, pages = {1--35}, year = {2024},
+  doi     = {10.1145/3596512}, url = {https://doi.org/10.1145/3596512}
+}
+@inproceedings{wang2021bert,
+  author    = {Wang, Shuai and Zhuang, Shengyao and Zuccon, Guido},
+  title     = {{BERT}-based Dense Retrievers Require Interpolation with {BM25} for Effective Passage Retrieval},
+  booktitle = {Proceedings of the 2021 ACM SIGIR International Conference on Theory of Information Retrieval (ICTIR)},
+  pages     = {317--324}, year = {2021}, publisher = {ACM},
+  doi       = {10.1145/3471158.3472233}, url = {https://doi.org/10.1145/3471158.3472233}
+}
+@misc{kuzi2020leveraging,
+  author = {Kuzi, Saar and Zhang, Mingyang and Li, Cheng and Bendersky, Michael and Najork, Marc},
+  title  = {Leveraging Semantic and Lexical Matching to Improve the Recall of Document Retrieval Systems: A Hybrid Approach},
+  year   = {2020}, eprint = {2010.01195}, archivePrefix = {arXiv},
+  url    = {https://arxiv.org/abs/2010.01195}
+}
+@inproceedings{chen2022out,
+  author    = {Chen, Tao and Zhang, Mingyang and Lu, Jing and Bendersky, Michael and Najork, Marc},
+  title     = {Out-of-Domain Semantics to the Rescue! {Zero-Shot} Hybrid Retrieval Models},
+  booktitle = {Advances in Information Retrieval (ECIR 2022)},
+  series    = {Lecture Notes in Computer Science},
+  pages     = {95--110}, year = {2022}, publisher = {Springer},
+  doi       = {10.1007/978-3-030-99736-6_7}, url = {https://doi.org/10.1007/978-3-030-99736-6_7}
+}
+
+%% ---------- Domain-specific retrieval, 2025 (proposal) ----------
+@inproceedings{mori2025assessing,
+  author    = {Mori, Larissa and de Oliveira, Carlos Sousa and Yih, Yuehwern and Ventresca, Mario},
+  title     = {Assessing the Performance Gap Between Lexical and Semantic Models for Information Retrieval With Formulaic Legal Language},
+  booktitle = {Proceedings of the Twentieth International Conference on Artificial Intelligence and Law (ICAIL 2025)},
+  pages     = {114--128}, year = {2025}, publisher = {ACM},
+  doi       = {10.1145/3769126.3769205}, url = {https://doi.org/10.1145/3769126.3769205},
+  note      = {Preprint: arXiv:2506.12895}
+}
+@inproceedings{cunha2025medlink,
+  author    = {Cunha, Lu{\'i}s Filipe and Guimar{\~a}es, Nuno and Mendes, Alexandra and Campos, Ricardo and Jorge, Al{\'i}pio},
+  title     = {{MedLink}: Retrieval and Ranking of Case Reports to Assist Clinical Decision Making},
+  booktitle = {Advances in Information Retrieval (ECIR 2025)},
+  series    = {Lecture Notes in Computer Science},
+  pages     = {72--77}, year = {2025}, publisher = {Springer},
+  doi       = {10.1007/978-3-031-88720-8_13}, url = {https://doi.org/10.1007/978-3-031-88720-8_13},
+  note      = {Demo paper}
+}
+@inproceedings{ateia2025bioragent,
+  author    = {Ateia, Samy and Kruschwitz, Udo},
+  title     = {{BioRAGent}: A Retrieval-Augmented Generation System for Showcasing Generative Query Expansion and Domain-Specific Search for Scientific {Q\&A}},
+  booktitle = {Advances in Information Retrieval (ECIR 2025)},
+  series    = {Lecture Notes in Computer Science},
+  pages     = {1--5}, year = {2025}, publisher = {Springer},
+  doi       = {10.1007/978-3-031-88720-8_1}, url = {https://doi.org/10.1007/978-3-031-88720-8_1},
+  note      = {Demo paper}
+}
+@inproceedings{doostmohammadi2025studying,
+  author    = {Doostmohammadi, Ehsan and Kuhlmann, Marco},
+  title     = {Studying the Role of Input-Neighbor Overlap in Retrieval-Augmented Language Models Training Efficiency},
+  booktitle = {Proceedings of the 2025 Conference on Empirical Methods in Natural Language Processing},
+  pages     = {26835--26844}, year = {2025}, publisher = {ACL},
+  doi       = {10.18653/v1/2025.emnlp-main.1363}, url = {https://aclanthology.org/2025.emnlp-main.1363/}
+}
+@misc{akarsu2026bm25,
+  author = {Akarsu, Meftun and Karaman, Recep Kaan and Mierbach, Christopher},
+  title  = {From {BM25} to Corrective {RAG}: Benchmarking Retrieval Strategies for Text-and-Table Documents},
+  year   = {2026}, eprint = {2604.01733}, archivePrefix = {arXiv},
+  url    = {https://arxiv.org/abs/2604.01733}, note = {Preprint, not peer reviewed}
+}
+@misc{pandey2026domain,
+  author = {Pandey, Mritunjay},
+  title  = {Domain-Adaptive and Scalable Dense Retrieval for Content-Based Recommendation},
+  year   = {2026}, eprint = {2602.00899}, archivePrefix = {arXiv},
+  url    = {https://arxiv.org/abs/2602.00899}, note = {Preprint, not peer reviewed}
+}
+@misc{sager2025deep,
+  author = {Sager, Pascal J. and Kamaraj, Ashwini and Grewe, Benjamin F. and Stadelmann, Thilo},
+  title  = {Deep Retrieval at {CheckThat!} 2025: Identifying Scientific Papers from Implicit Social Media Mentions via Hybrid Retrieval and Re-Ranking},
+  year   = {2025}, eprint = {2505.23250}, archivePrefix = {arXiv},
+  url    = {https://arxiv.org/abs/2505.23250}, note = {CLEF 2025 working notes; preprint}
+}
+
+%% ---------- Dense retrievers used ----------
+@inproceedings{reimers2019sbert,
+  author    = {Reimers, Nils and Gurevych, Iryna},
+  title     = {Sentence-{BERT}: Sentence Embeddings using {Siamese} {BERT}-Networks},
+  booktitle = {Proceedings of the 2019 Conference on Empirical Methods in Natural Language Processing and the 9th International Joint Conference on Natural Language Processing (EMNLP-IJCNLP)},
+  pages     = {3980--3990}, year = {2019}, publisher = {ACL},
+  doi       = {10.18653/v1/D19-1410}, url = {https://aclanthology.org/D19-1410/}
+}
+@inproceedings{wang2020minilm,
+  author    = {Wang, Wenhui and Wei, Furu and Dong, Li and Bao, Hangbo and Yang, Nan and Zhou, Ming},
+  title     = {{MiniLM}: Deep Self-Attention Distillation for Task-Agnostic Compression of Pre-Trained Transformers},
+  booktitle = {Advances in Neural Information Processing Systems 33 (NeurIPS 2020)},
+  year      = {2020},
+  url       = {https://proceedings.neurips.cc/paper/2020/hash/3f5ee243547dee91fbd053c1c4a845aa-Abstract.html},
+  eprint    = {2002.10957}, archivePrefix = {arXiv}
+}
+@inproceedings{xiao2024cpack,
+  author    = {Xiao, Shitao and Liu, Zheng and Zhang, Peitian and Muennighoff, Niklas and Lian, Defu and Nie, Jian-Yun},
+  title     = {{C-Pack}: Packed Resources For General {Chinese} Embeddings},
+  booktitle = {Proceedings of the 47th International ACM SIGIR Conference on Research and Development in Information Retrieval},
+  pages     = {641--649}, year = {2024}, publisher = {ACM},
+  doi       = {10.1145/3626772.3657878}, url = {https://doi.org/10.1145/3626772.3657878},
+  note      = {Introduces the BGE embedding models; arXiv:2309.07597}
+}
+@misc{wang2022e5,
+  author = {Wang, Liang and Yang, Nan and Huang, Xiaolong and Jiao, Binxing and Yang, Linjun and Jiang, Daxin and Majumder, Rangan and Wei, Furu},
+  title  = {Text Embeddings by Weakly-Supervised Contrastive Pre-training},
+  year   = {2022}, eprint = {2212.03533}, archivePrefix = {arXiv},
+  url    = {https://arxiv.org/abs/2212.03533}
+}
+@misc{hf_allminilm,
+  author = {{Sentence-Transformers}},
+  title  = {all-{MiniLM}-{L6}-v2 (model card)},
+  howpublished = {Hugging Face}, year = {2021},
+  url    = {https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2}, note = {Accessed 2026-10-21}
+}
+@misc{hf_bgesmall,
+  author = {{BAAI}},
+  title  = {bge-small-en-v1.5 (model card)},
+  howpublished = {Hugging Face}, year = {2023},
+  url    = {https://huggingface.co/BAAI/bge-small-en-v1.5}, note = {Accessed 2026-10-21}
+}
+@misc{hf_bgebase,
+  author = {{BAAI}},
+  title  = {bge-base-en-v1.5 (model card)},
+  howpublished = {Hugging Face}, year = {2023},
+  url    = {https://huggingface.co/BAAI/bge-base-en-v1.5}, note = {Accessed 2026-10-21}
+}
+@misc{hf_e5base,
+  author = {{intfloat}},
+  title  = {e5-base-v2 (model card)},
+  howpublished = {Hugging Face}, year = {2023},
+  url    = {https://huggingface.co/intfloat/e5-base-v2}, note = {Accessed 2026-10-21}
+}
+
+%% ---------- Statistics / agreement ----------
+@inproceedings{smucker2007comparison,
+  author    = {Smucker, Mark D. and Allan, James and Carterette, Ben},
+  title     = {A Comparison of Statistical Significance Tests for Information Retrieval Evaluation},
+  booktitle = {Proceedings of the 16th ACM Conference on Information and Knowledge Management (CIKM)},
+  pages     = {623--632}, year = {2007}, publisher = {ACM},
+  doi       = {10.1145/1321440.1321528}, url = {https://doi.org/10.1145/1321440.1321528}
+}
+@article{webber2010rbo,
+  author  = {Webber, William and Moffat, Alistair and Zobel, Justin},
+  title   = {A Similarity Measure for Indefinite Rankings},
+  journal = {ACM Transactions on Information Systems},
+  volume  = {28}, number = {4}, pages = {1--38}, year = {2010},
+  doi     = {10.1145/1852102.1852106}, url = {https://doi.org/10.1145/1852102.1852106}
+}
+@article{dersimonian1986meta,
+  author  = {DerSimonian, Rebecca and Laird, Nan},
+  title   = {Meta-Analysis in Clinical Trials},
+  journal = {Controlled Clinical Trials},
+  volume  = {7}, number = {3}, pages = {177--188}, year = {1986},
+  doi     = {10.1016/0197-2456(86)90046-2}, url = {https://doi.org/10.1016/0197-2456(86)90046-2}
+}
+@article{cohen1960coefficient,
+  author  = {Cohen, Jacob},
+  title   = {A Coefficient of Agreement for Nominal Scales},
+  journal = {Educational and Psychological Measurement},
+  volume  = {20}, number = {1}, pages = {37--46}, year = {1960},
+  doi     = {10.1177/001316446002000104}, url = {https://doi.org/10.1177/001316446002000104}
+}

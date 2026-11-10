@@ -1,0 +1,358 @@
+{
+ "H1": {
+  "verdict": "NOT SUPPORTED",
+  "detail": {
+   "bm25>tfidf": {
+    "holds": 4,
+    "reversals": [
+     "arguana"
+    ]
+   },
+   "tfidf>bool_or": {
+    "holds": 6,
+    "reversals": [
+     "webis-touche2020"
+    ]
+   }
+  },
+  "n_datasets": 8
+ },
+ "H2": {
+  "corpus_jargon": {
+   "rho": 0.3333333333333334,
+   "p": 0.4197530864197532
+  },
+  "q_jargon": {
+   "rho": -0.04761904761904763,
+   "p": 0.9108491685195836
+  },
+  "q_mean_idf": {
+   "rho": 0.261904761904762,
+   "p": 0.530922861565801
+  },
+  "corpus_jargon_vs_dense_gap": {
+   "rho": -0.5952380952380953,
+   "p": 0.11952980613879269
+  },
+  "measured_core_order_low_to_high_jargon": [
+   "fiqa",
+   "nfcorpus",
+   "scifact"
+  ],
+  "assumed_order_matches": false,
+  "verdict": "NOT SUPPORTED"
+ },
+ "H3": {
+  "verdict": "SUPPORTED",
+  "mixed": {
+   "bm25": {
+    "coef": 0.21031890497691816,
+    "p": 0.0,
+    "ci": [
+     0.2033444642638939,
+     0.2172933456899424
+    ]
+   },
+   "minilm": {
+    "coef": 0.10620767697355547,
+    "p": 5.613262176739462e-230,
+    "ci": [
+     0.09977850707105637,
+     0.11263684687605457
+    ]
+   }
+  },
+  "n_datasets_sig_positive": 7,
+  "per_dataset": [
+   {
+    "dataset": "nfcorpus",
+    "partial_rho": 0.6917469721029881,
+    "ci_lo": 0.6177345397220217,
+    "ci_hi": 0.7500029295290541,
+    "p_partial": 2.6571228951672826e-47
+   },
+   {
+    "dataset": "scifact",
+    "partial_rho": 0.7310422008506756,
+    "ci_lo": 0.6644514330856542,
+    "ci_hi": 0.7803078011693853,
+    "p_partial": 2.1382123425555824e-51
+   },
+   {
+    "dataset": "fiqa",
+    "partial_rho": 0.4943323320289685,
+    "ci_lo": 0.4286674794753724,
+    "ci_hi": 0.553365438326355,
+    "p_partial": 3.1295854818430144e-41
+   },
+   {
+    "dataset": "scidocs",
+    "partial_rho": 0.5082658097274367,
+    "ci_lo": 0.4610904433520905,
+    "ci_hi": 0.5521316904530957,
+    "p_partial": 8.489357955935363e-67
+   },
+   {
+    "dataset": "arguana",
+    "partial_rho": 0.6644693757134122,
+    "ci_lo": 0.6363070329958336,
+    "ci_hi": 0.6947916881373489,
+    "p_partial": 3.4527503682168315e-179
+   },
+   {
+    "dataset": "trec-covid",
+    "partial_rho": 0.37363160437500964,
+    "ci_lo": 0.05679256165032484,
+    "ci_hi": 0.5941264283189223,
+    "p_partial": 0.0075241706594933195
+   },
+   {
+    "dataset": "quora",
+    "partial_rho": 0.44323700667506016,
+    "ci_lo": 0.4283874922309948,
+    "ci_hi": 0.4590584898454167,
+    "p_partial": 0.0
+   },
+   {
+    "dataset": "webis-touche2020",
+    "partial_rho": -0.03364450390952003,
+    "ci_lo": -0.3253228384859098,
+    "ci_hi": 0.25584108561823027,
+    "p_partial": 0.8184829309726428
+   }
+  ]
+ },
+ "H5": {
+  "verdict": "PARTIALLY SUPPORTED",
+  "dense": "minilm",
+  "mixed": {
+   "coef": -0.10420651726058236,
+   "p": 3.5023162387749004e-180,
+   "ci": [
+    -0.11134213760560101,
+    -0.09707089691556371
+   ]
+  },
+  "n_datasets_sig_negative": 4,
+  "per_dataset": [
+   {
+    "dataset": "nfcorpus",
+    "partial_rho": -0.2399506928165324,
+    "ci_lo": -0.3330284811544999,
+    "ci_hi": -0.14536261443494936,
+    "p": 1.3031260690103308e-05
+   },
+   {
+    "dataset": "scifact",
+    "partial_rho": -0.28179179466012977,
+    "ci_lo": -0.3741527579980576,
+    "ci_hi": -0.18675463032654738,
+    "p": 7.002184386535744e-07
+   },
+   {
+    "dataset": "fiqa",
+    "partial_rho": -0.07663117222403142,
+    "ci_lo": -0.15065548606009718,
+    "ci_hi": -0.0013023606350250102,
+    "p": 0.051198451809415554
+   },
+   {
+    "dataset": "scidocs",
+    "partial_rho": -0.013805129722906375,
+    "ci_lo": -0.07363645428611404,
+    "ci_hi": 0.04051371657848392,
+    "p": 0.6628140194622577
+   },
+   {
+    "dataset": "arguana",
+    "partial_rho": -0.3104096906609388,
+    "ci_lo": -0.3564294246751928,
+    "ci_hi": -0.26689117400025136,
+    "p": 1.1348309943813813e-32
+   },
+   {
+    "dataset": "trec-covid",
+    "partial_rho": -0.19653700103954286,
+    "ci_lo": -0.44167718531277983,
+    "ci_hi": 0.07085460590069968,
+    "p": 0.17132438450458987
+   },
+   {
+    "dataset": "quora",
+    "partial_rho": -0.2967882196339241,
+    "ci_lo": -0.31411255577149383,
+    "ci_hi": -0.2793011672960201,
+    "p": 1.7583001954238417e-202
+   },
+   {
+    "dataset": "webis-touche2020",
+    "partial_rho": -0.13533945476941883,
+    "ci_lo": -0.4315403428444656,
+    "ci_hi": 0.14637578458030667,
+    "p": 0.35382526697675604
+   }
+  ]
+ },
+ "H5_bge_robustness": {
+  "verdict": "PARTIALLY SUPPORTED",
+  "dense": "bge",
+  "mixed": {
+   "coef": -0.1082703561141157,
+   "p": 2.352401037226679e-204,
+   "ci": [
+    -0.11522716541493784,
+    -0.10131354681329356
+   ]
+  },
+  "n_datasets_sig_negative": 5,
+  "per_dataset": [
+   {
+    "dataset": "nfcorpus",
+    "partial_rho": -0.19125195708571535,
+    "ci_lo": -0.2910249897317317,
+    "ci_hi": -0.10456471599258917,
+    "p": 0.0005485676750516533
+   },
+   {
+    "dataset": "scifact",
+    "partial_rho": -0.205236925940922,
+    "ci_lo": -0.29476838865467986,
+    "ci_hi": -0.1189518224650349,
+    "p": 0.00034605911803893514
+   },
+   {
+    "dataset": "fiqa",
+    "partial_rho": -0.024572568958761837,
+    "ci_lo": -0.0951422667481395,
+    "ci_hi": 0.05567149320791992,
+    "p": 0.5323635662372199
+   },
+   {
+    "dataset": "scidocs",
+    "partial_rho": 0.0477128483966094,
+    "ci_lo": -0.00919667972240367,
+    "ci_hi": 0.10215053086280552,
+    "p": 0.13160971338375443
+   },
+   {
+    "dataset": "arguana",
+    "partial_rho": -0.3525687650026153,
+    "ci_lo": -0.39694273335041763,
+    "ci_hi": -0.30510929557048966,
+    "p": 2.8541549366835102e-42
+   },
+   {
+    "dataset": "trec-covid",
+    "partial_rho": -0.26059580362683793,
+    "ci_lo": -0.506925476506568,
+    "ci_hi": 0.017216829767166326,
+    "p": 0.06757844937493875
+   },
+   {
+    "dataset": "quora",
+    "partial_rho": -0.3137762004857636,
+    "ci_lo": -0.32946588487343825,
+    "ci_hi": -0.29690481455348217,
+    "p": 2.4310860439184356e-227
+   },
+   {
+    "dataset": "webis-touche2020",
+    "partial_rho": -0.29486758193180657,
+    "ci_lo": -0.5623993876874684,
+    "ci_hi": -0.02194568943372478,
+    "p": 0.03970874251546001
+   }
+  ]
+ },
+ "H6": {
+  "verdict": "PARTIALLY SUPPORTED",
+  "mean_lodo_bacc": 0.5562271085704873,
+  "folds_ge_055": 3,
+  "thresholds": [
+   0.6,
+   0.6,
+   0.6,
+   0.6,
+   0.6,
+   0.6,
+   0.6,
+   0.55
+  ],
+  "threshold_median": 0.6,
+  "mean_auc": 0.6584922506940494,
+  "per_fold": [
+   {
+    "held_out": "nfcorpus",
+    "threshold": 0.6,
+    "train_bacc": 0.5815510593796728,
+    "test_bacc": 0.534515008461744,
+    "auc_low_overlap_predicts_dense": 0.6437160416852231,
+    "n": 212,
+    "dense_win_rate": 0.5141509433962265
+   },
+   {
+    "held_out": "scifact",
+    "threshold": 0.6,
+    "train_bacc": 0.5593809345380732,
+    "test_bacc": 0.6897058823529412,
+    "auc_low_overlap_predicts_dense": 0.7502100840336134,
+    "n": 138,
+    "dense_win_rate": 0.4927536231884058
+   },
+   {
+    "held_out": "fiqa",
+    "threshold": 0.6,
+    "train_bacc": 0.5727700305978091,
+    "test_bacc": 0.5959822099347898,
+    "auc_low_overlap_predicts_dense": 0.6424407248249542,
+    "n": 418,
+    "dense_win_rate": 0.7440191387559809
+   },
+   {
+    "held_out": "scidocs",
+    "threshold": 0.6,
+    "train_bacc": 0.5833936799480411,
+    "test_bacc": 0.5216166644831652,
+    "auc_low_overlap_predicts_dense": 0.6410621345116302,
+    "n": 636,
+    "dense_win_rate": 0.7059748427672956
+   },
+   {
+    "held_out": "arguana",
+    "threshold": 0.6,
+    "train_bacc": 0.5864817748742076,
+    "test_bacc": 0.5,
+    "auc_low_overlap_predicts_dense": 0.7190977039155177,
+    "n": 965,
+    "dense_win_rate": 0.649740932642487
+   },
+   {
+    "held_out": "trec-covid",
+    "threshold": 0.6,
+    "train_bacc": 0.5798609447239658,
+    "test_bacc": 0.5463458110516934,
+    "auc_low_overlap_predicts_dense": 0.6327985739750446,
+    "n": 50,
+    "dense_win_rate": 0.34
+   },
+   {
+    "held_out": "quora",
+    "threshold": 0.6,
+    "train_bacc": 0.5760871458183968,
+    "test_bacc": 0.5727624033906756,
+    "auc_low_overlap_predicts_dense": 0.6237979277915964,
+    "n": 4156,
+    "dense_win_rate": 0.7242540904716073
+   },
+   {
+    "held_out": "webis-touche2020",
+    "threshold": 0.55,
+    "train_bacc": 0.5719416598321468,
+    "test_bacc": 0.4888888888888889,
+    "auc_low_overlap_predicts_dense": 0.6148148148148148,
+    "n": 48,
+    "dense_win_rate": 0.0625
+   }
+  ]
+ }
+}

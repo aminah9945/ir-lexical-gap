@@ -1,0 +1,9 @@
+nfcorpus   ndcg@10     ours=0.3205 pytrec=0.3200 max|diff|=8.12e-02
+nfcorpus   recall@100  ours=0.2462 pytrec=0.2463 max|diff|=4.17e-02
+nfcorpus   map@100     ours=0.1449 pytrec=0.1448 max|diff|=2.78e-02
+scifact    ndcg@10     ours=0.6769 pytrec=0.6769 max|diff|=0.00e+00
+scifact    recall@100  ours=0.9287 pytrec=0.9287 max|diff|=0.00e+00
+scifact    map@100     ours=0.6379 pytrec=0.6379 max|diff|=0.00e+00
+fiqa       ndcg@10     ours=0.2369 pytrec=0.2369 max|diff|=0.00e+00
+fiqa       recall@100  ours=0.5402 pytrec=0.5402 max|diff|=0.00e+00
+fiqa       map@100     ours=0.1917 pytrec=0.1917 max|diff|=0.00e+00
