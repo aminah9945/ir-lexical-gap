@@ -248,3 +248,15 @@ Sources: `A3/` and `A4/` files written by the 2026-10-22 full Colab ingest; `EX2
 |---|---|
 | +0.002 over random at k=20 (BGE-b); 34% of random draws ≥ | bgebase/k20 diff 0.0019, share_rand_ge_DIS 0.340 |
 | losses with BGE-s and MiniLM | bge/k20 diff −0.0079; minilm/k20 diff −0.0064 |
+
+## 2026-11-11 v10 rewrite (methodology section, single citations, no approximations)
+| Number in paper | Source |
+|---|---|
+| 66% of the coverage association (ratio 0.66) | 0.120 / 0.182 = 0.659 (`A3/w3_*`, as before; replaces "about two thirds") |
+| 75.5% of the hindsight optimum | 0.0207 / 0.0274 (`05_alpha_fewshot/results.json` bgebase/k20; `A4/e1_perdataset_bgebase.csv` oracle_ds − H) |
+| min detectable \|ρ\| = 0.85 | `02_verification.md` W5: tanh(2.80/sqrt(5)) = 0.849 |
+| Δ_D Kendall τ between −0.04 and 0.07 | `03_experiments/EXPERIMENT_LOG.md` §9 Mechanism |
+| text router τ_D −0.03 | `06_text_router/results.json` bgebase tau_D_mean −0.026 |
+| 72 queries with near-tie swaps | EXPERIMENT_LOG 2026-10-22: 35 + 4 + 28 + 2 + 3 |
+| Quora judged-only nDCG 0.996–1.000 | `A3/w9_judged.csv` quora ndcg10_condensed |
+| 8,000 training queries per fold | 10,000 × 4/5 (5-fold CV) |
